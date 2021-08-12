@@ -1,0 +1,29 @@
+{
+  "name": "fisheye",
+  "version": "1.0.0",
+  "description": "Freelance photographers website",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass:./public/css/",
+    "compressed": "sass ./sass/:./public/css/ --style=compressed --no-source-map",
+    "expanded": "sass ./sass/:./public/css/ --style=expanded"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Roy-Framery-s-Openclassrooms-projects/RoyFramery_6_10082021.git"
+  },
+  "keywords": [
+    "accessibility",
+    "photographers",
+    "freelance"
+  ],
+  "author": "roy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Roy-Framery-s-Openclassrooms-projects/RoyFramery_6_10082021/issues"
+  },
+  "homepage": "https://github.com/Roy-Framery-s-Openclassrooms-projects/RoyFramery_6_10082021#readme",
+  "devDependencies": {
+    "sass": "^1.37.5"
+  }
+}
