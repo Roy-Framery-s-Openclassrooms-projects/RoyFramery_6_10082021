@@ -2,4 +2,11 @@ body {
   font-size: 87.5%;
 }
 
+img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 /*# sourceMappingURL=home.css.map */
