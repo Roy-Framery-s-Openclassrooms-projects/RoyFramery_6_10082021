@@ -1,3 +1,4 @@
+import Photographer from './class/photographer.js'
 // http://localhost:8080
 fetch('../fisheyeData.json')
 	.then(response => {
@@ -7,13 +8,12 @@ fetch('../fisheyeData.json')
 		return response.json()
 	})
 	.then(json => {
-		console.log(json)
+		var i = 0
+		var photographerCard = {}
 		for (const photographer of json.photographers) {
-			let main = document.querySelector('main')
-			let img = document.createElement('img')
-			img.src = '../public/images/photographers/id_photos/' + photographer.portrait
-			img.setAttribute('alt', 'photo de profil')
-			main.appendChild(img)
+			photographerCard[i] = new Photographer(photographer.name, photographer.city, photographer.country, photographer.tags, photographer.tagline, photographer.price, photographer.portrait) 
+			photographerCard[i].constructCardPhotographer()
+			i++
 		}
 	})
 	.catch(function () {

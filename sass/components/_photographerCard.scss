@@ -1,0 +1,44 @@
+@use '../utilities/' as *;
+@use '../components/tag' as *;
+
+@mixin photographerCard {
+    .photographer {
+        text-align: center;
+        display: block;
+        margin-bottom: 35px;  
+        &__header {
+            text-decoration: none;
+        }
+        &__img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        &__name {
+            font-size: $fs-36;
+            color: $lightred-primary;
+            margin-top: 15px;
+            
+        }
+        &__location {
+            font-size: $fs-13; 
+            color: $red-secondary;
+        }
+        &__tagline {
+            font-size: $fs-10;
+        }
+        &__price {
+            font-size: $fs-9;
+            color: $darkgrey-secondary;
+            margin: 3px 0 5px 0
+        }
+        &__tags {
+            display: flex;
+            justify-content: center;
+        }
+        &__tag a {
+            @include tag;
+        }
+    }
+}

@@ -1,10 +1,22 @@
-body {
-    font-size: 87.5%;
+@use '../utilities/' as *;
+@use '../main';
+@use '../components' as *;
+
+.main {
+    position: relative;
+    &__title {
+    font-size: $fs-14;
+    color: $red-secondary;
+    position: absolute;
+    right: 0px;
+    top: -160px;
+    }
 }
 
-img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-}
+// .photographers {
+//     display: flex;
+//     justify-content: space-between;
+//     flex-wrap: wrap;
+// }
+
+@include photographerCard;

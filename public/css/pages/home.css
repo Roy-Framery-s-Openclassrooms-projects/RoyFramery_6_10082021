@@ -1,12 +1,139 @@
-body {
-  font-size: 87.5%;
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
+html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
 }
 
-img {
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+button, input, select {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+img, video {
+  height: auto;
+  max-width: 100%;
+}
+
+iframe {
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td, th {
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+  font-family: "DM Sans", sans-serif;
+}
+
+body {
+  width: 90%;
+  margin: auto;
+}
+
+.header {
+  padding: 50px 0;
+}
+.header__svg {
+  margin-bottom: 20px;
+  display: block;
+}
+.header__nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.header__nav-list-item a {
+  color: #901C1C;
+  border: 0.5px solid #C4C4C4;
+  border-radius: 11px;
+  font-weight: 500;
+  padding: 2px 6px;
+  margin: 2px 2px;
+  text-decoration: none;
+  display: block;
+  font-size: 0.75em;
+}
+
+.main {
+  position: relative;
+}
+.main__title {
+  font-size: 0.875em;
+  color: #901C1C;
+  position: absolute;
+  right: 0px;
+  top: -160px;
+}
+
+.photographer {
+  text-align: center;
+  display: block;
+  margin-bottom: 35px;
+}
+.photographer__header {
+  text-decoration: none;
+}
+.photographer__img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
+}
+.photographer__name {
+  font-size: 2.25em;
+  color: #D3573C;
+  margin-top: 15px;
+}
+.photographer__location {
+  font-size: 0.8125em;
+  color: #901C1C;
+}
+.photographer__tagline {
+  font-size: 0.625em;
+}
+.photographer__price {
+  font-size: 0.5625em;
+  color: #525252;
+  margin: 3px 0 5px 0;
+}
+.photographer__tags {
+  display: flex;
+  justify-content: center;
+}
+.photographer__tag a {
+  color: #901C1C;
+  border: 0.5px solid #C4C4C4;
+  border-radius: 11px;
+  font-weight: 500;
+  padding: 2px 6px;
+  margin: 2px 2px;
+  text-decoration: none;
+  display: block;
+  font-size: 0.75em;
 }
 
 /*# sourceMappingURL=home.css.map */

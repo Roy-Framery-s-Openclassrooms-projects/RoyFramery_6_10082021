@@ -1,0 +1,25 @@
+@use '../utilities/' as *;
+@use '../components' as *;
+.header {
+    padding: 50px 0;
+    // max-width: 968px;
+    // display: flex;
+    // justify-content: space-evenly;
+    // align-items: center;
+    &__svg {
+        margin-bottom: 20px;
+        display: block;
+    }
+
+    &__nav {
+        &-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        &-list-item a {
+            @include tag;
+        }
+    }
+    
+}

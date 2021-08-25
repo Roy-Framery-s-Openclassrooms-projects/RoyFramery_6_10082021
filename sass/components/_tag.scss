@@ -1,0 +1,13 @@
+@use '../utilities' as *;
+
+@mixin tag {
+    color: $red-secondary;
+    border: 0.5px solid $grey-secondary;
+    border-radius: 11px;
+    font-weight: 500;
+    padding: 2px 6px;
+    margin: 2px 2px;
+    text-decoration: none;
+    display: block;
+    font-size: $fs-12;
+}
