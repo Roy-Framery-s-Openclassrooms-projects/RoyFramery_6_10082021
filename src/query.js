@@ -3,7 +3,7 @@ import Media from './factoryPattern/media.js'
 
 let getPhotographers = async () => {
 	// const url = '../fisheyeData.json'
-	const url = 'http://roy-framery-s-openclassrooms-projects.github.io/RoyFramery_6_10082021/fisheyeData.json'
+	const url = 'http://yorgamaton.github.io/RoyFramery_6_10082021/fisheyeData.json'
 
 	const response = await fetch(url)
 	if (response.ok) {
@@ -46,7 +46,7 @@ let displaysPhotographersPofils = async () => {
 // Fetch to get media 
 let getMedia = async () => {
 	// const url = '../../fisheyeData.json'
-	const url = 'http://roy-framery-s-openclassrooms-projects.github.io/RoyFramery_6_10082021/fisheyeData.json'
+	const url = 'http://yorgamaton.github.io/RoyFramery_6_10082021/fisheyeData.json'
 	const response = await fetch(url)
 	if (response.ok) {
 		const data = await response.json()
