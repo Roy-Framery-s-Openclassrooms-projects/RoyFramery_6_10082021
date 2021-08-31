@@ -17,8 +17,13 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-        &-list-item a {
+        &-tag {
             @include tag;
+
+            &--active {
+                background: $red-primary;
+                color: $lightgrey-secondary;
+            }
         }
     }
     

@@ -1,5 +1,5 @@
 export default class Photographer {
-	constructor( name, city, country, tags, tagline, price, portrait) {
+	constructor( name, city, country, tags, tagline, price, portrait, id) {
 		this.name = name
 		this.city = city
 		this.country = country
@@ -7,6 +7,7 @@ export default class Photographer {
 		this.tagline = tagline
 		this.price = price
 		this.portrait = portrait
+		this.id = id
 	}
 	dom = {
 		photographers : document.querySelector('.photographers'),
@@ -15,7 +16,7 @@ export default class Photographer {
 	displayTags = () => {
 		let spanTags = ''
 		for (let i = 0; i < this.tags.length; i++) {
-			spanTags += `<span class="photographer__tag"><a href="">#${this.tags[i]}</a></span>`
+			spanTags += `<span class="photographer__tag"><a href="./index.html?tag=${this.tags[i]}">#${this.tags[i]}</a></span>`
 		}
 		return spanTags
 	}
@@ -23,7 +24,7 @@ export default class Photographer {
 	constructCardPhotographer = () => {
 		return this.dom.photographers.insertAdjacentHTML('beforeend', `
 		<acticle class="photographer">
-		<a href="#" class="photographer__header">
+		<a href="./public/pages/photographer.html?id=${this.id}" class="photographer__header">
 		<img class="photographer__img" src="public/images/photographers/id_photos/${this.portrait}" alt="">
 		<h2 class="photographer__name">${this.name}</h2>
 		</a>

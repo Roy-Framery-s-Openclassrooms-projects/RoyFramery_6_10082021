@@ -10,4 +10,10 @@
     text-decoration: none;
     display: block;
     font-size: $fs-12;
+    transition: background 300ms, color 150ms;
+
+    &:hover, &:focus {
+        background: $red-primary;
+        color: $lightgrey-secondary;
+    }
 }

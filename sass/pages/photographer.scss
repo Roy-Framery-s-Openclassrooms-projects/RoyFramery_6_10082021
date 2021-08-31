@@ -1,0 +1,34 @@
+@use '../utilities/' as *;
+@use '../main';
+@use '../components' as *;
+
+.media {
+    &__card {
+        height: 218px;
+        max-width: 100%;
+        display: block;
+        margin-bottom: 10px;
+        & a {
+            display: block;
+        }
+    }
+    &__thumb {
+        height: 190px;
+        width: 100%;
+        object-fit: cover;
+        object-position: 50% 15%;
+        border-radius: 5px;
+    }
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        color: $red-primary;
+    }
+    &__title {
+        font-weight: 400;
+    }
+    &__likes {
+        display: flex;
+        font-weight: 500;
+    }
+}

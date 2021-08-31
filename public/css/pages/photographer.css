@@ -87,67 +87,33 @@ body {
   color: #FAFAFA;
 }
 
-.main {
-  position: relative;
-}
-.main__title {
-  font-size: 0.875em;
-  color: #901C1C;
-  position: absolute;
-  right: 0px;
-  top: -160px;
-}
-
-.photographer {
-  text-align: center;
+.media__card {
+  height: 218px;
+  max-width: 100%;
   display: block;
-  margin-bottom: 35px;
+  margin-bottom: 10px;
 }
-.photographer__header {
-  text-decoration: none;
+.media__card a {
+  display: block;
 }
-.photographer__img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+.media__thumb {
+  height: 190px;
+  width: 100%;
   object-fit: cover;
+  object-position: 50% 15%;
+  border-radius: 5px;
 }
-.photographer__name {
-  font-size: 2.25em;
-  color: #D3573C;
-  margin-top: 15px;
-}
-.photographer__location {
-  font-size: 0.8125em;
-  color: #901C1C;
-}
-.photographer__tagline {
-  font-size: 0.625em;
-}
-.photographer__price {
-  font-size: 0.5625em;
-  color: #525252;
-  margin: 3px 0 5px 0;
-}
-.photographer__tags {
+.media__content {
   display: flex;
-  justify-content: center;
-}
-.photographer__tag a {
+  justify-content: space-between;
   color: #901C1C;
-  border: 0.5px solid #C4C4C4;
-  border-radius: 11px;
-  font-weight: 500;
-  padding: 2px 6px;
-  margin: 2px 2px;
-  text-decoration: none;
-  display: block;
-  font-size: 0.75em;
-  transition: background 300ms, color 150ms;
 }
-.photographer__tag a:hover, .photographer__tag a:focus {
-  background: #901C1C;
-  color: #FAFAFA;
+.media__title {
+  font-weight: 400;
+}
+.media__likes {
+  display: flex;
+  font-weight: 500;
 }
 
-/*# sourceMappingURL=home.css.map */
+/*# sourceMappingURL=photographer.css.map */
