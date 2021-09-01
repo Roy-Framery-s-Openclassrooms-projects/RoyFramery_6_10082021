@@ -1,4 +1,10 @@
-import {displaysPhotographersPofils, displaysMedia} from './query.js'
-// http://localhost:8080
-if (document.title == 'Accueil') displaysPhotographersPofils()
-if (document.title == 'Gallery') displaysMedia()
+import {displaysPhotographersPofils, displaysMediaById, displaysPhotographersPofilsById, displayFilters} from './query.js'
+
+if (document.title == 'Accueil') {
+	displayFilters()
+	displaysPhotographersPofils()
+}
+if (document.title == 'Gallery') {
+	displaysPhotographersPofilsById()
+	displaysMediaById()
+}

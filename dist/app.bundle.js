@@ -1,1 +1,662 @@
-(()=>{"use strict";function t(t,e,n){return e in t?Object.defineProperty(t,e,{value:n,enumerable:!0,configurable:!0,writable:!0}):t[e]=n,t}var e=function e(n,r,o,a,i,c,s,u){var l=this;!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),t(this,"dom",{photographers:document.querySelector(".photographers")}),t(this,"displayTags",(function(){for(var t="",e=0;e<l.tags.length;e++)t+='<span class="photographer__tag"><a href="./index.html?tag='.concat(l.tags[e],'">#').concat(l.tags[e],"</a></span>");return t})),t(this,"constructCardPhotographer",(function(){return l.dom.photographers.insertAdjacentHTML("beforeend",'\n\t\t<acticle class="photographer">\n\t\t<a href="./public/pages/photographer.html?id='.concat(l.id,'" class="photographer__header">\n\t\t<img class="photographer__img" src="public/images/photographers/id_photos/').concat(l.portrait,'" alt="">\n\t\t<h2 class="photographer__name">').concat(l.name,'</h2>\n\t\t</a>\n\t\t<div class="photographer__content">\n\t\t<p class="photographer__location">').concat(l.city,", ").concat(l.country,'</p>\n\t\t<p class="photographer__tagline">').concat(l.tagline,'</p>\n\t\t<p class="photographer__price">').concat(l.price,'€/jour</p>\n\t\t</div>\n\t\t<div class="photographer__tags">')+l.displayTags()+"</div>\n\t\t</acticle>\n\t\t")})),this.name=n,this.city=r,this.country=o,this.tags=a,this.tagline=i,this.price=c,this.portrait=s,this.id=u};function n(t){return(n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t})(t)}function r(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),e&&o(t,e)}function o(t,e){return(o=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t})(t,e)}function a(t){var e=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(t){return!1}}();return function(){var n,r=c(t);if(e){var o=c(this).constructor;n=Reflect.construct(r,arguments,o)}else n=r.apply(this,arguments);return i(this,n)}}function i(t,e){if(e&&("object"===n(e)||"function"==typeof e))return e;if(void 0!==e)throw new TypeError("Derived constructors may only return object or undefined");return function(t){if(void 0===t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return t}(t)}function c(t){return(c=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)})(t)}function s(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function u(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}function l(t,e,n){return e&&u(t.prototype,e),n&&u(t,n),t}var f=function(){function t(e,n,r,o){var a,i,c;s(this,t),a=this,i="dom",c={media:document.querySelector(".media")},i in a?Object.defineProperty(a,i,{value:c,enumerable:!0,configurable:!0,writable:!0}):a[i]=c,this.title=e,this.filename=n,this.likes=r,this.typeMedia=o}return l(t,[{key:"createMedia",value:function(){switch(this.typeMedia){case"image":return new h(this.title,this.filename,this.likes).createImage();case"video":return new p(this.title,this.filename,this.likes).createVideo()}}}]),t}(),h=function(t){r(n,t);var e=a(n);function n(t,r,o){return s(this,n),e.call(this,t,r,o)}return l(n,[{key:"createImage",value:function(){return this.dom.media.insertAdjacentHTML("beforeend",'<artcle class="media__card">\n\t\t\t\t<a href="#">\n\t\t\t\t\t<img src="../images/photographers/photos/'.concat(this.filename,'" class="media__thumb">\n\t\t\t\t</a>\n\t\t\t\t<div class="media__content">\n\t\t\t\t\t<h2 class="media__title">').concat(this.title,'</h2>\n\t\t\t\t\t<div class="media__likes">\n\t\t\t\t\t\t<p class="media__number">').concat(this.likes,'</p>\n\t\t\t\t\t\t<svg role="image" class="media__heart" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">\n\t\t\t\t\t\t\t<title id="title">Likes</title>\n\t\t\t\t\t\t\t<desc id="description">Icone en forme de cœur</desc>\n\t\t\t\t\t\t\t<path d="M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z" fill="#911C1C"/>\n\t\t\t\t\t\t</svg>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</artcle>'))}}]),n}(f),p=function(t){r(n,t);var e=a(n);function n(t,r,o){return s(this,n),e.call(this,t,r,o)}return l(n,[{key:"createVideo",value:function(){return this.dom.media.insertAdjacentHTML("beforeend",'<artcle class="media__card">\n\t\t\t\t<a href="#" >\n\t\t\t\t\t<video controls class="media__thumb">\n\t\t\t\t\t\t<source src="../images/photographers/videos/'.concat(this.filename,'"\n\t\t\t\t\t\ttype="video/mp4">\n\t\t\t\t\t</video>\n\t\t\t\t</a>\n\t\t\t\t<div class="media__content">\n\t\t\t\t\t<h2 class="media__title">').concat(this.title,'</h2>\n\t\t\t\t\t<div class="media__likes">\n\t\t\t\t\t\t<p class="media__number">').concat(this.likes,'</p>\n\t\t\t\t\t\t<svg role="image" class="media__heart" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">\n\t\t\t\t\t\t\t<title id="title">Likes</title>\n\t\t\t\t\t\t\t<desc id="description">Icone en forme de cœur</desc>\n\t\t\t\t\t\t\t<path d="M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z" fill="#911C1C"/>\n\t\t\t\t\t\t</svg>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</artcle>'))}}]),n}(f);function d(t,e){var n="undefined"!=typeof Symbol&&t[Symbol.iterator]||t["@@iterator"];if(!n){if(Array.isArray(t)||(n=function(t,e){if(!t)return;if("string"==typeof t)return m(t,e);var n=Object.prototype.toString.call(t).slice(8,-1);"Object"===n&&t.constructor&&(n=t.constructor.name);if("Map"===n||"Set"===n)return Array.from(t);if("Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))return m(t,e)}(t))||e&&t&&"number"==typeof t.length){n&&(t=n);var r=0,o=function(){};return{s:o,n:function(){return r>=t.length?{done:!0}:{done:!1,value:t[r++]}},e:function(t){throw t},f:o}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var a,i=!0,c=!1;return{s:function(){n=n.call(t)},n:function(){var t=n.next();return i=t.done,t},e:function(t){c=!0,a=t},f:function(){try{i||null==n.return||n.return()}finally{if(c)throw a}}}}function m(t,e){(null==e||e>t.length)&&(e=t.length);for(var n=0,r=new Array(e);n<e;n++)r[n]=t[n];return r}function y(t,e,n,r,o,a,i){try{var c=t[a](i),s=c.value}catch(t){return void n(t)}c.done?e(s):Promise.resolve(s).then(r,o)}function g(t){return function(){var e=this,n=arguments;return new Promise((function(r,o){var a=t.apply(e,n);function i(t){y(a,r,o,i,c,"next",t)}function c(t){y(a,r,o,i,c,"throw",t)}i(void 0)}))}}var v=function(){var t=g(regeneratorRuntime.mark((function t(){var e,n,r,o,a,i,c,s,u,l,f,h;return regeneratorRuntime.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return"../fisheyeData.json",t.next=3,fetch("../fisheyeData.json");case 3:if(!(e=t.sent).ok){t.next=22;break}return t.next=7,e.json();case 7:if(n=t.sent,r=n.photographers,o=window.location.search,a=new URLSearchParams(o),null!=(i=a.get("tag"))){t.next=16;break}return t.abrupt("return",r);case 16:c=[],s=d(r);try{for(s.s();!(u=s.n()).done;){l=u.value,f=d(l.tags);try{for(f.s();!(h=f.n()).done;)h.value==i&&c.push(l)}catch(t){f.e(t)}finally{f.f()}}}catch(t){s.e(t)}finally{s.f()}return t.abrupt("return",c);case 20:t.next=23;break;case 22:console.error(e.status);case 23:case"end":return t.stop()}}),t)})));return function(){return t.apply(this,arguments)}}(),b=function(){var t=g(regeneratorRuntime.mark((function t(){var n,r,o,a,i,c;return regeneratorRuntime.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,v();case 2:n=t.sent,r=0,o={},a=d(n);try{for(a.s();!(i=a.n()).done;)c=i.value,o[r]=new e(c.name,c.city,c.country,c.tags,c.tagline,c.price,c.portrait,c.id),o[r].constructCardPhotographer(),r++}catch(t){a.e(t)}finally{a.f()}case 7:case"end":return t.stop()}}),t)})));return function(){return t.apply(this,arguments)}}(),_=function(){var t=g(regeneratorRuntime.mark((function t(){var e,n;return regeneratorRuntime.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return"../../fisheyeData.json",t.next=3,fetch("../../fisheyeData.json");case 3:if(!(e=t.sent).ok){t.next=11;break}return t.next=7,e.json();case 7:return n=t.sent,t.abrupt("return",n.media);case 11:console.error(e.status);case 12:case"end":return t.stop()}}),t)})));return function(){return t.apply(this,arguments)}}(),w=function(){var t=g(regeneratorRuntime.mark((function t(){var e,n,r,o,a,i,c,s,u;return regeneratorRuntime.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,_();case 2:e=t.sent,n=window.location.search,r=new URLSearchParams(n),o=r.get("id"),a=0,i={},c=d(e);try{for(c.s();!(s=c.n()).done;)(u=s.value).photographerId==o&&(void 0!==u.image?(i[a]=new f(u.title,u.image,u.likes,"image"),i[a].createMedia()):void 0!==u.video&&(i[a]=new f(u.title,u.video,u.likes,"video"),i[a].createMedia()),a++)}catch(t){c.e(t)}finally{c.f()}case 10:case"end":return t.stop()}}),t)})));return function(){return t.apply(this,arguments)}}();"Accueil"==document.title&&b(),"Gallery"==document.title&&w()})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+var __webpack_exports__ = {};
+
+;// CONCATENATED MODULE: ./src/class/photographer.js
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Photographer = function Photographer(name, city, country, tags, tagline, price, portrait, id) {
+  var _this = this;
+
+  _classCallCheck(this, Photographer);
+
+  _defineProperty(this, "dom", {
+    photographers: document.querySelector('.photographers'),
+    photographer: document.querySelector('.photographer')
+  });
+
+  _defineProperty(this, "displayTags", function () {
+    var spanTags = '';
+
+    for (var i = 0; i < _this.tags.length; i++) {
+      spanTags += "<span class=\"photographer__tag\"><a href=\"./index.html?tag=".concat(_this.tags[i], "\">#").concat(_this.tags[i], "</a></span>");
+    }
+
+    return spanTags;
+  });
+
+  _defineProperty(this, "constructCardPhotographer", function () {
+    if (document.title == 'Accueil') {
+      return _this.dom.photographers.insertAdjacentHTML('beforeend', "\n\t\t\t<acticle class=\"photographer\">\n\t\t\t<a href=\"./public/pages/photographer.html?id=".concat(_this.id, "\" class=\"photographer__header\">\n\t\t\t<img class=\"photographer__img\" src=\"public/images/photographers/id_photos/").concat(_this.portrait, "\" alt=\"\">\n\t\t\t<h2 class=\"photographer__name\">").concat(_this.name, "</h2>\n\t\t\t</a>\n\t\t\t<div class=\"photographer__content\">\n\t\t\t<p class=\"photographer__location\">").concat(_this.city, ", ").concat(_this.country, "</p>\n\t\t\t<p class=\"photographer__tagline\">").concat(_this.tagline, "</p>\n\t\t\t<p class=\"photographer__price\">").concat(_this.price, "\u20AC/jour</p>\n\t\t\t</div>\n\t\t\t<div class=\"photographer__tags\">") + _this.displayTags() + "</div>\n\t\t\t</acticle>\n\t\t\t");
+    } else if (document.title == 'Gallery') {
+      return _this.dom.photographer.insertAdjacentHTML('beforeend', "\n\t\t\t<acticle class=\"photographer__profil\">\n\t\t\t\t<div class=\"photographer__content\">\n\t\t\t\t\t<h1 class=\"photographer__name\">".concat(_this.name, "</h1>\n\t\t\t\t\t<p class=\"photographer__location\">").concat(_this.city, ", ").concat(_this.country, "</p>\n\t\t\t\t\t<p class=\"photographer__tagline\">").concat(_this.tagline, "</p>\n\t\t\t\t\t<p class=\"photographer__price\">").concat(_this.price, "\u20AC/jour</p>\n\t\t\t\t\t<div class=\"photographer__tags\">") + _this.displayTags() + "</div>\n\t\t\t\t</div>\n\t\t\t\t<img class=\"photographer__img\" src=\"../images/photographers/id_photos/".concat(_this.portrait, "\" alt=\"\">\n\t\t\t</acticle>\n\t\t\t"));
+    }
+  });
+
+  this.name = name;
+  this.city = city;
+  this.country = country;
+  this.tags = tags;
+  this.tagline = tagline;
+  this.price = price;
+  this.portrait = portrait;
+  this.id = id;
+};
+
+
+;// CONCATENATED MODULE: ./src/class/media.js
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function media_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function media_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Media = /*#__PURE__*/function () {
+  function Media(title, filename, likes, typeMedia) {
+    media_classCallCheck(this, Media);
+
+    media_defineProperty(this, "dom", {
+      media: document.querySelector('.media')
+    });
+
+    this.title = title;
+    this.filename = filename;
+    this.likes = likes;
+    this.typeMedia = typeMedia;
+  }
+
+  _createClass(Media, [{
+    key: "createMedia",
+    value: function createMedia() {
+      switch (this.typeMedia) {
+        case 'image':
+          return new Image(this.title, this.filename, this.likes).createImage();
+
+        case 'video':
+          return new Video(this.title, this.filename, this.likes).createVideo();
+
+        default:
+          break;
+      }
+    }
+  }]);
+
+  return Media;
+}();
+
+
+
+var Image = /*#__PURE__*/function (_Media) {
+  _inherits(Image, _Media);
+
+  var _super = _createSuper(Image);
+
+  function Image(title, filename, likes) {
+    media_classCallCheck(this, Image);
+
+    return _super.call(this, title, filename, likes);
+  }
+
+  _createClass(Image, [{
+    key: "createImage",
+    value: function createImage() {
+      return this.dom.media.insertAdjacentHTML('beforeend', "<artcle class=\"media__card\">\n\t\t\t\t<a href=\"#\">\n\t\t\t\t\t<img src=\"../images/photographers/photos/".concat(this.filename, "\" class=\"media__thumb\">\n\t\t\t\t</a>\n\t\t\t\t<div class=\"media__content\">\n\t\t\t\t\t<h2 class=\"media__title\">").concat(this.title, "</h2>\n\t\t\t\t\t<div class=\"media__likes\">\n\t\t\t\t\t\t<p class=\"media__number\">").concat(this.likes, "</p>\n\t\t\t\t\t\t<svg role=\"image\" class=\"media__heart\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t\t\t\t<title id=\"title\">Likes</title>\n\t\t\t\t\t\t\t<desc id=\"description\">Icone en forme de c\u0153ur</desc>\n\t\t\t\t\t\t\t<path d=\"M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z\" fill=\"#911C1C\"/>\n\t\t\t\t\t\t</svg>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</artcle>"));
+    }
+  }]);
+
+  return Image;
+}(Media);
+
+var Video = /*#__PURE__*/function (_Media2) {
+  _inherits(Video, _Media2);
+
+  var _super2 = _createSuper(Video);
+
+  function Video(title, filename, likes) {
+    media_classCallCheck(this, Video);
+
+    return _super2.call(this, title, filename, likes);
+  }
+
+  _createClass(Video, [{
+    key: "createVideo",
+    value: function createVideo() {
+      return this.dom.media.insertAdjacentHTML('beforeend', "<artcle class=\"media__card\">\n\t\t\t\t<a href=\"#\" >\n\t\t\t\t\t<video controls class=\"media__thumb\">\n\t\t\t\t\t\t<source src=\"../images/photographers/videos/".concat(this.filename, "\"\n\t\t\t\t\t\ttype=\"video/mp4\">\n\t\t\t\t\t</video>\n\t\t\t\t</a>\n\t\t\t\t<div class=\"media__content\">\n\t\t\t\t\t<h2 class=\"media__title\">").concat(this.title, "</h2>\n\t\t\t\t\t<div class=\"media__likes\">\n\t\t\t\t\t\t<p class=\"media__number\">").concat(this.likes, "</p>\n\t\t\t\t\t\t<svg role=\"image\" class=\"media__heart\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t\t\t\t<title id=\"title\">Likes</title>\n\t\t\t\t\t\t\t<desc id=\"description\">Icone en forme de c\u0153ur</desc>\n\t\t\t\t\t\t\t<path d=\"M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z\" fill=\"#911C1C\"/>\n\t\t\t\t\t\t</svg>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</artcle>"));
+    }
+  }]);
+
+  return Video;
+}(Media);
+;// CONCATENATED MODULE: ./src/class/filter.js
+function filter_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function filter_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Filter = function Filter(filter) {
+  var _this = this;
+
+  filter_classCallCheck(this, Filter);
+
+  filter_defineProperty(this, "dom", {
+    filtersList: document.querySelector('.header__filter-list')
+  });
+
+  filter_defineProperty(this, "displayfilter", function () {
+    return _this.dom.filtersList.insertAdjacentHTML('beforeend', "\n\t\t<li class=\"header__filter-list-item\">\n\t\t\t<a href=\"./index.html?tag=".concat(_this.filter, "\" class=\"header__filter-tag\">#").concat(_this.filter, "</a>\n\t\t</li>\n\t\t"));
+  });
+
+  this.filter = filter;
+};
+
+
+;// CONCATENATED MODULE: ./src/query.js
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+
+
+var getPhotographers = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+    var url, response, data, photographers, queryString, urlParams, paramTag, dataphotographers, _iterator, _step, photographer, _iterator2, _step2, tag;
+
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            url = '../fisheyeData.json';
+            _context.next = 3;
+            return fetch(url);
+
+          case 3:
+            response = _context.sent;
+
+            if (!response.ok) {
+              _context.next = 22;
+              break;
+            }
+
+            _context.next = 7;
+            return response.json();
+
+          case 7:
+            data = _context.sent;
+            photographers = data.photographers; // to get params
+
+            queryString = window.location.search;
+            urlParams = new URLSearchParams(queryString);
+            paramTag = urlParams.get('tag');
+
+            if (!(paramTag == null)) {
+              _context.next = 16;
+              break;
+            }
+
+            return _context.abrupt("return", photographers);
+
+          case 16:
+            dataphotographers = [];
+            _iterator = _createForOfIteratorHelper(photographers);
+
+            try {
+              for (_iterator.s(); !(_step = _iterator.n()).done;) {
+                photographer = _step.value;
+                _iterator2 = _createForOfIteratorHelper(photographer.tags);
+
+                try {
+                  for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+                    tag = _step2.value;
+
+                    if (tag == paramTag) {
+                      dataphotographers.push(photographer);
+                    }
+                  }
+                } catch (err) {
+                  _iterator2.e(err);
+                } finally {
+                  _iterator2.f();
+                }
+              }
+            } catch (err) {
+              _iterator.e(err);
+            } finally {
+              _iterator.f();
+            }
+
+            return _context.abrupt("return", dataphotographers);
+
+          case 20:
+            _context.next = 23;
+            break;
+
+          case 22:
+            console.error(response.status);
+
+          case 23:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function getPhotographers() {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+var displaysPhotographersPofils = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+    var photographers, i, photographerCard, _iterator3, _step3, photographer;
+
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return getPhotographers();
+
+          case 2:
+            photographers = _context2.sent;
+            i = 0;
+            photographerCard = {};
+            _iterator3 = _createForOfIteratorHelper(photographers);
+
+            try {
+              for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+                photographer = _step3.value;
+                photographerCard[i] = new Photographer(photographer.name, photographer.city, photographer.country, photographer.tags, photographer.tagline, photographer.price, photographer.portrait, photographer.id);
+                photographerCard[i].constructCardPhotographer();
+                i++;
+              }
+            } catch (err) {
+              _iterator3.e(err);
+            } finally {
+              _iterator3.f();
+            }
+
+          case 7:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+
+  return function displaysPhotographersPofils() {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+var getPhotographerById = /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+    var url, response, queryString, urlParams, paramId, data, photographers, _iterator4, _step4, photographer;
+
+    return regeneratorRuntime.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            url = '../../fisheyeData.json';
+            _context3.next = 3;
+            return fetch(url);
+
+          case 3:
+            response = _context3.sent;
+
+            if (!response.ok) {
+              _context3.next = 31;
+              break;
+            }
+
+            // // to get params
+            queryString = window.location.search;
+            urlParams = new URLSearchParams(queryString);
+            paramId = urlParams.get('id');
+            _context3.next = 10;
+            return response.json();
+
+          case 10:
+            data = _context3.sent;
+            photographers = data.photographers;
+            _iterator4 = _createForOfIteratorHelper(photographers);
+            _context3.prev = 13;
+
+            _iterator4.s();
+
+          case 15:
+            if ((_step4 = _iterator4.n()).done) {
+              _context3.next = 21;
+              break;
+            }
+
+            photographer = _step4.value;
+
+            if (!(photographer.id == paramId)) {
+              _context3.next = 19;
+              break;
+            }
+
+            return _context3.abrupt("return", photographer);
+
+          case 19:
+            _context3.next = 15;
+            break;
+
+          case 21:
+            _context3.next = 26;
+            break;
+
+          case 23:
+            _context3.prev = 23;
+            _context3.t0 = _context3["catch"](13);
+
+            _iterator4.e(_context3.t0);
+
+          case 26:
+            _context3.prev = 26;
+
+            _iterator4.f();
+
+            return _context3.finish(26);
+
+          case 29:
+            _context3.next = 32;
+            break;
+
+          case 31:
+            console.error(response.status);
+
+          case 32:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3, null, [[13, 23, 26, 29]]);
+  }));
+
+  return function getPhotographerById() {
+    return _ref3.apply(this, arguments);
+  };
+}();
+
+var displaysPhotographersPofilsById = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+    var photographer, photographerInfo;
+    return regeneratorRuntime.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return getPhotographerById();
+
+          case 2:
+            photographer = _context4.sent;
+            photographerInfo = new Photographer(photographer.name, photographer.city, photographer.country, photographer.tags, photographer.tagline, photographer.price, photographer.portrait, photographer.id);
+            photographerInfo.constructCardPhotographer();
+
+          case 5:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+
+  return function displaysPhotographersPofilsById() {
+    return _ref4.apply(this, arguments);
+  };
+}(); // Fetch to get media 
+
+
+var getMedia = /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+    var url, response, data;
+    return regeneratorRuntime.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            url = '../../fisheyeData.json';
+            _context5.next = 3;
+            return fetch(url);
+
+          case 3:
+            response = _context5.sent;
+
+            if (!response.ok) {
+              _context5.next = 11;
+              break;
+            }
+
+            _context5.next = 7;
+            return response.json();
+
+          case 7:
+            data = _context5.sent;
+            return _context5.abrupt("return", data.media);
+
+          case 11:
+            console.error(response.status);
+
+          case 12:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5);
+  }));
+
+  return function getMedia() {
+    return _ref5.apply(this, arguments);
+  };
+}();
+
+var displaysMediaById = /*#__PURE__*/function () {
+  var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+    var medias, queryString, urlParams, id, i, mediaArray, _iterator5, _step5, media;
+
+    return regeneratorRuntime.wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.next = 2;
+            return getMedia();
+
+          case 2:
+            medias = _context6.sent;
+            queryString = window.location.search;
+            urlParams = new URLSearchParams(queryString);
+            id = urlParams.get('id');
+            i = 0;
+            mediaArray = {};
+            _iterator5 = _createForOfIteratorHelper(medias);
+
+            try {
+              for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+                media = _step5.value;
+
+                if (media.photographerId == id) {
+                  if (media['image'] !== undefined) {
+                    mediaArray[i] = new Media(media.title, media.image, media.likes, 'image');
+                    mediaArray[i].createMedia();
+                  } else if (media['video'] !== undefined) {
+                    mediaArray[i] = new Media(media.title, media.video, media.likes, 'video');
+                    mediaArray[i].createMedia();
+                  }
+
+                  i++;
+                }
+              }
+            } catch (err) {
+              _iterator5.e(err);
+            } finally {
+              _iterator5.f();
+            }
+
+          case 10:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6);
+  }));
+
+  return function displaysMediaById() {
+    return _ref6.apply(this, arguments);
+  };
+}();
+
+var getFilters = /*#__PURE__*/function () {
+  var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+    var url, response, data, photographers, filters, _iterator6, _step6, photographer, _iterator7, _step7, tag;
+
+    return regeneratorRuntime.wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            url = '../fisheyeData.json';
+            _context7.next = 3;
+            return fetch(url);
+
+          case 3:
+            response = _context7.sent;
+
+            if (!response.ok) {
+              _context7.next = 15;
+              break;
+            }
+
+            _context7.next = 7;
+            return response.json();
+
+          case 7:
+            data = _context7.sent;
+            photographers = data.photographers;
+            filters = [];
+            _iterator6 = _createForOfIteratorHelper(photographers);
+
+            try {
+              for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+                photographer = _step6.value;
+                _iterator7 = _createForOfIteratorHelper(photographer.tags);
+
+                try {
+                  for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+                    tag = _step7.value;
+
+                    if (!filters.includes(tag)) {
+                      filters.push(tag);
+                    }
+                  }
+                } catch (err) {
+                  _iterator7.e(err);
+                } finally {
+                  _iterator7.f();
+                }
+              }
+            } catch (err) {
+              _iterator6.e(err);
+            } finally {
+              _iterator6.f();
+            }
+
+            return _context7.abrupt("return", filters);
+
+          case 15:
+            console.error(response.status);
+
+          case 16:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7);
+  }));
+
+  return function getFilters() {
+    return _ref7.apply(this, arguments);
+  };
+}();
+
+var displayFilters = /*#__PURE__*/function () {
+  var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+    var filters, _iterator8, _step8, filter, filterElement;
+
+    return regeneratorRuntime.wrap(function _callee8$(_context8) {
+      while (1) {
+        switch (_context8.prev = _context8.next) {
+          case 0:
+            _context8.next = 2;
+            return getFilters();
+
+          case 2:
+            filters = _context8.sent;
+            _iterator8 = _createForOfIteratorHelper(filters);
+
+            try {
+              for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
+                filter = _step8.value;
+                filterElement = new Filter(filter);
+                filterElement.displayfilter();
+              }
+            } catch (err) {
+              _iterator8.e(err);
+            } finally {
+              _iterator8.f();
+            }
+
+          case 5:
+          case "end":
+            return _context8.stop();
+        }
+      }
+    }, _callee8);
+  }));
+
+  return function displayFilters() {
+    return _ref8.apply(this, arguments);
+  };
+}();
+
+
+;// CONCATENATED MODULE: ./src/index.js
+
+
+if (document.title == 'Accueil') {
+  displayFilters();
+  displaysPhotographersPofils();
+}
+
+if (document.title == 'Gallery') {
+  displaysPhotographersPofilsById();
+  displaysMediaById();
+}
+/******/ })()
+;

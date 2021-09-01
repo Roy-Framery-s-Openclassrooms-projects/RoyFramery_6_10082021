@@ -11,7 +11,7 @@
         display: block;
     }
 
-    &__nav {
+    &__filter {
         &-list {
             display: flex;
             flex-wrap: wrap;
@@ -19,6 +19,7 @@
         }
         &-tag {
             @include tag;
+            text-transform: capitalize;
 
             &--active {
                 background: $red-primary;

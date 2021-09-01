@@ -61,12 +61,12 @@ body {
   margin-bottom: 20px;
   display: block;
 }
-.header__nav-list {
+.header__filter-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.header__nav-tag {
+.header__filter-tag {
   color: #901C1C;
   border: 0.5px solid #C4C4C4;
   border-radius: 11px;
@@ -77,12 +77,13 @@ body {
   display: block;
   font-size: 0.75em;
   transition: background 300ms, color 150ms;
+  text-transform: capitalize;
 }
-.header__nav-tag:hover, .header__nav-tag:focus {
+.header__filter-tag:hover, .header__filter-tag:focus {
   background: #901C1C;
   color: #FAFAFA;
 }
-.header__nav-tag--active {
+.header__filter-tag--active {
   background: #901C1C;
   color: #FAFAFA;
 }
