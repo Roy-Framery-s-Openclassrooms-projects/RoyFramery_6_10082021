@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/pages/photographer.css">
     <title>Gallery</title>
+    <link rel="stylesheet" href="../css/pages/photographer.css">
+    <script src="../../src/class/lightbox.js" type="module" defer></script>
 </head>
 <body>
     <header role="banner" class="header">
         <a aria-label="Fisheye" href="../../index.html" class="header__svg">
-            <svg role="img" width="150" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg"  aria-describedby="title description">
+            <svg role="img" width="170" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg"  aria-describedby="title description">
                 <title id="title">Fisheye</title>
                 <desc id="description">Le logo de fisheye</desc>
                 <path d="M24.7206 0.911377V6.51034H6.31164V17.578H21.4333V22.9166H6.31164V39.1926H0V0.911377H24.7206Z" fill="#911C1C"/>
@@ -24,14 +25,47 @@
         </a>
     </header>
     <main>
-        <section class="photographer" role="region">
-
-        </section>
+        <section class="photographer" role="region"></section>
 
         <section class="media" role="region">
-
+            <form action="" hidden>
+                <label for="OrderBy">Trier par</label>
+                <select name="mediaFilter" id="OrderBy" class="media__filter">
+                    <option value="popularity">Popularité</option>
+                    <option value="date" selected>Date</option>
+                    <option value="title">titre</option>
+                </select>
+            </form>
+        </section>
+        <section class="modal" role="region">
+            <div class="modal__content">
+                <span class="modal__close"></span>
+                <div class="modal__body">
+                    <h2 class="modal__head">Contactez moi</h2>
+                    <form name="contact" action="index.html" method="get" class="form">
+                        <div class="form__Data" data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom.">
+                            <label for="first" class="form__label">Prénom</label>
+                            <input class="form__text" type="text" id="first" name="first" minlength="2" /><br>
+                        </div>
+                        <div class="form__Data" data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom.">
+                            <label for="last" class="form__label">Nom</label>
+                            <input class="form__text" type="text" id="last" name="last" minlength="2" /><br>
+                        </div>
+                        <div class="form__Data" data-error="Veuillez saisir un email valide.">
+                            <label for="email" class="form__label">E-mail</label>
+                            <input class="form__text" type="email" id="email" name="email" /><br>
+                        </div>
+                        <div class="form__Data" data-error="Veuillez saisir un email valide.">
+                            <label for="textArea" class="form__label">Votre message</label>
+                            <textarea class="form__text-area" name="textArea" id="textArea" cols="30" rows="10"></textarea>
+                        </div>
+                        <input class="form__submitButton" type="submit" value="Envoyé" />
+                    </form>
+                </div>
+            </div>
         </section>
     </main>
+    
     <script src="../../dist/polyfill.bundle.js"></script>
     <script src="../../dist/app.bundle.js"></script>
 </body>

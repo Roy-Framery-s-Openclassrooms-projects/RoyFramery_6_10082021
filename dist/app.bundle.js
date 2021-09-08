@@ -14,7 +14,8 @@ var Photographer = function Photographer(name, city, country, tags, tagline, pri
 
   _defineProperty(this, "dom", {
     photographers: document.querySelector('.photographers'),
-    photographer: document.querySelector('.photographer')
+    photographer: document.querySelector('.photographer'),
+    nameInForm: document.querySelector('.modal__head')
   });
 
   _defineProperty(this, "displayTags", function () {
@@ -31,7 +32,11 @@ var Photographer = function Photographer(name, city, country, tags, tagline, pri
     if (document.title == 'Accueil') {
       return _this.dom.photographers.insertAdjacentHTML('beforeend', "\n\t\t\t<acticle class=\"photographer\">\n\t\t\t<a href=\"./public/pages/photographer.html?id=".concat(_this.id, "\" class=\"photographer__header\">\n\t\t\t<img class=\"photographer__img\" src=\"public/images/photographers/id_photos/").concat(_this.portrait, "\" alt=\"\">\n\t\t\t<h2 class=\"photographer__name\">").concat(_this.name, "</h2>\n\t\t\t</a>\n\t\t\t<div class=\"photographer__content\">\n\t\t\t<p class=\"photographer__location\">").concat(_this.city, ", ").concat(_this.country, "</p>\n\t\t\t<p class=\"photographer__tagline\">").concat(_this.tagline, "</p>\n\t\t\t<p class=\"photographer__price\">").concat(_this.price, "\u20AC/jour</p>\n\t\t\t</div>\n\t\t\t<div class=\"photographer__tags\">") + _this.displayTags() + "</div>\n\t\t\t</acticle>\n\t\t\t");
     } else if (document.title == 'Gallery') {
-      return _this.dom.photographer.insertAdjacentHTML('beforeend', "\n\t\t\t<acticle class=\"photographer__profil\">\n\t\t\t\t<div class=\"photographer__content\">\n\t\t\t\t\t<h1 class=\"photographer__name\">".concat(_this.name, "</h1>\n\t\t\t\t\t<p class=\"photographer__location\">").concat(_this.city, ", ").concat(_this.country, "</p>\n\t\t\t\t\t<p class=\"photographer__tagline\">").concat(_this.tagline, "</p>\n\t\t\t\t\t<p class=\"photographer__price\">").concat(_this.price, "\u20AC/jour</p>\n\t\t\t\t\t<div class=\"photographer__tags\">") + _this.displayTags() + "</div>\n\t\t\t\t</div>\n\t\t\t\t<img class=\"photographer__img\" src=\"../images/photographers/id_photos/".concat(_this.portrait, "\" alt=\"\">\n\t\t\t</acticle>\n\t\t\t"));
+      var photographerById = _this.dom.photographer.insertAdjacentHTML('beforeend', "\n\t\t\t<acticle class=\"photographer__profil\">\n\t\t\t\t<div class=\"photographer__content\">\n\t\t\t\t\t<h1 class=\"photographer__name\">".concat(_this.name, "</h1>\n\t\t\t\t\t<p class=\"photographer__location\">").concat(_this.city, ", ").concat(_this.country, "</p>\n\t\t\t\t\t<p class=\"photographer__tagline\">").concat(_this.tagline, "</p>\n\t\t\t\t\t<div class=\"photographer__tags\">") + _this.displayTags() + "</div>\n\t\t\t\t</div>\n\t\t\t\t<button class=\"photographer__contactButton\">Contactez-moi</button>\n\t\t\t\t<img class=\"photographer__img\" src=\"../images/photographers/id_photos/".concat(_this.portrait, "\" alt=\"\">\n\t\t\t</acticle>\n\t\t\t"));
+
+      var photographerNameInForm = _this.dom.nameInForm.insertAdjacentHTML('afterend', "\n\t\t\t\t<p class=\"modal__photographer-name\">".concat(_this.name, "</p>\n\t\t\t"));
+
+      return photographerById, photographerNameInForm;
     }
   });
 
@@ -90,7 +95,7 @@ var Media = /*#__PURE__*/function () {
     value: function createMedia() {
       switch (this.typeMedia) {
         case 'image':
-          return new Image(this.title, this.filename, this.likes).createImage();
+          return new media_Image(this.title, this.filename, this.likes).createImage();
 
         case 'video':
           return new Video(this.title, this.filename, this.likes).createVideo();
@@ -106,7 +111,7 @@ var Media = /*#__PURE__*/function () {
 
 
 
-var Image = /*#__PURE__*/function (_Media) {
+var media_Image = /*#__PURE__*/function (_Media) {
   _inherits(Image, _Media);
 
   var _super = _createSuper(Image);
@@ -120,7 +125,7 @@ var Image = /*#__PURE__*/function (_Media) {
   _createClass(Image, [{
     key: "createImage",
     value: function createImage() {
-      return this.dom.media.insertAdjacentHTML('beforeend', "<artcle class=\"media__card\">\n\t\t\t\t<a href=\"#\">\n\t\t\t\t\t<img src=\"../images/photographers/photos/".concat(this.filename, "\" class=\"media__thumb\">\n\t\t\t\t</a>\n\t\t\t\t<div class=\"media__content\">\n\t\t\t\t\t<h2 class=\"media__title\">").concat(this.title, "</h2>\n\t\t\t\t\t<div class=\"media__likes\">\n\t\t\t\t\t\t<p class=\"media__number\">").concat(this.likes, "</p>\n\t\t\t\t\t\t<svg role=\"image\" class=\"media__heart\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t\t\t\t<title id=\"title\">Likes</title>\n\t\t\t\t\t\t\t<desc id=\"description\">Icone en forme de c\u0153ur</desc>\n\t\t\t\t\t\t\t<path d=\"M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z\" fill=\"#911C1C\"/>\n\t\t\t\t\t\t</svg>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</artcle>"));
+      return this.dom.media.insertAdjacentHTML('beforeend', "<artcle class=\"media__card\">\n\t\t\t\t<a href=\"../images/photographers/photos/".concat(this.filename, "\">\n\t\t\t\t\t<img src=\"../images/photographers/photos/").concat(this.filename, "\" class=\"media__thumb\">\n\t\t\t\t</a>\n\t\t\t\t<div class=\"media__content\">\n\t\t\t\t\t<h2 class=\"media__title\">").concat(this.title, "</h2>\n\t\t\t\t\t<div class=\"media__likes\">\n\t\t\t\t\t\t<p class=\"media__number\">").concat(this.likes, "</p>\n\t\t\t\t\t\t<svg role=\"image\" class=\"media__heart\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t\t\t\t<title id=\"title\">Likes</title>\n\t\t\t\t\t\t\t<desc id=\"description\">Icone en forme de c\u0153ur</desc>\n\t\t\t\t\t\t\t<path d=\"M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z\" fill=\"#911C1C\"/>\n\t\t\t\t\t\t</svg>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</artcle>"));
     }
   }]);
 
@@ -141,7 +146,7 @@ var Video = /*#__PURE__*/function (_Media2) {
   _createClass(Video, [{
     key: "createVideo",
     value: function createVideo() {
-      return this.dom.media.insertAdjacentHTML('beforeend', "<artcle class=\"media__card\">\n\t\t\t\t<a href=\"#\" >\n\t\t\t\t\t<video controls class=\"media__thumb\">\n\t\t\t\t\t\t<source src=\"../images/photographers/videos/".concat(this.filename, "\"\n\t\t\t\t\t\ttype=\"video/mp4\">\n\t\t\t\t\t</video>\n\t\t\t\t</a>\n\t\t\t\t<div class=\"media__content\">\n\t\t\t\t\t<h2 class=\"media__title\">").concat(this.title, "</h2>\n\t\t\t\t\t<div class=\"media__likes\">\n\t\t\t\t\t\t<p class=\"media__number\">").concat(this.likes, "</p>\n\t\t\t\t\t\t<svg role=\"image\" class=\"media__heart\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t\t\t\t<title id=\"title\">Likes</title>\n\t\t\t\t\t\t\t<desc id=\"description\">Icone en forme de c\u0153ur</desc>\n\t\t\t\t\t\t\t<path d=\"M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z\" fill=\"#911C1C\"/>\n\t\t\t\t\t\t</svg>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</artcle>"));
+      return this.dom.media.insertAdjacentHTML('beforeend', "<artcle class=\"media__card\">\n\t\t\t\t<a href=\"../images/photographers/videos/".concat(this.filename, "\" >\n\t\t\t\t<div class=\"media__playIcon\"></div>\n\t\t\t\t\t<video class=\"media__thumb\">\n\t\t\t\t\t\t<source src=\"../images/photographers/videos/").concat(this.filename, "\"\n\t\t\t\t\t\ttype=\"video/mp4\">\n\t\t\t\t\t</video>\n\t\t\t\t</a>\n\t\t\t\t<div class=\"media__content\">\n\t\t\t\t\t<h2 class=\"media__title\">").concat(this.title, "</h2>\n\t\t\t\t\t<div class=\"media__likes\">\n\t\t\t\t\t\t<p class=\"media__number\">").concat(this.likes, "</p>\n\t\t\t\t\t\t<svg role=\"image\" class=\"media__heart\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t\t\t\t<title id=\"title\">Likes</title>\n\t\t\t\t\t\t\t<desc id=\"description\">Icone en forme de c\u0153ur</desc>\n\t\t\t\t\t\t\t<path d=\"M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z\" fill=\"#911C1C\"/>\n\t\t\t\t\t\t</svg>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</artcle>"));
     }
   }]);
 
@@ -273,7 +278,7 @@ var getPhotographers = /*#__PURE__*/function () {
   };
 }();
 
-var displaysPhotographersPofils = /*#__PURE__*/function () {
+var displaysPhotographersCards = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
     var photographers, i, photographerCard, _iterator3, _step3, photographer;
 
@@ -311,7 +316,7 @@ var displaysPhotographersPofils = /*#__PURE__*/function () {
     }, _callee2);
   }));
 
-  return function displaysPhotographersPofils() {
+  return function displaysPhotographersCards() {
     return _ref2.apply(this, arguments);
   };
 }();
@@ -646,17 +651,267 @@ var displayFilters = /*#__PURE__*/function () {
 }();
 
 
+;// CONCATENATED MODULE: ./src/class/lightbox.js
+function lightbox_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function lightbox_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function lightbox_createClass(Constructor, protoProps, staticProps) { if (protoProps) lightbox_defineProperties(Constructor.prototype, protoProps); if (staticProps) lightbox_defineProperties(Constructor, staticProps); return Constructor; }
+
+/**
+ * @property {HTMLElement} element
+ * @property {string[]} images lightbox image paths
+ * @property {string} url image currently displayed
+ */
+var Lightbox = /*#__PURE__*/function () {
+  /**
+   * 
+   * @param {string} url Image's URL
+   * @param {string[]} media lightbox media paths
+   */
+  function Lightbox(url, media) {
+    lightbox_classCallCheck(this, Lightbox);
+
+    this.element = this.buildDOM(url);
+    this.media = media;
+    this.loadMedia(url);
+    this.onKeyUp = this.onKeyUp.bind(this);
+    document.body.appendChild(this.element);
+    document.addEventListener('keyup', this.onKeyUp);
+  }
+  /**
+   * 
+   * @param {string} url Image's URL
+   */
+
+
+  lightbox_createClass(Lightbox, [{
+    key: "loadMedia",
+    value: function loadMedia(url) {
+      this.url = null;
+      var container = this.element.querySelector('.lightbox__container'); // to display a loader
+
+      var loader = document.createElement('div');
+      loader.classList.add('lightbox__loader'); // to display the close button
+
+      container.innerHTML = '<button class="lightbox__close lightbox__button">Fermer</button>';
+      container.querySelector('.lightbox__close').addEventListener('click', this.close.bind(this));
+      container.appendChild(loader);
+      this.url = url; // for images
+
+      if (url.includes('.jpg')) {
+        var image = new Image();
+
+        image.onload = function () {
+          container.removeChild(loader);
+          container.appendChild(image);
+        };
+
+        image.classList.add('lightbox__media');
+        image.src = url;
+      } // for videos
+
+
+      if (url.includes('.mp4')) {
+        var video = document.createElement('VIDEO');
+
+        video.onloadeddata = function () {
+          container.removeChild(loader);
+          container.appendChild(video);
+        };
+
+        video.setAttribute('src', url);
+        video.setAttribute('controls', 'controls');
+        video.classList.add('lightbox__media');
+      }
+    }
+    /**
+     * 
+     * @param {KeyboardEvent} e 
+     */
+
+  }, {
+    key: "onKeyUp",
+    value: function onKeyUp(e) {
+      if (e.key === 'Escape') {
+        this.close(e);
+      } else if (e.key === 'ArrowLeft') {
+        this.previous(e);
+      } else if (e.key === 'ArrowRight') {
+        this.next(e);
+      }
+    }
+    /**
+     * Close the lightbox
+     * @param {MouseEvent|KeyboardEvent} e 
+     */
+
+  }, {
+    key: "close",
+    value: function close(e) {
+      var _this = this;
+
+      e.preventDefault();
+      this.element.classList.add('fadeout');
+      window.setTimeout(function () {
+        _this.element.parentElement.removeChild(_this.element);
+      }, 500);
+      document.removeEventListener('keyup', this.onKeyUp);
+    }
+    /**
+     * Close the lightbox
+     * @param {MouseEvent|KeyboardEvent} e 
+     */
+
+  }, {
+    key: "next",
+    value: function next(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      var position = this.media.findIndex(function (media) {
+        return media === _this2.url;
+      });
+      if (position === this.media.length - 1) position = -1;
+      this.loadMedia(this.media[position + 1]);
+    }
+    /**
+     * Close the lightbox
+     * @param {MouseEvent|KeyboardEvent} e 
+     */
+
+  }, {
+    key: "previous",
+    value: function previous(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      var position = this.media.findIndex(function (media) {
+        return media === _this3.url;
+      });
+      if (position === 0) position = this.media.length;
+      this.loadMedia(this.media[position - 1]);
+    }
+    /**
+     * 
+     * @param {string} url Image's URL
+     * @return {HTMLElement}
+     */
+
+  }, {
+    key: "buildDOM",
+    value: function buildDOM() {
+      var dom = document.createElement('div');
+      dom.classList.add('lightbox');
+      dom.innerHTML = "<button class=\"lightbox__next lightbox__button\">Suivant</button>\n\t\t\t<button class=\"lightbox__previous lightbox__button\">Pr\xE9c\xE9dent</button>\n\t\t\t<div class=\"lightbox__container\" aria-label=\"image closeup view\">\n\t\t\t</div>";
+      dom.querySelector('.lightbox__next').addEventListener('click', this.next.bind(this));
+      dom.querySelector('.lightbox__previous').addEventListener('click', this.previous.bind(this));
+      return dom;
+    }
+  }], [{
+    key: "init",
+    value: function init() {
+      var links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'));
+      var gallery = links.map(function (link) {
+        return link.getAttribute('href');
+      });
+      links.forEach(function (link) {
+        return link.addEventListener('click', function (e) {
+          e.preventDefault();
+          new Lightbox(e.currentTarget.getAttribute('href'), gallery);
+        });
+      });
+    }
+  }]);
+
+  return Lightbox;
+}();
+
+
+;// CONCATENATED MODULE: ./src/class/modal.js
+function modal_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function modal_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Modal = function Modal() {
+  modal_classCallCheck(this, Modal);
+};
+
+modal_defineProperty(Modal, "element", {
+  contact: document.querySelector('.photographer__contactButton'),
+  modal: document.querySelector('.modal'),
+  close: document.querySelector('.modal__close')
+});
+
+modal_defineProperty(Modal, "modalEvents", function () {
+  document.querySelector('.photographer__contactButton').addEventListener('click', function () {
+    Modal.launchModal();
+  });
+  document.querySelector('.modal__close').addEventListener('click', function () {
+    Modal.closeModal();
+  });
+});
+
+modal_defineProperty(Modal, "launchModal", function () {
+  document.querySelector('.modal').style.display = 'block';
+});
+
+modal_defineProperty(Modal, "closeModal", function () {
+  Modal.element.modal.style.display = 'none';
+});
+
+
 ;// CONCATENATED MODULE: ./src/index.js
+function src_asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function src_asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { src_asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { src_asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
 
 
 if (document.title == 'Accueil') {
   displayFilters();
-  displaysPhotographersPofils();
+  displaysPhotographersCards();
 }
 
 if (document.title == 'Gallery') {
   displaysPhotographersPofilsById();
-  displaysMediaById();
+
+  var lightbox = /*#__PURE__*/function () {
+    var _ref = src_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+      var loadedMedia;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return displaysMediaById();
+
+            case 2:
+              loadedMedia = _context.sent;
+
+              if (loadedMedia == undefined) {
+                Lightbox.init();
+              }
+
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function lightbox() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  lightbox();
+  setTimeout(function () {
+    Modal.modalEvents();
+  }, 2000);
 }
 /******/ })()
 ;

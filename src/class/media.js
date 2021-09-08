@@ -28,7 +28,7 @@ class Image extends Media{
 	createImage() {
 		return this.dom.media.insertAdjacentHTML('beforeend',
 			`<artcle class="media__card">
-				<a href="#">
+				<a href="../images/photographers/photos/${this.filename}">
 					<img src="../images/photographers/photos/${this.filename}" class="media__thumb">
 				</a>
 				<div class="media__content">
@@ -53,8 +53,9 @@ class Video extends Media{
 	createVideo() {
 		return this.dom.media.insertAdjacentHTML('beforeend',
 			`<artcle class="media__card">
-				<a href="#" >
-					<video controls class="media__thumb">
+				<a href="../images/photographers/videos/${this.filename}" >
+				<div class="media__playIcon"></div>
+					<video class="media__thumb">
 						<source src="../images/photographers/videos/${this.filename}"
 						type="video/mp4">
 					</video>

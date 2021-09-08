@@ -1,0 +1,22 @@
+@use '../utilities' as *;
+
+@mixin button {
+    display: block;
+    background: $red-primary;
+    color: $lightgrey-secondary;
+    border-radius: $br-5;
+    width: 170px;
+    height: 35px;
+    font-size: 1.0625em;
+    font-family: inherit;
+    letter-spacing: 1px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 300ms;
+    border: none;
+    
+    &:hover, &:focus{
+        color: #000;
+        background: $lightred-primary;
+    }
+}

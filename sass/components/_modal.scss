@@ -1,0 +1,40 @@
+@use '../utilities' as *;
+@use '../components/button' as *;
+
+.modal {
+    // display: none;
+    position: fixed;
+    z-index: 13;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: $white;
+
+    &__content {
+        width: 100%;
+        height: 100%;
+        background: $lightred-secondary;
+        position: relative;
+        overflow: scroll;
+        border-radius: $br-5;
+    }
+    &__close {
+        position: absolute;
+        background: url(../../../public/images/cross-white.svg) center center / 19px 19px no-repeat;
+        fill: white;
+        height: 19px;
+        width: 19px;
+        color: $white;
+        top: 27px;
+        right: 27px;
+    }
+    &__body {
+        width: 90%;
+        height: 780px;
+        margin: 20px auto 0 auto;
+    }
+    &__head, &__photographer-name {
+        font-size: $fs-36;
+    }
+}

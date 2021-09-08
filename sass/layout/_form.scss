@@ -1,0 +1,25 @@
+@use '../utilities' as *;
+@use '../components' as *;
+
+.form {
+    &__label {
+        display: block;
+        font-size: $fs-24;
+        margin: 14px 0 6px 0;
+    }
+    &__text-area, &__text {
+        width: 100%;
+        border-radius: $br-5;
+        border: none
+    }
+    &__text {
+        height: 52px;
+    }
+    &__text-area {
+        height: 187px
+    }
+    &__submitButton {
+        @include button;
+        margin: 26px auto 75px auto;
+    }
+}

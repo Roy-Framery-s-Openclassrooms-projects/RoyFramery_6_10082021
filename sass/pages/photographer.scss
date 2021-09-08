@@ -1,8 +1,61 @@
 @use '../utilities/' as *;
 @use '../main';
 @use '../components' as *;
+@use '../layout/form';
+
+.photographer {
+    &__profil {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 46px;
+    }
+    &__content {
+        width: 70%;
+        padding-top: 20px;
+    }
+    &__name {
+        font-size: $fs-36;
+        color: $lightred-primary;
+    }
+    &__location {
+        font-size: $fs-13;
+        color: $red-primary;
+        font-weight: 400;
+        margin-bottom: 4px;
+    }
+    &__tagline {
+        font-size: $fs-13;
+        color: $darkgrey-secondary;
+        margin-bottom: 7px;
+    }
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &__tag a{
+        @include tag;
+        font-size: $fs-13;
+    }
+    &__contactButton {
+        @include button;
+        position: fixed;
+        left: 50%;
+        bottom: 30px;
+        transform: translateX(-50%);
+        z-index: 13;
+    }
+    &__img {
+        height: 120px;
+        width: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
 
 .media {
+    &:last-child {
+        margin-bottom: 100px;
+    }
     &__card {
         height: 218px;
         max-width: 100%;
@@ -12,12 +65,21 @@
             display: block;
         }
     }
+    & a {
+        position: relative;
+    }
+    &__playIcon {
+        position: absolute;
+        background: url(../../images/playIcon.svg) center center / 38px 38px no-repeat;
+        height: 100%;
+        width: 100%;
+    }
     &__thumb {
         height: 190px;
         width: 100%;
         object-fit: cover;
         object-position: 50% 15%;
-        border-radius: 5px;
+        border-radius: $br-5;
     }
     &__content {
         display: flex;
@@ -31,4 +93,9 @@
         display: flex;
         font-weight: 500;
     }
+    &__number {
+        margin-right: 6px;
+    }
 }
+
+@include lightbox;

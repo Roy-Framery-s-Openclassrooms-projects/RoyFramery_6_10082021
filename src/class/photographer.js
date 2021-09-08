@@ -11,7 +11,8 @@ export default class Photographer {
 	}
 	dom = {
 		photographers : document.querySelector('.photographers'),
-		photographer: document.querySelector('.photographer')
+		photographer : document.querySelector('.photographer'),
+		nameInForm : document.querySelector('.modal__head')
 	}
 
 	displayTags = () => {
@@ -40,18 +41,22 @@ export default class Photographer {
 			`)	
 		}
 		else if (document.title == 'Gallery') {
-			return this.dom.photographer.insertAdjacentHTML('beforeend', `
+			const photographerById = this.dom.photographer.insertAdjacentHTML('beforeend', `
 			<acticle class="photographer__profil">
 				<div class="photographer__content">
 					<h1 class="photographer__name">${this.name}</h1>
 					<p class="photographer__location">${this.city}, ${this.country}</p>
 					<p class="photographer__tagline">${this.tagline}</p>
-					<p class="photographer__price">${this.price}€/jour</p>
 					<div class="photographer__tags">` + this.displayTags() + `</div>
 				</div>
+				<button class="photographer__contactButton">Contactez-moi</button>
 				<img class="photographer__img" src="../images/photographers/id_photos/${this.portrait}" alt="">
 			</acticle>
 			`)
+			const photographerNameInForm = this.dom.nameInForm.insertAdjacentHTML('afterend', `
+				<p class="modal__photographer-name">${this.name}</p>
+			`)
+			return photographerById, photographerNameInForm
 		}
 	}
 }

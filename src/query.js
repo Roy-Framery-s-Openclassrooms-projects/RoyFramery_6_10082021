@@ -31,7 +31,7 @@ let getPhotographers = async () => {
 	}
 }
 
-let displaysPhotographersPofils = async () => {
+let displaysPhotographersCards = async () => {
 	const photographers = await getPhotographers()
 	let i = 0
 	let photographerCard = {}
@@ -131,4 +131,4 @@ let displayFilters = async () => {
 	}
 }
 
-export {displaysPhotographersPofils, displaysMediaById, displaysPhotographersPofilsById, displayFilters}
+export {displaysPhotographersCards, displaysMediaById, displaysPhotographersPofilsById, displayFilters}
