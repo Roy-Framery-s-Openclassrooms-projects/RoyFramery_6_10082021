@@ -547,7 +547,7 @@ var getFilters = /*#__PURE__*/function () {
       while (1) {
         switch (_context7.prev = _context7.next) {
           case 0:
-            url = '../fisheyeData.json';
+            url = 'https://roy-framery-s-openclassrooms-projects.github.io/RoyFramery_6_10082021/fisheyeData.json';
             _context7.next = 3;
             return fetch(url);
 
