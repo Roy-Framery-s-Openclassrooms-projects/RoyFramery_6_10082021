@@ -2,7 +2,7 @@
 @use '../components/button' as *;
 
 .modal {
-    // display: none;
+    display: none;
     position: fixed;
     z-index: 13;
     left: 0;

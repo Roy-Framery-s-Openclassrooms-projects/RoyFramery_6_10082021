@@ -67,6 +67,7 @@ body {
   }
 }
 .modal {
+  display: none;
   position: fixed;
   z-index: 13;
   left: 0;
@@ -134,43 +135,6 @@ body {
 .header__filter-tag--active {
   background: #901C1C;
   color: #FAFAFA;
-}
-
-.form__label {
-  display: block;
-  font-size: 1.5em;
-  margin: 14px 0 6px 0;
-}
-.form__text-area, .form__text {
-  width: 100%;
-  border-radius: 0.4166666667em;
-  border: none;
-}
-.form__text {
-  height: 52px;
-}
-.form__text-area {
-  height: 187px;
-}
-.form__submitButton {
-  display: block;
-  background: #901C1C;
-  color: #FAFAFA;
-  border-radius: 0.4166666667em;
-  width: 170px;
-  height: 35px;
-  font-size: 1.0625em;
-  font-family: inherit;
-  letter-spacing: 1px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 300ms;
-  border: none;
-  margin: 26px auto 75px auto;
-}
-.form__submitButton:hover, .form__submitButton:focus {
-  color: #000;
-  background: #D3573C;
 }
 
 .photographer__profil {
@@ -250,14 +214,43 @@ body {
   object-fit: cover;
 }
 
-.media:last-child {
+.media {
   margin-bottom: 100px;
+}
+@media only screen and (min-width: 600px) {
+  .media {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }
 .media__card {
   height: 218px;
   max-width: 100%;
   display: block;
   margin-bottom: 10px;
+}
+@media only screen and (min-width: 450px) {
+  .media__card {
+    height: 258px;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .media__card {
+    width: 48%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .media__card {
+    width: 30%;
+    height: 293px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .media__card {
+    width: 350px;
+    height: 350px;
+  }
 }
 .media__card a {
   display: block;
@@ -277,6 +270,24 @@ body {
   object-fit: cover;
   object-position: 50% 15%;
   border-radius: 0.4166666667em;
+}
+@media only screen and (min-width: 450px) {
+  .media__thumb {
+    height: 230px;
+    object-position: 50% 25%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .media__thumb {
+    height: 265px;
+    object-position: 50% 25%;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .media__thumb {
+    height: 300px;
+    object-position: 50% 25%;
+  }
 }
 .media__content {
   display: flex;
@@ -363,6 +374,60 @@ body {
 }
 .lightbox.fadeout {
   opacity: 0;
+}
+
+.form__data[data-error-visible=true]::after {
+  content: attr(data-error);
+  font-size: 0.875em;
+  font-weight: normal;
+  color: #901C1C;
+  font-weight: bold;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: start;
+  line-height: 1;
+  opacity: 1;
+  transition: 0.3s;
+}
+.form__data[data-error-visible=true] .form__text, .form__data[data-error-visible=true] .form__text-area {
+  border: 2px solid #901C1C;
+}
+.form__label {
+  display: block;
+  font-size: 1.5em;
+  margin: 14px 0 6px 0;
+}
+.form__text-area, .form__text {
+  width: 100%;
+  border-radius: 0.4166666667em;
+  border: none;
+}
+.form__text {
+  height: 52px;
+}
+.form__text-area {
+  height: 187px;
+}
+.form__submitButton {
+  display: block;
+  background: #901C1C;
+  color: #FAFAFA;
+  border-radius: 0.4166666667em;
+  width: 170px;
+  height: 35px;
+  font-size: 1.0625em;
+  font-family: inherit;
+  letter-spacing: 1px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 300ms;
+  border: none;
+  margin: 26px auto 75px auto;
+}
+.form__submitButton:hover, .form__submitButton:focus {
+  color: #000;
+  background: #D3573C;
 }
 
 /*# sourceMappingURL=photographer.css.map */

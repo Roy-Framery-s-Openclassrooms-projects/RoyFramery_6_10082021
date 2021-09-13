@@ -11,8 +11,16 @@ export default class Modal {
 		document.querySelector('.photographer__contactButton').addEventListener('click', () => { this.launchModal() })
 
 		document.querySelector('.modal__close').addEventListener('click', () => {this.closeModal()})
-	}
 
+		document.addEventListener('keyup', this.onKeyUp.bind(this))
+	}
+	/**
+	 * 
+	 * @param {KeyboardEvent} e 
+	 */
+	static onKeyUp (e) {
+		if (e.key === 'Escape') this.closeModal()
+	}
 	// launch modal form
 	static launchModal = () => {
 		document.querySelector('.modal').style.display = 'block'}
@@ -20,5 +28,6 @@ export default class Modal {
 	// close modal form
 	static closeModal = () => {
 		this.element.modal.style.display = 'none'
+		document.removeEventListener('keyup', this.onKeyUp)
 	}
 }

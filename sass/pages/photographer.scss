@@ -1,7 +1,7 @@
 @use '../utilities/' as *;
 @use '../main';
 @use '../components' as *;
-@use '../layout/form';
+@use '../layout/form' as *;
 
 .photographer {
     &__profil {
@@ -53,14 +53,33 @@
 }
 
 .media {
-    &:last-child {
-        margin-bottom: 100px;
+    margin-bottom: 100px;
+    @include media-query('bp-600') {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
+    
     &__card {
         height: 218px;
         max-width: 100%;
         display: block;
         margin-bottom: 10px;
+        @include media-query('bp-450') {
+            height: 258px;
+        }
+        @include media-query('bp-600') {
+            width: 48%;
+        }
+        @include media-query('large') {
+            width: 30%;
+            height: 293px;
+        }
+        @include media-query('xLarge') {
+            width: 350px;
+            height: 350px;
+        }
+
         & a {
             display: block;
         }
@@ -80,6 +99,18 @@
         object-fit: cover;
         object-position: 50% 15%;
         border-radius: $br-5;
+        @include media-query('bp-450') {
+            height: 230px;
+            object-position: 50% 25%;
+        }
+        @include media-query('large') {
+            height: 265px;
+            object-position: 50% 25%;
+        }
+        @include media-query('xLarge') {
+            height: 300px;
+            object-position: 50% 25%;
+        }
     }
     &__content {
         display: flex;
@@ -98,4 +129,8 @@
     }
 }
 
+// component
 @include lightbox;
+
+// layout
+@include form;

@@ -6,6 +6,12 @@
         text-align: center;
         display: block;
         margin-bottom: 35px;  
+        @include media-query('small') {
+            width: 48%;
+        }
+        @include media-query('large') {
+            width: 30%;
+        }
         &__header {
             text-decoration: none;
         }

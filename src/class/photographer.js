@@ -15,10 +15,11 @@ export default class Photographer {
 		nameInForm : document.querySelector('.modal__head')
 	}
 
-	displayTags = () => {
+	displayTags = (page) => {
 		let spanTags = ''
 		for (let i = 0; i < this.tags.length; i++) {
-			spanTags += `<span class="photographer__tag"><a href="./index.html?tag=${this.tags[i]}">#${this.tags[i]}</a></span>`
+			if (page == 'Accueil') spanTags += `<span class="photographer__tag"><a href="./index.html?tag=${this.tags[i]}">#${this.tags[i]}</a></span>`
+			if (page == 'Gallery') spanTags += `<span class="photographer__tag"><a href="../../index.html?tag=${this.tags[i]}">#${this.tags[i]}</a></span>`
 		}
 		return spanTags
 	}
@@ -36,7 +37,7 @@ export default class Photographer {
 			<p class="photographer__tagline">${this.tagline}</p>
 			<p class="photographer__price">${this.price}€/jour</p>
 			</div>
-			<div class="photographer__tags">` + this.displayTags() + `</div>
+			<div class="photographer__tags">` + this.displayTags('Accueil') + `</div>
 			</acticle>
 			`)	
 		}
@@ -47,7 +48,7 @@ export default class Photographer {
 					<h1 class="photographer__name">${this.name}</h1>
 					<p class="photographer__location">${this.city}, ${this.country}</p>
 					<p class="photographer__tagline">${this.tagline}</p>
-					<div class="photographer__tags">` + this.displayTags() + `</div>
+					<div class="photographer__tags">` + this.displayTags('Gallery') + `</div>
 				</div>
 				<button class="photographer__contactButton">Contactez-moi</button>
 				<img class="photographer__img" src="../images/photographers/id_photos/${this.portrait}" alt="">

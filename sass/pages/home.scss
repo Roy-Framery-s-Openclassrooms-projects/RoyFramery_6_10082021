@@ -2,21 +2,74 @@
 @use '../main';
 @use '../components' as *;
 
-.main {
-    position: relative;
-    &__title {
-    font-size: $fs-14;
-    color: $red-secondary;
-    position: absolute;
-    right: 0px;
-    top: -160px;
+.header {
+    @include media-query('large') {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width:75%;
+    }
+    @include media-query('xLarge') {
+        justify-content: space-evenly;
+        width:75%;
+    }
+    &__svg {
+        @include media-query('large') {
+            & svg {
+                width: 170px;
+            }
+        }
+        @include media-query('xLarge') {
+            & svg {
+                width: 190px;
+            }
+        }
     }
 }
 
-// .photographers {
-//     display: flex;
-//     justify-content: space-between;
-//     flex-wrap: wrap;
-// }
+.main {
+    position: relative;
+    &__title {
+        font-size: $fs-14;
+        color: $red-secondary;
+        position: absolute;
+        right: 0px;
+        top: -165px;
+        @include media-query('xSmall') {
+            top: -140px;
+        }
+        @include media-query('small') {
+            top: -145px;
+            font-size: $fs-24;
+        }
+        @include media-query('large') {
+            top: -125px;
+        }
+        @include media-query('xLarge') {
+            top: -135px;
+            font-size: $fs-36;
+        }
+    }
+
+    & .photographers {
+        margin-top: 30px;
+    }
+    @include media-query('small') {
+        & .photographers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+    }
+    @include media-query('large') {
+        & .photographers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 60px;
+        }
+    }
+}
 
 @include photographerCard;

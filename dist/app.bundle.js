@@ -18,11 +18,12 @@ var Photographer = function Photographer(name, city, country, tags, tagline, pri
     nameInForm: document.querySelector('.modal__head')
   });
 
-  _defineProperty(this, "displayTags", function () {
+  _defineProperty(this, "displayTags", function (page) {
     var spanTags = '';
 
     for (var i = 0; i < _this.tags.length; i++) {
-      spanTags += "<span class=\"photographer__tag\"><a href=\"./index.html?tag=".concat(_this.tags[i], "\">#").concat(_this.tags[i], "</a></span>");
+      if (page == 'Accueil') spanTags += "<span class=\"photographer__tag\"><a href=\"./index.html?tag=".concat(_this.tags[i], "\">#").concat(_this.tags[i], "</a></span>");
+      if (page == 'Gallery') spanTags += "<span class=\"photographer__tag\"><a href=\"../../index.html?tag=".concat(_this.tags[i], "\">#").concat(_this.tags[i], "</a></span>");
     }
 
     return spanTags;
@@ -30,9 +31,9 @@ var Photographer = function Photographer(name, city, country, tags, tagline, pri
 
   _defineProperty(this, "constructCardPhotographer", function () {
     if (document.title == 'Accueil') {
-      return _this.dom.photographers.insertAdjacentHTML('beforeend', "\n\t\t\t<acticle class=\"photographer\">\n\t\t\t<a href=\"./public/pages/photographer.html?id=".concat(_this.id, "\" class=\"photographer__header\">\n\t\t\t<img class=\"photographer__img\" src=\"public/images/photographers/id_photos/").concat(_this.portrait, "\" alt=\"\">\n\t\t\t<h2 class=\"photographer__name\">").concat(_this.name, "</h2>\n\t\t\t</a>\n\t\t\t<div class=\"photographer__content\">\n\t\t\t<p class=\"photographer__location\">").concat(_this.city, ", ").concat(_this.country, "</p>\n\t\t\t<p class=\"photographer__tagline\">").concat(_this.tagline, "</p>\n\t\t\t<p class=\"photographer__price\">").concat(_this.price, "\u20AC/jour</p>\n\t\t\t</div>\n\t\t\t<div class=\"photographer__tags\">") + _this.displayTags() + "</div>\n\t\t\t</acticle>\n\t\t\t");
+      return _this.dom.photographers.insertAdjacentHTML('beforeend', "\n\t\t\t<acticle class=\"photographer\">\n\t\t\t<a href=\"./public/pages/photographer.html?id=".concat(_this.id, "\" class=\"photographer__header\">\n\t\t\t<img class=\"photographer__img\" src=\"public/images/photographers/id_photos/").concat(_this.portrait, "\" alt=\"\">\n\t\t\t<h2 class=\"photographer__name\">").concat(_this.name, "</h2>\n\t\t\t</a>\n\t\t\t<div class=\"photographer__content\">\n\t\t\t<p class=\"photographer__location\">").concat(_this.city, ", ").concat(_this.country, "</p>\n\t\t\t<p class=\"photographer__tagline\">").concat(_this.tagline, "</p>\n\t\t\t<p class=\"photographer__price\">").concat(_this.price, "\u20AC/jour</p>\n\t\t\t</div>\n\t\t\t<div class=\"photographer__tags\">") + _this.displayTags('Accueil') + "</div>\n\t\t\t</acticle>\n\t\t\t");
     } else if (document.title == 'Gallery') {
-      var photographerById = _this.dom.photographer.insertAdjacentHTML('beforeend', "\n\t\t\t<acticle class=\"photographer__profil\">\n\t\t\t\t<div class=\"photographer__content\">\n\t\t\t\t\t<h1 class=\"photographer__name\">".concat(_this.name, "</h1>\n\t\t\t\t\t<p class=\"photographer__location\">").concat(_this.city, ", ").concat(_this.country, "</p>\n\t\t\t\t\t<p class=\"photographer__tagline\">").concat(_this.tagline, "</p>\n\t\t\t\t\t<div class=\"photographer__tags\">") + _this.displayTags() + "</div>\n\t\t\t\t</div>\n\t\t\t\t<button class=\"photographer__contactButton\">Contactez-moi</button>\n\t\t\t\t<img class=\"photographer__img\" src=\"../images/photographers/id_photos/".concat(_this.portrait, "\" alt=\"\">\n\t\t\t</acticle>\n\t\t\t"));
+      var photographerById = _this.dom.photographer.insertAdjacentHTML('beforeend', "\n\t\t\t<acticle class=\"photographer__profil\">\n\t\t\t\t<div class=\"photographer__content\">\n\t\t\t\t\t<h1 class=\"photographer__name\">".concat(_this.name, "</h1>\n\t\t\t\t\t<p class=\"photographer__location\">").concat(_this.city, ", ").concat(_this.country, "</p>\n\t\t\t\t\t<p class=\"photographer__tagline\">").concat(_this.tagline, "</p>\n\t\t\t\t\t<div class=\"photographer__tags\">") + _this.displayTags('Gallery') + "</div>\n\t\t\t\t</div>\n\t\t\t\t<button class=\"photographer__contactButton\">Contactez-moi</button>\n\t\t\t\t<img class=\"photographer__img\" src=\"../images/photographers/id_photos/".concat(_this.portrait, "\" alt=\"\">\n\t\t\t</acticle>\n\t\t\t"));
 
       var photographerNameInForm = _this.dom.nameInForm.insertAdjacentHTML('afterend', "\n\t\t\t\t<p class=\"modal__photographer-name\">".concat(_this.name, "</p>\n\t\t\t"));
 
@@ -831,11 +832,33 @@ var Lightbox = /*#__PURE__*/function () {
 ;// CONCATENATED MODULE: ./src/class/modal.js
 function modal_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function modal_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function modal_createClass(Constructor, protoProps, staticProps) { if (protoProps) modal_defineProperties(Constructor.prototype, protoProps); if (staticProps) modal_defineProperties(Constructor, staticProps); return Constructor; }
+
 function modal_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var Modal = function Modal() {
-  modal_classCallCheck(this, Modal);
-};
+var Modal = /*#__PURE__*/function () {
+  function Modal() {
+    modal_classCallCheck(this, Modal);
+  }
+
+  modal_createClass(Modal, null, [{
+    key: "onKeyUp",
+    value: // DOM    
+
+    /**
+     * 
+     * @param {KeyboardEvent} e 
+     */
+    function onKeyUp(e) {
+      if (e.key === 'Escape') this.closeModal();
+    } // launch modal form
+
+  }]);
+
+  return Modal;
+}();
 
 modal_defineProperty(Modal, "element", {
   contact: document.querySelector('.photographer__contactButton'),
@@ -850,6 +873,7 @@ modal_defineProperty(Modal, "modalEvents", function () {
   document.querySelector('.modal__close').addEventListener('click', function () {
     Modal.closeModal();
   });
+  document.addEventListener('keyup', Modal.onKeyUp.bind(Modal));
 });
 
 modal_defineProperty(Modal, "launchModal", function () {
@@ -858,13 +882,124 @@ modal_defineProperty(Modal, "launchModal", function () {
 
 modal_defineProperty(Modal, "closeModal", function () {
   Modal.element.modal.style.display = 'none';
+  document.removeEventListener('keyup', Modal.onKeyUp);
 });
 
+
+;// CONCATENATED MODULE: ./src/class/validator.js
+function validator_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function validator_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Validator = function Validator(inputs, containerInput) {
+  var _this = this;
+
+  validator_classCallCheck(this, Validator);
+
+  validator_defineProperty(this, "valid", true);
+
+  validator_defineProperty(this, "nameValidation", function (element, regex) {
+    return element.value == '' || element.value.length < 2 || !regex.test(element.value) ? false : true;
+  });
+
+  validator_defineProperty(this, "emailValidation", function (element, regex) {
+    return !regex.test(element.value) ? false : true;
+  });
+
+  validator_defineProperty(this, "textareaValidation", function (element, regex) {
+    return !regex.test(element.value) ? false : true;
+  });
+
+  validator_defineProperty(this, "removeErrorMessage", function () {
+    _this.valid = true;
+    Array.from(_this.containerInput).map(function (field) {
+      field.removeAttribute('data-error-visible');
+    });
+  });
+
+  validator_defineProperty(this, "launchValidation", function () {
+    _this.removeErrorMessage();
+
+    for (var input in _this.inputs) {
+      switch (input) {
+        case 'firstname':
+          if (!_this.nameValidation(_this.inputs[input].element, _this.inputs[input].regex)) {
+            _this.inputs[input].element.parentNode.setAttribute('data-error-visible', true);
+
+            _this.valid = false;
+          }
+
+          break;
+
+        case 'lastname':
+          if (!_this.nameValidation(_this.inputs[input].element, _this.inputs[input].regex)) {
+            _this.inputs[input].element.parentNode.setAttribute('data-error-visible', true);
+
+            _this.valid = false;
+          }
+
+          break;
+
+        case 'email':
+          if (!_this.emailValidation(_this.inputs[input].element, _this.inputs[input].regex)) {
+            _this.inputs[input].element.parentNode.setAttribute('data-error-visible', true);
+
+            _this.valid = false;
+          }
+
+          break;
+
+        case 'message':
+          if (!_this.textareaValidation(_this.inputs[input].element, _this.inputs[input].regex)) {
+            _this.inputs[input].element.parentNode.setAttribute('data-error-visible', true);
+
+            _this.valid = false;
+          }
+
+          break;
+
+        default:
+          break;
+      }
+    }
+
+    return _this.valid;
+  });
+
+  this.inputs = inputs;
+  this.containerInput = containerInput;
+};
+
+
+;// CONCATENATED MODULE: ./src/configValidator.js
+// to reach all the inputs and configure the validation
+var inputs = {
+  firstname: {
+    element: document.querySelector('#firstname'),
+    regex: /^[a-zA-Z\-éëàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇÆæœ]{2,}$/
+  },
+  lastname: {
+    element: document.querySelector('#lastname'),
+    regex: /^[a-zA-Z\-éëàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇÆæœ\s]{2,}$/
+  },
+  email: {
+    element: document.querySelector('#email'),
+    regex: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  },
+  message: {
+    element: document.querySelector('#textArea'),
+    regex: /^[a-zA-Z\-,.?!;*'")(_<>\séëàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇÆæœ]{1,}$/
+  }
+}; // to reach all elements that display error messages for the form validation
+
+var containerInput = document.querySelectorAll('.form__data');
 
 ;// CONCATENATED MODULE: ./src/index.js
 function src_asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function src_asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { src_asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { src_asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 
@@ -911,7 +1046,19 @@ if (document.title == 'Gallery') {
   lightbox();
   setTimeout(function () {
     Modal.modalEvents();
-  }, 2000);
+  }, 2000); // form validation
+
+  var src_form = document.querySelector('.form');
+  var modalForm = document.querySelector('.modal');
+  var validator = new Validator(inputs, containerInput);
+  src_form.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    if (validator.launchValidation()) {
+      src_form.reset();
+      modalForm.style.display = 'none';
+    }
+  });
 }
 /******/ })()
 ;

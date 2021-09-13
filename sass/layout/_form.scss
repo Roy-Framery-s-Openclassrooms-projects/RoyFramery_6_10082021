@@ -1,25 +1,46 @@
 @use '../utilities' as *;
 @use '../components' as *;
 
-.form {
-    &__label {
-        display: block;
-        font-size: $fs-24;
-        margin: 14px 0 6px 0;
-    }
-    &__text-area, &__text {
-        width: 100%;
-        border-radius: $br-5;
-        border: none
-    }
-    &__text {
-        height: 52px;
-    }
-    &__text-area {
-        height: 187px
-    }
-    &__submitButton {
-        @include button;
-        margin: 26px auto 75px auto;
+@mixin form {
+    .form {
+        &__data[data-error-visible="true"]::after {
+            content: attr(data-error);
+            font-size: $fs-14;
+            font-weight: normal;
+            color: $red-primary;
+            font-weight: bold;
+            display: block;
+            margin-top: 7px;
+            margin-bottom: 7px;
+            text-align: start;
+            line-height: 1;
+            opacity: 1;
+            transition: 0.3s;
+        }
+        &__data[data-error-visible="true"] .form__text, 
+        &__data[data-error-visible="true"] .form__text-area {
+            border: 2px solid $red-primary;
+        }
+        &__label {
+            display: block;
+            font-size: $fs-24;
+            margin: 14px 0 6px 0;
+        }
+        &__text-area, &__text {
+            width: 100%;
+            border-radius: $br-5;
+            border: none
+        }
+        &__text {
+            height: 52px;
+        }
+        &__text-area {
+            height: 187px
+        }
+        &__submitButton {
+            // component
+            @include button;
+            margin: 26px auto 75px auto;
+        }
     }
 }
