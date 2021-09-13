@@ -3,7 +3,7 @@ import Media from './class/media.js'
 import Filter from './class/filter.js'
 
 let getPhotographers = async () => {
-	const url = '../fisheyeData.json'
+	const url = 'https://roy-framery-s-openclassrooms-projects.github.io/RoyFramery_6_10082021/fisheyeData.json'
 	const response = await fetch(url)
 	if (response.ok) {
 		const data = await response.json()
@@ -43,7 +43,7 @@ let displaysPhotographersCards = async () => {
 }
 
 let getPhotographerById = async () => {
-	const url = '../../fisheyeData.json'
+	const url = 'https://roy-framery-s-openclassrooms-projects.github.io/RoyFramery_6_10082021/fisheyeData.json'
 	const response = await fetch(url)
 	if (response.ok) {
 		// // to get params
@@ -69,7 +69,7 @@ let displaysPhotographersPofilsById = async () => {
 
 // Fetch to get media 
 let getMedia = async () => {
-	const url = '../../fisheyeData.json'
+	const url = 'https://roy-framery-s-openclassrooms-projects.github.io/RoyFramery_6_10082021/fisheyeData.json'
 	const response = await fetch(url)
 	if (response.ok) {
 		const data = await response.json()
