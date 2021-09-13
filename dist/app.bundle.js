@@ -198,7 +198,7 @@ var getPhotographers = /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            url = '../fisheyeData.json';
+            url = 'https://roy-framery-s-openclassrooms-projects.github.io/RoyFramery_6_10082021/fisheyeData.json';
             _context.next = 3;
             return fetch(url);
 
@@ -330,7 +330,7 @@ var getPhotographerById = /*#__PURE__*/function () {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
-            url = '../../fisheyeData.json';
+            url = 'https://roy-framery-s-openclassrooms-projects.github.io/RoyFramery_6_10082021/fisheyeData.json';
             _context3.next = 3;
             return fetch(url);
 
@@ -449,7 +449,7 @@ var getMedia = /*#__PURE__*/function () {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
-            url = '../../fisheyeData.json';
+            url = 'https://roy-framery-s-openclassrooms-projects.github.io/RoyFramery_6_10082021/fisheyeData.json';
             _context5.next = 3;
             return fetch(url);
 
