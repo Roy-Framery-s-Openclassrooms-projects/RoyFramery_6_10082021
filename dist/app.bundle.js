@@ -33,7 +33,7 @@ var Photographer = function Photographer(name, city, country, tags, tagline, pri
     if (document.title == 'Accueil') {
       return _this.dom.photographers.insertAdjacentHTML('beforeend', "\n\t\t\t<acticle class=\"photographer\">\n\t\t\t<a href=\"./public/pages/photographer.html?id=".concat(_this.id, "\" class=\"photographer__header\">\n\t\t\t<img class=\"photographer__img\" src=\"public/images/photographers/id_photos/").concat(_this.portrait, "\" alt=\"\">\n\t\t\t<h2 class=\"photographer__name\">").concat(_this.name, "</h2>\n\t\t\t</a>\n\t\t\t<div class=\"photographer__content\">\n\t\t\t<p class=\"photographer__location\">").concat(_this.city, ", ").concat(_this.country, "</p>\n\t\t\t<p class=\"photographer__tagline\">").concat(_this.tagline, "</p>\n\t\t\t<p class=\"photographer__price\">").concat(_this.price, "\u20AC/jour</p>\n\t\t\t</div>\n\t\t\t<div class=\"photographer__tags\">") + _this.displayTags('Accueil') + "</div>\n\t\t\t</acticle>\n\t\t\t");
     } else if (document.title == 'Gallery') {
-      var photographerById = _this.dom.photographer.insertAdjacentHTML('beforeend', "\n\t\t\t<acticle class=\"photographer__profil\">\n\t\t\t\t<div class=\"photographer__content\">\n\t\t\t\t\t<h1 class=\"photographer__name\">".concat(_this.name, "</h1>\n\t\t\t\t\t<p class=\"photographer__location\">").concat(_this.city, ", ").concat(_this.country, "</p>\n\t\t\t\t\t<p class=\"photographer__tagline\">").concat(_this.tagline, "</p>\n\t\t\t\t\t<div class=\"photographer__tags\">") + _this.displayTags('Gallery') + "</div>\n\t\t\t\t</div>\n\t\t\t\t<button class=\"photographer__contactButton\">Contactez-moi</button>\n\t\t\t\t<img class=\"photographer__img\" src=\"../images/photographers/id_photos/".concat(_this.portrait, "\" alt=\"\">\n\t\t\t</acticle>\n\t\t\t"));
+      var photographerById = _this.dom.photographer.insertAdjacentHTML('beforeend', "\n\t\t\t<acticle class=\"photographer__profil\">\n\t\t\t\t<div class=\"photographer__body\">\n\t\t\t\t\t<div class=\"photographer__content\">\n\t\t\t\t\t\t<h1 class=\"photographer__name\">".concat(_this.name, "</h1>\n\t\t\t\t\t\t<p class=\"photographer__location\">").concat(_this.city, ", ").concat(_this.country, "</p>\n\t\t\t\t\t\t<p class=\"photographer__tagline\">").concat(_this.tagline, "</p>\n\t\t\t\t\t\t<div class=\"photographer__tags\">") + _this.displayTags('Gallery') + "</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<button class=\"photographer__contactButton\">Contactez-moi</button>\n\t\t\t\t</div>\n\t\t\t\t<img class=\"photographer__img\" src=\"../images/photographers/id_photos/".concat(_this.portrait, "\" alt=\"\">\n\t\t\t</acticle>\n\t\t\t"));
 
       var photographerNameInForm = _this.dom.nameInForm.insertAdjacentHTML('afterend', "\n\t\t\t\t<p class=\"modal__photographer-name\">".concat(_this.name, "</p>\n\t\t\t"));
 
@@ -877,7 +877,7 @@ modal_defineProperty(Modal, "modalEvents", function () {
 });
 
 modal_defineProperty(Modal, "launchModal", function () {
-  document.querySelector('.modal').style.display = 'block';
+  document.querySelector('.modal').style.display = 'flex';
 });
 
 modal_defineProperty(Modal, "closeModal", function () {

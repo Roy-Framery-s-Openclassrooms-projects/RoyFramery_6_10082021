@@ -1,0 +1,46 @@
+@use '../utilities' as *;
+
+@mixin select {
+    &__select {
+        display: block;
+        background: $red-primary;
+        color: $lightgrey-secondary;
+        border-radius: $br-5;
+        width: 170px;
+        height: 69px;
+        font-size: $fs-18;
+        font-family: inherit;
+        letter-spacing: 1px;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        padding: 23px 15px;
+        &:focus {
+            transform: content 300ms;
+            border-radius: $br-5 $br-5 0 0;
+        }    
+    }
+    &__custom-select {
+        position: relative;
+    }
+    &__custom-arrow {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        right: 0;
+        background: $red-primary;
+        border-radius: 0 $br-5 $br-5 0;
+        pointer-events: none;
+        height: 100%;
+        width: 40px;
+        &::before {
+            content: url('../../../public/images/arrow-bottom.svg');
+        }
+    }
+    & option {
+        display: block;
+        padding: 20px;
+    }
+}

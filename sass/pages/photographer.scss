@@ -4,29 +4,65 @@
 @use '../layout/form' as *;
 
 .photographer {
+    @include media-query('large') {
+        background: $lightgrey-secondary;
+        padding: 56px 50px;
+    }
+
     &__profil {
         display: flex;
         justify-content: space-between;
         margin-bottom: 46px;
+        
+        @include media-query('large') {
+            background: $lightgrey-secondary;
+            margin-bottom: 0;
+            gap: 20px;
+        }
     }
-    &__content {
-        width: 70%;
+    &__body {
         padding-top: 20px;
+        @include media-query('large') {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 0;
+            gap: 20px;
+        }
     }
     &__name {
         font-size: $fs-36;
         color: $lightred-primary;
+        @include media-query('medium') {
+            font-size: $fs-48;
+        }
+        @include media-query('large') {
+            font-size: $fs-64;
+        }
     }
     &__location {
         font-size: $fs-13;
         color: $red-primary;
         font-weight: 400;
         margin-bottom: 4px;
+        @include media-query('medium') {
+            font-size: $fs-18;
+        }
+
+        @include media-query('large') {
+            font-size: $fs-24
+        }
     }
     &__tagline {
         font-size: $fs-13;
         color: $darkgrey-secondary;
         margin-bottom: 7px;
+        @include media-query('medium') {
+            font-size: $fs-16;
+        }
+
+        @include media-query('large') {
+            font-size: $fs-18;
+        }
     }
     &__tags {
         display: flex;
@@ -35,6 +71,9 @@
     &__tag a{
         @include tag;
         font-size: $fs-13;
+        @include media-query('large') {
+            font-size: $fs-18;
+        }
     }
     &__contactButton {
         @include button;
@@ -43,15 +82,45 @@
         bottom: 30px;
         transform: translateX(-50%);
         z-index: 13;
+        @include media-query('large') {
+            position: static;
+            transform: translateX(0);
+        }
     }
     &__img {
         height: 120px;
         width: 120px;
         border-radius: 50%;
         object-fit: cover;
+        @include media-query('medium') {
+            height: 150px;
+            width: 150px;    
+        }
+        @include media-query('large') {
+            height: 200px;
+            width: 200px;    
+        }
     }
 }
+.filter {
+    display: none;
 
+    @include media-query('large') {
+        display: block;
+        margin-bottom: 30px;
+        margin-top: 9px;
+    }
+    &__form {
+        display: flex;
+        align-items: center;
+    }
+    &__label {
+        font-size: $fs-18;
+        font-weight: bold;
+        margin-right: 25px;
+    }
+    @include select;
+}
 .media {
     margin-bottom: 100px;
     @include media-query('bp-600') {
@@ -59,7 +128,10 @@
         flex-wrap: wrap;
         justify-content: space-between;
     }
-    
+    @include media-query('xLarge') {
+        justify-content: flex-start;
+        gap: 5%;
+    }
     &__card {
         height: 218px;
         max-width: 100%;
@@ -76,6 +148,7 @@
             height: 293px;
         }
         @include media-query('xLarge') {
+            min-width: 30%;
             width: 350px;
             height: 350px;
         }
@@ -116,6 +189,10 @@
         display: flex;
         justify-content: space-between;
         color: $red-primary;
+        @include media-query('xLarge') {
+            font-size: $fs-24;
+            height: 50px;
+        }
     }
     &__title {
         font-weight: 400;

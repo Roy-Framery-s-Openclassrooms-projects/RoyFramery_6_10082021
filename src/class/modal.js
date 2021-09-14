@@ -23,7 +23,7 @@ export default class Modal {
 	}
 	// launch modal form
 	static launchModal = () => {
-		document.querySelector('.modal').style.display = 'block'}
+		document.querySelector('.modal').style.display = 'flex'}
 
 	// close modal form
 	static closeModal = () => {

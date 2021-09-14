@@ -76,6 +76,13 @@ body {
   width: 100%;
   background: #FFF;
 }
+@media only screen and (min-width: 681px) {
+  .modal {
+    justify-content: center;
+    align-items: center;
+    background: rgba(196, 196, 196, 0.4);
+  }
+}
 .modal__content {
   width: 100%;
   height: 100%;
@@ -83,6 +90,18 @@ body {
   position: relative;
   overflow: scroll;
   border-radius: 0.4166666667em;
+}
+@media only screen and (min-width: 681px) {
+  .modal__content {
+    width: 669px;
+    height: 900px;
+    filter: drop-shadow(-5px 10px 30px rgba(0, 0, 0, 0.25));
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .modal__content {
+    overflow: hidden;
+  }
 }
 .modal__close {
   position: absolute;
@@ -93,6 +112,7 @@ body {
   color: #FFF;
   top: 27px;
   right: 27px;
+  cursor: pointer;
 }
 .modal__body {
   width: 90%;
@@ -101,6 +121,11 @@ body {
 }
 .modal__head, .modal__photographer-name {
   font-size: 2.25em;
+}
+@media only screen and (min-width: 1024px) {
+  .modal__head, .modal__photographer-name {
+    font-size: 3em;
+  }
 }
 
 .header {

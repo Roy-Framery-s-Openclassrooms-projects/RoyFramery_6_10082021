@@ -25,6 +25,10 @@
             display: block;
             font-size: $fs-24;
             margin: 14px 0 6px 0;
+            @include media-query('medium') {
+                font-size: $fs-28;
+            }
+
         }
         &__text-area, &__text {
             width: 100%;
@@ -33,14 +37,23 @@
         }
         &__text {
             height: 52px;
+            @include media-query('bp-600') {
+                height: 69px;
+            }
         }
         &__text-area {
-            height: 187px
+            height: 187px;
+            @include media-query('medium') {
+                height: 170px;
+            }
         }
         &__submitButton {
             // component
             @include button;
             margin: 26px auto 75px auto;
+            @include media-query('large') {
+                margin-left: 0;
+            }
         }
     }
 }

@@ -44,13 +44,15 @@ export default class Photographer {
 		else if (document.title == 'Gallery') {
 			const photographerById = this.dom.photographer.insertAdjacentHTML('beforeend', `
 			<acticle class="photographer__profil">
-				<div class="photographer__content">
-					<h1 class="photographer__name">${this.name}</h1>
-					<p class="photographer__location">${this.city}, ${this.country}</p>
-					<p class="photographer__tagline">${this.tagline}</p>
-					<div class="photographer__tags">` + this.displayTags('Gallery') + `</div>
+				<div class="photographer__body">
+					<div class="photographer__content">
+						<h1 class="photographer__name">${this.name}</h1>
+						<p class="photographer__location">${this.city}, ${this.country}</p>
+						<p class="photographer__tagline">${this.tagline}</p>
+						<div class="photographer__tags">` + this.displayTags('Gallery') + `</div>
+					</div>
+					<button class="photographer__contactButton">Contactez-moi</button>
 				</div>
-				<button class="photographer__contactButton">Contactez-moi</button>
 				<img class="photographer__img" src="../images/photographers/id_photos/${this.portrait}" alt="">
 			</acticle>
 			`)

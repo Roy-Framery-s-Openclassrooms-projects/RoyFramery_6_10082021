@@ -28,21 +28,27 @@
     <main>
         <section class="photographer" role="region"></section>
 
-        <section class="media" role="region">
-            <form action="" hidden>
-                <label for="OrderBy">Trier par</label>
-                <select name="mediaFilter" id="OrderBy" class="media__filter">
-                    <option value="popularity">Popularité</option>
-                    <option value="date" selected>Date</option>
-                    <option value="title">titre</option>
-                </select>
+        <section class="filter">
+            <form action="" class="filter__form">
+                <label for="OrderBy" class="filter__label">Trier par</label>
+                <div class="filter__custom-select">
+                    <select name="mediaFilter" id="OrderBy" class="filter__select">
+                        <option class="filter__option" value="popularity" selected>Popularité</option>
+                        <option class="filter__option" value="date">Date</option>
+                        <option class="filter__option" value="title">titre</option>
+                    </select>
+                    <span class="filter__custom-arrow"></span>
+                </div>
             </form>
         </section>
+
+        <section class="media" role="region"></section>
+
         <section class="modal" role="region">
             <div class="modal__content">
                 <span class="modal__close"></span>
                 <div class="modal__body">
-                    <h2 class="modal__head">Contactez moi</h2>
+                    <h2 class="modal__head">Contactez-moi</h2>
                     <form name="contact" action="./photographer.html" method="get" class="form">
                         <div class="form__data" data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom.">
                             <label for="firstname" class="form__label">Prénom</label>

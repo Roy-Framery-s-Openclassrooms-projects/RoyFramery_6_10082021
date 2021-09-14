@@ -15,6 +15,10 @@
     transition: all 300ms;
     border: none;
     
+    @include media-query('large') {
+        height: 69px;
+    }
+
     &:hover, &:focus{
         color: #000;
         background: $lightred-primary;
