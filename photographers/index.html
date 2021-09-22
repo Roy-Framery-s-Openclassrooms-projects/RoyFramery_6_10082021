@@ -5,9 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
-    <link rel="stylesheet" href="../css/pages/photographer.css">
-    <script src="../../src/class/lightbox.js" type="module" defer></script>
-    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../public/css/pages/photographer.css">
+    <link rel="shortcut icon" href="../../public/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header role="banner" class="header">
@@ -26,14 +25,16 @@
         </a>
     </header>
     <main>
-        <section class="photographer" role="region"></section>
+        <section class="photographer" role="region">
+        </section>
+        <div class="infos"></div>
 
         <section class="filter">
             <form action="" class="filter__form">
                 <label for="OrderBy" class="filter__label">Trier par</label>
                 <div class="filter__custom-select">
                     <select name="mediaFilter" id="OrderBy" class="filter__select">
-                        <option class="filter__option" value="popularity" selected>Popularité</option>
+                        <option class="filter__option" value="likes" selected>Popularité</option>
                         <option class="filter__option" value="date">Date</option>
                         <option class="filter__option" value="title">titre</option>
                     </select>
@@ -74,6 +75,6 @@
     </main>
     
     <script src="../../dist/polyfill.bundle.js"></script>
-    <script src="../../dist/app.bundle.js"></script>
+    <script src="../../dist/photographer.bundle.js"></script>
 </body>
 </html>

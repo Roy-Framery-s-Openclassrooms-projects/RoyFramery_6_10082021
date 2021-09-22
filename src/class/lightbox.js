@@ -9,7 +9,9 @@ export default class Lightbox {
 		const gallery = links.map(link => link.getAttribute('href'))
 		links.forEach(link => link.addEventListener('click', e => {
 			e.preventDefault()
-			new Lightbox(e.currentTarget.getAttribute('href'), gallery)
+			const titles = document.querySelectorAll('.media__title')
+			const index = gallery.indexOf(e.currentTarget.getAttribute('href'))
+			new Lightbox(e.currentTarget.getAttribute('href'), gallery, titles, index)
 		}))
 	}
 
@@ -18,10 +20,12 @@ export default class Lightbox {
 	 * @param {string} url Image's URL
 	 * @param {string[]} media lightbox media paths
 	 */
-	constructor(url, media) {
-		this.element = this.buildDOM(url)
+	constructor(url, media, titles, index) {
+		this.element = this.buildDOM()
 		this.media = media
-		this.loadMedia(url)
+		this.titles = titles
+		this.index = index
+		this.loadMedia(url, this.titles, this.index)
 		this.onKeyUp = this.onKeyUp.bind(this)
 		document.body.appendChild(this.element)
 		document.addEventListener('keyup', this.onKeyUp)
@@ -31,27 +35,29 @@ export default class Lightbox {
 	 * 
 	 * @param {string} url Image's URL
 	 */
-	loadMedia (url) {
+	loadMedia (url, titles, index) {
 		this.url = null
-		const container = this.element.querySelector('.lightbox__container')
-		
+		const imageContainer = this.element.querySelector('.lightbox__image')
 		// to display a loader
 		const loader = document.createElement('div')
 		loader.classList.add('lightbox__loader')
 		
+		// const imageContainer = document.createElement('div')
 		// to display the close button
-		container.innerHTML = '<button class="lightbox__close lightbox__button">Fermer</button>'
-		container.querySelector('.lightbox__close').addEventListener('click', this.close.bind(this))
+		imageContainer.innerHTML = '<button class="lightbox__close lightbox__button">Fermer</button>'
+		imageContainer.querySelector('.lightbox__close').addEventListener('click', this.close.bind(this))
 		
-		container.appendChild(loader)
+		imageContainer.appendChild(loader)
+
+		// container.appendChild(imageContainer)
 		this.url = url
 		// for images
 		if (url.includes('.jpg')) {
 			const image = new Image()
 			
 			image.onload = () => {
-				container.removeChild(loader)
-				container.appendChild(image)
+				imageContainer.removeChild(loader)
+				imageContainer.appendChild(image)
 			}
 			image.classList.add('lightbox__media')
 			image.src = url
@@ -60,13 +66,29 @@ export default class Lightbox {
 		if (url.includes('.mp4')) {
 			let video = document.createElement('VIDEO')
 			video.onloadeddata = () => {
-				container.removeChild(loader)
-				container.appendChild(video)
+				imageContainer.removeChild(loader)
+				imageContainer.appendChild(video)
 			}
 			video.setAttribute('src', url)
 			video.setAttribute('controls', 'controls')
 			video.classList.add('lightbox__media')
 		}
+
+		// // display title
+		let titleArray = []
+		titles.forEach(title => {
+			titleArray.push(title.innerHTML)
+		})
+
+		const lightboxContainer = this.element.querySelector('.lightbox__container')
+		const title = document.querySelector('.lightbox__title')
+		if(title) {
+			lightboxContainer.removeChild(title)
+		}
+		const titleElement = document.createElement('h2')
+		titleElement.classList.add('lightbox__title')
+		titleElement.innerHTML = titleArray[index]
+		lightboxContainer.appendChild(titleElement)
 	}
 
 	/**
@@ -104,7 +126,11 @@ export default class Lightbox {
 		e.preventDefault()
 		let position = this.media.findIndex(media => media === this.url)
 		if (position === this.media.length - 1) position = -1
-		this.loadMedia(this.media[position + 1])
+		this.index = this.index + 1
+		if(this.index == 10) {
+			this.index = 0
+		}
+		this.loadMedia(this.media[position + 1], this.titles, this.index )
 	}
 
 	/**
@@ -115,7 +141,11 @@ export default class Lightbox {
 		e.preventDefault()
 		let position = this.media.findIndex(media => media === this.url)
 		if (position === 0) position = this.media.length
-		this.loadMedia(this.media[position - 1])
+		this.index = this.index - 1
+		if(this.index == -1) {
+			this.index = this.media.length - 1
+		}
+		this.loadMedia(this.media[position - 1], this.titles, this.index)
 	}
 
 
@@ -130,6 +160,7 @@ export default class Lightbox {
 		dom.innerHTML = `<button class="lightbox__next lightbox__button">Suivant</button>
 			<button class="lightbox__previous lightbox__button">Précédent</button>
 			<div class="lightbox__container" aria-label="image closeup view">
+				<div class="lightbox__image"></div>
 			</div>`
 		dom.querySelector('.lightbox__next').addEventListener('click', this.next.bind(this))
 		dom.querySelector('.lightbox__previous').addEventListener('click', this.previous.bind(this))

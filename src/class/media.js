@@ -1,19 +1,18 @@
 export default class Media {
-	constructor( title, filename, likes, typeMedia) {
+	constructor( title, filename, likes, typeMedia, date) {
 		this.title = title
 		this.filename = filename
 		this.likes = likes
 		this.typeMedia = typeMedia
+		this.date = date
 	}
-	dom = {
-		media : document.querySelector('.media'),
-	}
+	
 	createMedia() {
 		switch (this.typeMedia) {
 		case 'image':
-			return new Image(this.title, this.filename, this.likes).createImage()
+			return new Image(this.title, this.filename, this.likes).createImage
 		case 'video':
-			return new Video(this.title, this.filename, this.likes).createVideo()
+			return new Video(this.title, this.filename, this.likes).createVideo
 
 		default:
 			break
@@ -25,11 +24,11 @@ class Image extends Media{
 	constructor( title, filename, likes) {
 		super(title, filename, likes)
 	}
-	createImage() {
-		return this.dom.media.insertAdjacentHTML('beforeend',
-			`<artcle class="media__card">
-				<a href="../images/photographers/photos/${this.filename}">
-					<img src="../images/photographers/photos/${this.filename}" class="media__thumb">
+	get createImage() {
+		return `
+			<artcle class="media__card">
+				<a href="../public/images/photographers/photos/${this.filename}">
+					<img src="../public/images/photographers/photos/${this.filename}" class="media__thumb">
 				</a>
 				<div class="media__content">
 					<h2 class="media__title">${this.title}</h2>
@@ -42,7 +41,7 @@ class Image extends Media{
 						</svg>
 					</div>
 				</div>
-			</artcle>`)
+			</artcle>`
 	}
 }
 
@@ -50,13 +49,13 @@ class Video extends Media{
 	constructor( title, filename, likes) {
 		super(title, filename, likes)
 	}
-	createVideo() {
-		return this.dom.media.insertAdjacentHTML('beforeend',
-			`<artcle class="media__card">
-				<a href="../images/photographers/videos/${this.filename}" >
+	get createVideo() {
+		return `
+			<artcle class="media__card">
+				<a href="../public/images/photographers/videos/${this.filename}" >
 				<div class="media__playIcon"></div>
 					<video class="media__thumb">
-						<source src="../images/photographers/videos/${this.filename}"
+						<source src="../public/images/photographers/videos/${this.filename}"
 						type="video/mp4">
 					</video>
 				</a>
@@ -71,6 +70,6 @@ class Video extends Media{
 						</svg>
 					</div>
 				</div>
-			</artcle>`)
+			</artcle>`
 	}
 }

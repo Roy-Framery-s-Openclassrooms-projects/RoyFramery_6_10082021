@@ -1,39 +1,34 @@
-import {displaysPhotographersCards, displaysMediaById, displaysPhotographersPofilsById, displayFilters} from './query.js'
-import Lightbox from './class/lightbox.js'
-import Modal from './class/modal.js'
-import Validator from './class/validator.js'
-import {inputs, containerInput} from './configValidator.js'
+import {parseDataToJson, getPhotographers, getTagsFromPhotographers} from './service/api.js'
 
 
-if (document.title == 'Accueil') {
-	displayFilters()
-	displaysPhotographersCards()
+const dom = {
+	photographersContainer : document.querySelector('.photographers'),
+	filtersList : document.querySelector('.header__filter-list')
 }
-if (document.title == 'Gallery') {
-	displaysPhotographersPofilsById()
 
-	let lightbox = async () => {
-		const loadedMedia = await displaysMediaById()
-		if (loadedMedia == undefined) {
-			Lightbox.init()
-		}
-	}
-	lightbox()
-	setTimeout(() => {
-		Modal.modalEvents()
-	}, 2000)
+// to display tags in the header
+const tags = getTagsFromPhotographers(parseDataToJson())
+tags.then( tags =>
+	tags.map( tag => dom.filtersList.insertAdjacentHTML('beforeend', tag.displayFilter))
+)
 
-	// form validation
-	const form = document.querySelector('.form')
-	const modalForm = document.querySelector('.modal')
-	const validator = new Validator(inputs, containerInput)
+// get tag param to filter
+const queryString = window.location.search
+const urlParams = new URLSearchParams(queryString)
+const paramTag = urlParams.get('tag')
 
-	form.addEventListener('click', (e) => {
-		e.preventDefault()
-		if (validator.launchValidation()) {
-			form.reset()
-			modalForm.style.display ='none'
+// to display photographers cards
+const photographers = getPhotographers(parseDataToJson())
+photographers.then(photographers => {
+	photographers.map(photographer => {
+		if (paramTag == null) {
+			dom.photographersContainer.insertAdjacentHTML('beforeend', photographer.photographerCard)
+		} else {
+			for (const tag of photographer.tags) {
+				if (paramTag == tag) {
+					dom.photographersContainer.insertAdjacentHTML('beforeend', photographer.photographerCard)
+				}
+			}
 		}
 	})
-}
-
+})

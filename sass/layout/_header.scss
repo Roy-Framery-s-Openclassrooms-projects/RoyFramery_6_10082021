@@ -5,6 +5,17 @@
 
     &__svg {
         display: block;
+        @include media-query('large') {
+            & svg {
+                width: 170px;
+            }
+        }
+        @include media-query('xLarge') {
+            & svg {
+                width: 190px;
+            }
+        }
+
     }
 
     &__filter {

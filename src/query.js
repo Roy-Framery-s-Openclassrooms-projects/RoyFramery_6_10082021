@@ -1,6 +1,6 @@
 import Photographer from './class/photographer.js'
-import Media from './class/media.js'
-import Filter from './class/filter.js'
+import Media from './class/Media.js'
+import Filter from './class/Filter.js'
 
 let getPhotographers = async () => {
 	const url = 'https://roy-framery-s-openclassrooms-projects.github.io/RoyFramery_6_10082021/fisheyeData.json'
@@ -79,15 +79,14 @@ let getMedia = async () => {
 	}
 }
 
-let displaysMediaById = async () => {
-	const medias = await getMedia()
-	const queryString = window.location.search
-	const urlParams = new URLSearchParams(queryString)
-	const id = urlParams.get('id')
+let displaysMediaById = async (id, filter) => {
+	let medias = await getMedia()
+	let mediaArray= []
 	let i = 0
-	let mediaArray= {}
 	for (const media of medias) {
 		if (media.photographerId == id) {
+			// let mediass = new Media(media.title, media.image, media.likes, media.image ? !!'image' : !!'video')
+			// mediaArray.push(mediass)
 			if (media['image'] !== undefined) {
 				mediaArray[i] = new Media(media.title, media.image, media.likes, 'image')
 				mediaArray[i].createMedia()
@@ -95,12 +94,14 @@ let displaysMediaById = async () => {
 				mediaArray[i] = new Media(media.title, media.video, media.likes, 'video')
 				mediaArray[i].createMedia()
 			}
-			i++
+
 		} 
-			
-			
-			
 	}
+	mediaArray.sort((a,b) => {
+		// console.log(a[filter], b[filter])
+		return a[filter] - b[filter]
+	})
+	return mediaArray
 }
 
 let getFilters = async () => {

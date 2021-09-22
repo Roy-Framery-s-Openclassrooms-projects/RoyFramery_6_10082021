@@ -16,7 +16,6 @@
         border: none;
         padding: 23px 15px;
         &:focus {
-            transform: content 300ms;
             border-radius: $br-5 $br-5 0 0;
         }    
     }
@@ -38,9 +37,5 @@
         &::before {
             content: url('../../../public/images/arrow-bottom.svg');
         }
-    }
-    & option {
-        display: block;
-        padding: 20px;
     }
 }

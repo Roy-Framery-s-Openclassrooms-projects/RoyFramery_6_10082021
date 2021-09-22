@@ -72,11 +72,13 @@
     
         &__container {
             position: relative;
+            width: clamp(290px, 70%, 100%);
+            margin: auto;
+        }
+        &__image {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: clamp(290px, 70%, 100%);
-            margin: auto;
         }
         &__media {
             border-radius: $br-5;
@@ -96,7 +98,17 @@
                 height: 700px;
             }
             @include media-query('xLarge') {
-                height: 900px;
+                height: 850px;
+            }
+        }
+        &__title {
+            color: $red-secondary;
+            font-size: $fs-14;
+            margin-top: 7px;
+
+            @include media-query('large') {
+                font-size: $fs-24;
+                margin-top: 12px;
             }
         }
         &__loader {

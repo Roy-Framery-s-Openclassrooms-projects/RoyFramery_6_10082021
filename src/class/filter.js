@@ -3,15 +3,11 @@ export default class Filter {
 		this.filter = filter
 	}
 
-	dom = {
-		filtersList : document.querySelector('.header__filter-list')
-	}
-
-	displayfilter = () => {
-		return this.dom.filtersList.insertAdjacentHTML('beforeend', `
+	get displayFilter() {
+		return `
 		<li class="header__filter-list-item">
 			<a href="./index.html?tag=${this.filter}" class="header__filter-tag">#${this.filter}</a>
 		</li>
-		`)
+		`
 	}
 }
