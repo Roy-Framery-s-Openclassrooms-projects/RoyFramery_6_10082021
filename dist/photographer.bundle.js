@@ -449,12 +449,12 @@ var sortMediaByFilter = function sortMediaByFilter(media, filter) {
 };
 
 
-;// CONCATENATED MODULE: ./src/class/lightbox.js
-function lightbox_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+;// CONCATENATED MODULE: ./photographers/src/class/Lightbox.js
+function Lightbox_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function lightbox_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function Lightbox_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function lightbox_createClass(Constructor, protoProps, staticProps) { if (protoProps) lightbox_defineProperties(Constructor.prototype, protoProps); if (staticProps) lightbox_defineProperties(Constructor, staticProps); return Constructor; }
+function Lightbox_createClass(Constructor, protoProps, staticProps) { if (protoProps) Lightbox_defineProperties(Constructor.prototype, protoProps); if (staticProps) Lightbox_defineProperties(Constructor, staticProps); return Constructor; }
 
 /**
  * @property {HTMLElement} element
@@ -468,7 +468,7 @@ var Lightbox = /*#__PURE__*/function () {
    * @param {string[]} media lightbox media paths
    */
   function Lightbox(url, media, titles, index) {
-    lightbox_classCallCheck(this, Lightbox);
+    Lightbox_classCallCheck(this, Lightbox);
 
     this.element = this.buildDOM();
     this.media = media;
@@ -485,7 +485,7 @@ var Lightbox = /*#__PURE__*/function () {
    */
 
 
-  lightbox_createClass(Lightbox, [{
+  Lightbox_createClass(Lightbox, [{
     key: "loadMedia",
     value: function loadMedia(url, titles, index) {
       this.url = null;
@@ -661,7 +661,7 @@ var Lightbox = /*#__PURE__*/function () {
 }();
 
 
-;// CONCATENATED MODULE: ./src/class/Modal.js
+;// CONCATENATED MODULE: ./photographers/src/class/Modal.js
 function Modal_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function Modal_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -718,7 +718,7 @@ Modal_defineProperty(Modal, "closeModal", function () {
 });
 
 
-;// CONCATENATED MODULE: ./src/class/Validator.js
+;// CONCATENATED MODULE: ./photographers/src/class/Validator.js
 function Validator_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function Validator_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -803,7 +803,7 @@ var Validator = function Validator(inputs, containerInput) {
 };
 
 
-;// CONCATENATED MODULE: ./src/configValidator.js
+;// CONCATENATED MODULE: ./photographers/src/configValidator.js
 // to reach all the inputs and configure the validation
 var inputs = {
   firstname: {
@@ -826,7 +826,87 @@ var inputs = {
 
 var containerInput = document.querySelectorAll('.form__data');
 
+;// CONCATENATED MODULE: ./photographers/src/displayTotalLikes.js
+// to display the total number of media likes
+var DomInfos = document.querySelector('.infos');
+
+var displayTotalLikesOfPhotographer = function displayTotalLikesOfPhotographer(medias) {
+  medias.then(function (medias) {
+    var totalLikes = 0;
+    medias.map(function (media) {
+      totalLikes += media.likes;
+    });
+    return DomInfos.insertAdjacentHTML('beforeend', "\n\t\t<div class=\"infos__likes\">\n\t\t\t<p class=\"infos__totalLikes\">".concat(totalLikes, "</p>\n\t\t\t<svg role=\"image\" class=\"infos__heart\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<title id=\"title\">Likes</title>\n\t\t\t\t<desc id=\"description\">Icone en forme de c\u0153ur</desc>\n\t\t\t\t<path d=\"M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z\" fill=\"#000\"/>\n\t\t\t\t</svg>\n\t\t</div>\n\t\t"));
+  });
+};
+
+/* harmony default export */ const displayTotalLikes = (displayTotalLikesOfPhotographer);
+;// CONCATENATED MODULE: ./photographers/src/displayDailyPrice.js
+// to display the price per day
+var displayDailyPrice_DomInfos = document.querySelector('.infos');
+
+var displayDailyPriceOfPhotographer = function displayDailyPriceOfPhotographer(photographer) {
+  photographer.then(function (photographer) {
+    return displayDailyPrice_DomInfos.insertAdjacentHTML('beforeend', photographer[0].getPrice());
+  });
+};
+
+/* harmony default export */ const displayDailyPrice = (displayDailyPriceOfPhotographer);
+;// CONCATENATED MODULE: ./photographers/src/likes.js
+// to increase or decrease the likes of a media and the total of likes
+var increaseOrDecreaseLikesAndTotalLikes = function increaseOrDecreaseLikesAndTotalLikes() {
+  var likesElements = document.querySelectorAll('.media__likes');
+  likesElements.forEach(function (like) {
+    return like.onclick = function () {
+      var totalLikes = document.querySelector('.infos__totalLikes');
+
+      if (!like.classList.contains('media__liked')) {
+        ++totalLikes.innerText;
+        ++like.children[0].innerText;
+        like.classList.add('media__liked');
+      } else {
+        --totalLikes.innerText;
+        --like.children[0].innerText;
+        like.classList.remove('media__liked');
+      }
+    };
+  });
+};
+
+/* harmony default export */ const likes = (increaseOrDecreaseLikesAndTotalLikes);
+;// CONCATENATED MODULE: ./photographers/src/select.js
+var displaySelectOptions = function displaySelectOptions() {
+  var select = document.querySelector('.filter__custom-select');
+  select.addEventListener('click', function () {
+    var select = document.querySelector('.filter__custom-menu');
+    var arrow = document.querySelector('.filter__custom-arrow', 'before');
+
+    if (!select.classList.contains('filter__show')) {
+      select.classList.add('filter__show');
+      arrow.style.transform = 'rotate(180deg)';
+    } else {
+      arrow.style.transform = 'rotate(0deg)';
+      select.classList.remove('filter__show');
+    }
+  });
+};
+
+var hideSelectedOptionInSelect = function hideSelectedOptionInSelect(filter, dom) {
+  dom.forEach(function (option) {
+    // console.log(option.classList.add('hello'))
+    if (option.getAttribute('value') == filter) {
+      option.classList.add('filter__selected');
+      console.log(option.classList);
+    }
+  });
+};
+
+
 ;// CONCATENATED MODULE: ./photographers/index.js
+
+
+
+
 
 
 
@@ -838,9 +918,8 @@ var dom = {
   media: document.querySelector('.media'),
   form: document.querySelector('.form'),
   modalForm: document.querySelector('.modal'),
-  select: document.querySelector('.filter__select'),
-  filterOption: document.querySelectorAll('.filter__option'),
-  infos: document.querySelector('.infos')
+  selectOption: document.querySelectorAll('.filter__custom-option'),
+  filterOption: document.querySelectorAll('.filter__custom-option')
 }; // To get Id in Url's params
 
 var queryString = window.location.search;
@@ -854,7 +933,7 @@ photographers.then(function (photographers) {
   });
 }); // To display media by Id and Filter
 
-var filter = dom.select.value;
+var filter = dom.selectOption[0].getAttribute('value');
 /**
  * 
  * @param {number} id Id in the Url's params
@@ -867,40 +946,26 @@ var displayMediaByPhotographerById = function displayMediaByPhotographerById(id,
   media.then(function (media) {
     return media.map(function (media) {
       dom.media.innerHTML += media.createMedia();
-      hideSelectedOptionInSelect(filter);
     });
   });
+  hideSelectedOptionInSelect(filter, dom.filterOption);
 };
 
-displayMediaByPhotographerById(paramId, filter);
-
-var hideSelectedOptionInSelect = function hideSelectedOptionInSelect(filter) {
-  dom.filterOption.forEach(function (option) {
-    if (option.value == filter) {
-      option.classList.add('filter__selected');
-    }
-  });
-};
-
-var removeClassToHideDuplicateOptionInSelect = function removeClassToHideDuplicateOptionInSelect(filter) {
-  dom.filterOption.forEach(function (option) {
-    if (option.value != filter) {
-      option.classList.remove('filter__selected');
-    }
-  });
-};
-
-dom.select.addEventListener('change', function () {
-  filter = dom.select.value;
-  hideSelectedOptionInSelect(filter);
-  removeClassToHideDuplicateOptionInSelect(filter);
-  displayMediaByPhotographerById(paramId, filter);
-}); // to init modal and lightbox
-
-setTimeout(function () {
-  Modal.modalEvents();
-  Lightbox.init();
-}, 1000); // To validate the form
+displayMediaByPhotographerById(paramId, filter); // let removeClassToHideDuplicateOptionInSelect = (filter) => {
+// 	dom.filterOption.forEach(option => {
+// 		if (option.value != filter) {
+// 			option.classList.remove('filter__selected')
+// 		}
+// 	})
+// }
+// TODO: faire une boucle dans les option-custom pour créer des eventListener au click pour chaque élément !
+// // dom.select.addEventListener('change', () => {
+// // 	filter = dom.select.value
+// // 	hideSelectedOptionInSelect(filter)
+// // 	displayMediaByPhotographerById(paramId, filter)
+// // })
+// removeClassToHideDuplicateOptionInSelect(filter)
+// To validate the form
 
 var validator = new Validator(inputs, containerInput);
 dom.form.addEventListener('click', function (e) {
@@ -910,22 +975,17 @@ dom.form.addEventListener('click', function (e) {
     dom.form.reset();
     dom.modalForm.style.display = 'none';
   }
-});
+}); // To fill the card about total of likes and daily price
 
-var displayTotalLikesAndPriceADayOfPhotographer = function displayTotalLikesAndPriceADayOfPhotographer(photographer, medias) {
-  medias.then(function (medias) {
-    var totalLikes = 0;
-    medias.map(function (media) {
-      totalLikes += media.likes;
-    });
-    return dom.infos.insertAdjacentHTML('beforeend', "\n\t\t\t<div class=\"infos__likes\">\n\t\t\t\t<p class=\"infos__totalLikes\">".concat(totalLikes, "</p>\n\t\t\t\t<svg role=\"image\" class=\"infos__heart\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<title id=\"title\">Likes</title>\n\t\t\t\t<desc id=\"description\">Icone en forme de c\u0153ur</desc>\n\t\t\t\t<path d=\"M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z\" fill=\"#000\"/>\n\t\t\t\t</svg>\n\t\t\t</div>\n\t\t"));
-  });
-  photographer.then(function (photographer) {
-    return dom.infos.insertAdjacentHTML('beforeend', photographer[0].getPrice());
-  });
-};
+displayTotalLikes(getMediaByPhotographerId(parseDataToJson(), paramId));
+displayDailyPrice(photographers); // to init modal, lightbox and init event listener on likes elements
 
-displayTotalLikesAndPriceADayOfPhotographer(photographers, getMediaByPhotographerId(parseDataToJson(), paramId));
+setTimeout(function () {
+  Modal.modalEvents();
+  Lightbox.init();
+  likes();
+}, 1000);
+displaySelectOptions();
 /******/ })()
 ;
 //# sourceMappingURL=photographer.bundle.js.map

@@ -139,7 +139,7 @@
         margin-bottom: 30px;
         margin-top: 9px;
     }
-    &__form {
+    &__dropdown {
         display: flex;
         align-items: center;
     }
@@ -153,6 +153,7 @@
     }
     @include select;
 }
+
 .media {
     margin-bottom: 100px;
     @include media-query('bp-600') {
@@ -234,6 +235,7 @@
     &__likes {
         display: flex;
         font-weight: 500;
+        cursor: pointer;
         @include media-query('xLarge') {
             align-items: center;
         }

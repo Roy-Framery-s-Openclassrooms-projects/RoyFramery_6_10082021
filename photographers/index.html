@@ -30,17 +30,30 @@
         <div class="infos"></div>
 
         <section class="filter">
-            <form action="" class="filter__form">
+            <!-- <div class="filter__dropdown">
                 <label for="OrderBy" class="filter__label">Trier par</label>
                 <div class="filter__custom-select">
                     <select name="mediaFilter" id="OrderBy" class="filter__select">
                         <option class="filter__option" value="likes" selected>Popularité</option>
                         <option class="filter__option" value="date">Date</option>
-                        <option class="filter__option" value="title">titre</option>
+                        <option class="filter__option" value="title">Titre</option>
                     </select>
                     <span class="filter__custom-arrow"></span>
                 </div>
-            </form>
+            </div> -->
+            <div class="filter__dropdown">
+                <label for="OrderBy" class="filter__label">Trier par</label>
+                <div class="filter__custom-select">
+                    <input name="mediaFilter" id="OrderBy" class="filter__select" type="button" value="Popularité">
+                    <span class="filter__custom-arrow"></span>
+                    <div class="filter__custom-menu">
+                        <p class="filter__custom-option" value="likes">Popularité</p>
+                        <p class="filter__custom-option" value="date">Date</p>
+                        <p class="filter__custom-option" value="title">Titre</p>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
         <section class="media" role="region"></section>

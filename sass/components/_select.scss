@@ -1,8 +1,46 @@
 @use '../utilities' as *;
 
 @mixin select {
+    // &__select {
+    //     display: block;
+    //     background: $red-primary;
+    //     color: $lightgrey-secondary;
+    //     border-radius: $br-5;
+    //     width: 170px;
+    //     height: 69px;
+    //     font-size: $fs-18;
+    //     font-family: inherit;
+    //     letter-spacing: 1px;
+    //     font-weight: bold;
+    //     cursor: pointer;
+    //     border: none;
+    //     padding: 23px 15px;
+    //     &:focus {
+    //         border-radius: $br-5 $br-5 0 0;
+    //     }    
+    // }
+    // &__custom-select {
+    //     position: relative;
+    // }
+    // &__custom-arrow {
+    //     position: absolute;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     top: 0;
+    //     right: 0;
+    //     background: $red-primary;
+    //     border-radius: 0 $br-5 $br-5 0;
+    //     pointer-events: none;
+    //     height: 100%;
+    //     width: 40px;
+    //     &::before {
+    //         content: url('../../../public/images/arrow-bottom.svg');
+    //     }
+    // }
+
+
     &__select {
-        display: block;
         background: $red-primary;
         color: $lightgrey-secondary;
         border-radius: $br-5;
@@ -14,28 +52,51 @@
         font-weight: bold;
         cursor: pointer;
         border: none;
-        padding: 23px 15px;
-        &:focus {
-            border-radius: $br-5 $br-5 0 0;
-        }    
+        text-align: left;
+        padding-left: 20px;
     }
     &__custom-select {
         position: relative;
+        display: flex;
+        align-items: center;
     }
     &__custom-arrow {
+        transition: transform 300ms;
         position: absolute;
         display: flex;
         justify-content: center;
         align-items: center;
-        top: 0;
-        right: 0;
-        background: $red-primary;
-        border-radius: 0 $br-5 $br-5 0;
-        pointer-events: none;
-        height: 100%;
+        top: 1px;
+        right: 1px;
+        border-radius: $br-5;
+        height: 95%;
         width: 40px;
+        cursor: pointer;
+        margin: auto;
         &::before {
             content: url('../../../public/images/arrow-bottom.svg');
-        }
+        }  
+    }
+    &__custom-menu {
+        position: absolute;
+        top: 63px;
+        z-index: 12;
+        background: $red-primary;
+        color: $white;
+        width: 100%;
+        font-size: $fs-18;
+        font-weight: bold;
+        padding: 0 10px;
+        border-radius: 0 0 $br-5 $br-5;
+        display: none;
+        letter-spacing: 1px;
+    }
+    &__custom-option {
+        padding: 14px 0 14px 10px;
+        border-top: 1px solid $white;
+        cursor: pointer;
+    }
+    &__show {
+        display: block;
     }
 }

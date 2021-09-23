@@ -367,7 +367,7 @@ body {
     margin-top: 9px;
   }
 }
-.filter__form {
+.filter__dropdown {
   display: flex;
   align-items: center;
 }
@@ -380,7 +380,6 @@ body {
   display: none;
 }
 .filter__select {
-  display: block;
   background: #901C1C;
   color: #FAFAFA;
   border-radius: 0.4166666667em;
@@ -392,29 +391,52 @@ body {
   font-weight: bold;
   cursor: pointer;
   border: none;
-  padding: 23px 15px;
-}
-.filter__select:focus {
-  border-radius: 0.4166666667em 0.4166666667em 0 0;
+  text-align: left;
+  padding-left: 20px;
 }
 .filter__custom-select {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 .filter__custom-arrow {
+  transition: transform 300ms;
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 0;
-  right: 0;
-  background: #901C1C;
-  border-radius: 0 0.4166666667em 0.4166666667em 0;
-  pointer-events: none;
-  height: 100%;
+  top: 1px;
+  right: 1px;
+  border-radius: 0.4166666667em;
+  height: 95%;
   width: 40px;
+  cursor: pointer;
+  margin: auto;
 }
 .filter__custom-arrow::before {
   content: url("../../../public/images/arrow-bottom.svg");
+}
+.filter__custom-menu {
+  position: absolute;
+  top: 63px;
+  z-index: 12;
+  background: #901C1C;
+  color: #FFF;
+  width: 100%;
+  font-size: 1.125em;
+  font-weight: bold;
+  padding: 0 10px;
+  border-radius: 0 0 0.4166666667em 0.4166666667em;
+  display: none;
+  letter-spacing: 1px;
+}
+.filter__custom-option {
+  padding: 14px 0 14px 10px;
+  border-top: 1px solid #FFF;
+  cursor: pointer;
+}
+.filter__show {
+  display: block;
 }
 
 .media {
@@ -518,6 +540,7 @@ body {
 .media__likes {
   display: flex;
   font-weight: 500;
+  cursor: pointer;
 }
 @media only screen and (min-width: 1440px) {
   .media__likes {

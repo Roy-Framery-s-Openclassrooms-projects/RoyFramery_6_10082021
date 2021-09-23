@@ -1,8 +1,13 @@
 import {parseDataToJson, getPhotographersById, getMediaByPhotographerId} from '../src/service/api.js'
-import Lightbox from '../src/class/lightbox.js'
-import Modal from '../src/class/Modal.js'
-import Validator from '../src/class/Validator.js'
-import {inputs, containerInput} from '../src/configValidator.js'
+import Lightbox from './src/class/Lightbox.js'
+import Modal from './src/class/Modal.js'
+import Validator from './src/class/Validator.js'
+import {inputs, containerInput} from './src/configValidator.js'
+import displayTotalLikesOfPhotographer from './src/displayTotalLikes.js'
+import displayDailyPriceOfPhotographer from './src/displayDailyPrice.js'
+import increaseOrDecreaseLikesAndTotalLikes from './src/likes.js'
+import {displaySelectOptions, hideSelectedOptionInSelect} from './src/select.js'
+
 
 const dom = {
 	photographerHeader : document.querySelector('.photographer'),
@@ -10,9 +15,8 @@ const dom = {
 	media : document.querySelector('.media'),
 	form : document.querySelector('.form'),
 	modalForm : document.querySelector('.modal'),
-	select : document.querySelector('.filter__select'),
-	filterOption : document.querySelectorAll('.filter__option'),
-	infos : document.querySelector('.infos')
+	selectOption : document.querySelectorAll('.filter__custom-option'),
+	filterOption : document.querySelectorAll('.filter__custom-option'),
 }
 
 // To get Id in Url's params
@@ -28,8 +32,8 @@ photographers.then(photographers =>
 
 
 // To display media by Id and Filter
+let filter = dom.selectOption[0].getAttribute('value')
 
-let filter = dom.select.value
 /**
  * 
  * @param {number} id Id in the Url's params
@@ -41,41 +45,27 @@ let displayMediaByPhotographerById = (id, filter) => {
 	media.then(media => 
 		media.map(media => {
 			dom.media.innerHTML += media.createMedia()
-			hideSelectedOptionInSelect(filter)
 		})
 	)
+	hideSelectedOptionInSelect(filter, dom.filterOption)
 }
 
 displayMediaByPhotographerById(paramId, filter)
 
-let hideSelectedOptionInSelect = (filter) => {
-	dom.filterOption.forEach(option => {
-		if (option.value == filter) {
-			option.classList.add('filter__selected')
-		}
-	})
-}
-
-let removeClassToHideDuplicateOptionInSelect = (filter) => {
-	dom.filterOption.forEach(option => {
-		if (option.value != filter) {
-			option.classList.remove('filter__selected')
-		}
-	})
-}
-
-dom.select.addEventListener('change', () => {
-	filter = dom.select.value
-	hideSelectedOptionInSelect(filter)
-	removeClassToHideDuplicateOptionInSelect(filter)
-	displayMediaByPhotographerById(paramId, filter)
-})
-
-// to init modal and lightbox
-setTimeout(() => {
-	Modal.modalEvents()
-	Lightbox.init()
-}, 1000)
+// let removeClassToHideDuplicateOptionInSelect = (filter) => {
+// 	dom.filterOption.forEach(option => {
+// 		if (option.value != filter) {
+// 			option.classList.remove('filter__selected')
+// 		}
+// 	})
+// }
+// TODO: faire une boucle dans les option-custom pour créer des eventListener au click pour chaque élément !
+// // dom.select.addEventListener('change', () => {
+// // 	filter = dom.select.value
+// // 	hideSelectedOptionInSelect(filter)
+// // 	displayMediaByPhotographerById(paramId, filter)
+// // })
+// removeClassToHideDuplicateOptionInSelect(filter)
 
 // To validate the form
 const validator = new Validator(inputs, containerInput)
@@ -88,25 +78,17 @@ dom.form.addEventListener('click', (e) => {
 	}
 })
 
+// To fill the card about total of likes and daily price
+displayTotalLikesOfPhotographer(getMediaByPhotographerId(parseDataToJson(), paramId))
+displayDailyPriceOfPhotographer(photographers)
 
 
-let displayTotalLikesAndPriceADayOfPhotographer = (photographer, medias) => {
-	medias.then(medias => {
-		let totalLikes = 0
-		medias.map(media => {
-			totalLikes += media.likes 
-		})
-		return dom.infos.insertAdjacentHTML('beforeend', `
-			<div class="infos__likes">
-				<p class="infos__totalLikes">${totalLikes}</p>
-				<svg role="image" class="infos__heart" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<title id="title">Likes</title>
-				<desc id="description">Icone en forme de cœur</desc>
-				<path d="M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z" fill="#000"/>
-				</svg>
-			</div>
-		`)
-	})
-	photographer.then(photographer => dom.infos.insertAdjacentHTML('beforeend', photographer[0].getPrice()))
-}
-displayTotalLikesAndPriceADayOfPhotographer(photographers, getMediaByPhotographerId(parseDataToJson(), paramId))
+// to init modal, lightbox and init event listener on likes elements
+setTimeout(() => {
+	Modal.modalEvents()
+	Lightbox.init()
+	increaseOrDecreaseLikesAndTotalLikes()
+}, 1000)
+
+
+displaySelectOptions()
