@@ -43,16 +43,20 @@
         top: 27px;
         right: 27px;
         cursor: pointer;
+        text-indent: -6000px;
     }
     &__body {
         width: 90%;
         height: 780px;
         margin: 20px auto 0 auto;
     }
-    &__head, &__photographer-name {
+    &__head {
         font-size: $fs-36;
         @include media-query('large') {
             font-size: $fs-48;
+        }
+        @include media-query('xLarge') {
+            font-size: $fs-64;
         }
     }
 }

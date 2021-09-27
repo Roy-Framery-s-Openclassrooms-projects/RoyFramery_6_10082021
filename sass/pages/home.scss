@@ -61,3 +61,22 @@
 }
 
 @include photographerCard;
+
+.anchor {
+    z-index: 11;
+    display: none;
+    text-decoration: none;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #000;
+    height: 30px;
+    width: 182px;
+    background: $lightred-secondary;
+    border-radius: $br-5;
+    font-size: $fs-18;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 6px;
+    padding: 3px 0 6px 0;
+}

@@ -187,7 +187,7 @@
             margin-bottom: 30px;
         }
 
-        & a {
+        & > a {
             display: block;
         }
     }
@@ -236,13 +236,15 @@
         display: flex;
         font-weight: 500;
         cursor: pointer;
+        text-decoration: none;
+        color: $red-secondary;
         @include media-query('xLarge') {
             align-items: center;
         }
     }
     &__number {
         margin-right: 6px;
-    }
+    }    
 }
 
 // component

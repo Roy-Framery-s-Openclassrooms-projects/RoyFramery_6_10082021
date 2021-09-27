@@ -32,7 +32,7 @@ export default class Photographer {
 		return `
 		<acticle class="photographer">
 			<a href="./photographers/index.html?id=${this.id}" class="photographer__header">
-				<img class="photographer__img" src="public/images/photographers/id_photos/${this.portrait}" alt="">
+				<img class="photographer__img" src="public/images/photographers/id_photos/${this.portrait}" alt="${this.name}">
 				<h2 class="photographer__name">${this.name}</h2>
 			</a>
 			<div class="photographer__content">
@@ -48,7 +48,7 @@ export default class Photographer {
 	tagsForPhotographerHeader = () => {
 		let spanTags = ''
 		for (let i = 0; i < this.tags.length; i++) {
-			spanTags += `<span class="photographer__tag"><a href="../../index.html?tag=${this.tags[i]}">#${this.tags[i]}</a></span>`
+			spanTags += `<span class="photographer__tag"><a href="../index.html?tag=${this.tags[i]}">#${this.tags[i]}</a></span>`
 		}
 		return spanTags
 	}
@@ -65,14 +65,14 @@ export default class Photographer {
 				</div>
 				<button class="photographer__contactButton">Contactez-moi</button>
 			</div>
-			<img class="photographer__img" src="../../public/images/photographers/id_photos/${this.portrait}" alt="">
+			<img class="photographer__img" src="../public/images/photographers/id_photos/${this.portrait}" alt="${this.name}">
 		</acticle>
 		`
 	}
 
 	get photographerNameInForm() {
 		return `
-			<p class="modal__photographer-name">${this.name}</p>
+            <h1 class="modal__head" id="contact">Contactez-moi </br> ${this.name}</h1>
 		`   
 	}
 

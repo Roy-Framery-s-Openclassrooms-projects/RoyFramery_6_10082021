@@ -114,18 +114,24 @@ body {
   top: 27px;
   right: 27px;
   cursor: pointer;
+  text-indent: -6000px;
 }
 .modal__body {
   width: 90%;
   height: 780px;
   margin: 20px auto 0 auto;
 }
-.modal__head, .modal__photographer-name {
+.modal__head {
   font-size: 2.25em;
 }
 @media only screen and (min-width: 1024px) {
-  .modal__head, .modal__photographer-name {
+  .modal__head {
     font-size: 3em;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .modal__head {
+    font-size: 4em;
   }
 }
 
@@ -301,6 +307,25 @@ body {
 .photographer__tag a:hover, .photographer__tag a:focus {
   background: #901C1C;
   color: #FAFAFA;
+}
+
+.anchor {
+  z-index: 11;
+  display: none;
+  text-decoration: none;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #000;
+  height: 30px;
+  width: 182px;
+  background: #DB8876;
+  border-radius: 0.4166666667em;
+  font-size: 1.125em;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 6px;
+  padding: 3px 0 6px 0;
 }
 
 /*# sourceMappingURL=home.css.map */

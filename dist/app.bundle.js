@@ -41,7 +41,7 @@ var Photographer_Photographer = /*#__PURE__*/function () {
       var spanTags = '';
 
       for (var i = 0; i < _this.tags.length; i++) {
-        spanTags += "<span class=\"photographer__tag\"><a href=\"../../index.html?tag=".concat(_this.tags[i], "\">#").concat(_this.tags[i], "</a></span>");
+        spanTags += "<span class=\"photographer__tag\"><a href=\"../index.html?tag=".concat(_this.tags[i], "\">#").concat(_this.tags[i], "</a></span>");
       }
 
       return spanTags;
@@ -60,17 +60,17 @@ var Photographer_Photographer = /*#__PURE__*/function () {
   _createClass(Photographer, [{
     key: "photographerCard",
     get: function get() {
-      return "\n\t\t<acticle class=\"photographer\">\n\t\t\t<a href=\"./photographers/index.html?id=".concat(this.id, "\" class=\"photographer__header\">\n\t\t\t\t<img class=\"photographer__img\" src=\"public/images/photographers/id_photos/").concat(this.portrait, "\" alt=\"\">\n\t\t\t\t<h2 class=\"photographer__name\">").concat(this.name, "</h2>\n\t\t\t</a>\n\t\t\t<div class=\"photographer__content\">\n\t\t\t\t<p class=\"photographer__location\">").concat(this.city, ", ").concat(this.country, "</p>\n\t\t\t\t<p class=\"photographer__tagline\">").concat(this.tagline, "</p>\n\t\t\t\t<p class=\"photographer__price\">").concat(this.price, "\u20AC/jour</p>\n\t\t\t</div>\n\t\t\t<div class=\"photographer__tags\">") + this.tagsForPhotographersCards() + "</div>\n\t\t</acticle>\n\t\t";
+      return "\n\t\t<acticle class=\"photographer\">\n\t\t\t<a href=\"./photographers/index.html?id=".concat(this.id, "\" class=\"photographer__header\">\n\t\t\t\t<img class=\"photographer__img\" src=\"public/images/photographers/id_photos/").concat(this.portrait, "\" alt=\"").concat(this.name, "\">\n\t\t\t\t<h2 class=\"photographer__name\">").concat(this.name, "</h2>\n\t\t\t</a>\n\t\t\t<div class=\"photographer__content\">\n\t\t\t\t<p class=\"photographer__location\">").concat(this.city, ", ").concat(this.country, "</p>\n\t\t\t\t<p class=\"photographer__tagline\">").concat(this.tagline, "</p>\n\t\t\t\t<p class=\"photographer__price\">").concat(this.price, "\u20AC/jour</p>\n\t\t\t</div>\n\t\t\t<div class=\"photographer__tags\">") + this.tagsForPhotographersCards() + "</div>\n\t\t</acticle>\n\t\t";
     }
   }, {
     key: "photographerHeader",
     get: function get() {
-      return "\n\t\t<acticle class=\"photographer__profil\">\n\t\t\t<div class=\"photographer__body\">\n\t\t\t\t<div class=\"photographer__content\">\n\t\t\t\t\t<h1 class=\"photographer__name\">".concat(this.name, "</h1>\n\t\t\t\t\t<p class=\"photographer__location\">").concat(this.city, ", ").concat(this.country, "</p>\n\t\t\t\t\t<p class=\"photographer__tagline\">").concat(this.tagline, "</p>\n\t\t\t\t\t<div class=\"photographer__tags\">") + this.tagsForPhotographerHeader() + "</div>\n\t\t\t\t</div>\n\t\t\t\t<button class=\"photographer__contactButton\">Contactez-moi</button>\n\t\t\t</div>\n\t\t\t<img class=\"photographer__img\" src=\"../../public/images/photographers/id_photos/".concat(this.portrait, "\" alt=\"\">\n\t\t</acticle>\n\t\t");
+      return "\n\t\t<acticle class=\"photographer__profil\">\n\t\t\t<div class=\"photographer__body\">\n\t\t\t\t<div class=\"photographer__content\">\n\t\t\t\t\t<h1 class=\"photographer__name\">".concat(this.name, "</h1>\n\t\t\t\t\t<p class=\"photographer__location\">").concat(this.city, ", ").concat(this.country, "</p>\n\t\t\t\t\t<p class=\"photographer__tagline\">").concat(this.tagline, "</p>\n\t\t\t\t\t<div class=\"photographer__tags\">") + this.tagsForPhotographerHeader() + "</div>\n\t\t\t\t</div>\n\t\t\t\t<button class=\"photographer__contactButton\">Contactez-moi</button>\n\t\t\t</div>\n\t\t\t<img class=\"photographer__img\" src=\"../public/images/photographers/id_photos/".concat(this.portrait, "\" alt=\"").concat(this.name, "\">\n\t\t</acticle>\n\t\t");
     }
   }, {
     key: "photographerNameInForm",
     get: function get() {
-      return "\n\t\t\t<p class=\"modal__photographer-name\">".concat(this.name, "</p>\n\t\t");
+      return "\n            <h1 class=\"modal__head\" id=\"contact\">Contactez-moi </br> ".concat(this.name, "</h1>\n\t\t");
     }
   }]);
 
@@ -426,6 +426,11 @@ photographers.then(function (photographers) {
       }
     }
   });
+}); // display "go to content" link
+
+var contentLink = document.querySelector('.anchor');
+window.addEventListener('scroll', function () {
+  contentLink.style.display = 'block';
 });
 /******/ })()
 ;

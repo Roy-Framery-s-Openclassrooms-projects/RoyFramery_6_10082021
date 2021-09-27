@@ -23,11 +23,15 @@ export default class Modal {
 	}
 	// launch modal form
 	static launchModal = () => {
-		document.querySelector('.modal').style.display = 'flex'}
+		document.querySelector('.modal').style.display = 'flex'
+		document.querySelectorAll('.form__text')[0].focus()
+		console.log(document.querySelectorAll('.form__text')[0])
+	}
 
 	// close modal form
 	static closeModal = () => {
 		this.element.modal.style.display = 'none'
 		document.removeEventListener('keyup', this.onKeyUp)
+		document.querySelector('.photographer__contactButton').focus()
 	}
 }

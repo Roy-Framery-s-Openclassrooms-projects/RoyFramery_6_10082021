@@ -114,18 +114,24 @@ body {
   top: 27px;
   right: 27px;
   cursor: pointer;
+  text-indent: -6000px;
 }
 .modal__body {
   width: 90%;
   height: 780px;
   margin: 20px auto 0 auto;
 }
-.modal__head, .modal__photographer-name {
+.modal__head {
   font-size: 2.25em;
 }
 @media only screen and (min-width: 1024px) {
-  .modal__head, .modal__photographer-name {
+  .modal__head {
     font-size: 3em;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .modal__head {
+    font-size: 4em;
   }
 }
 
@@ -485,7 +491,7 @@ body {
     margin-bottom: 30px;
   }
 }
-.media__card a {
+.media__card > a {
   display: block;
 }
 .media a {
@@ -541,6 +547,8 @@ body {
   display: flex;
   font-weight: 500;
   cursor: pointer;
+  text-decoration: none;
+  color: #901C1C;
 }
 @media only screen and (min-width: 1440px) {
   .media__likes {
@@ -566,7 +574,7 @@ body {
 }
 .lightbox__button {
   cursor: pointer;
-  text-indent: 3000px;
+  text-indent: -6000px;
   transition: opacity 300ms;
   right: 0;
 }

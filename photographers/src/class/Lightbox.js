@@ -44,7 +44,7 @@ export default class Lightbox {
 		
 		// const imageContainer = document.createElement('div')
 		// to display the close button
-		imageContainer.innerHTML = '<button class="lightbox__close lightbox__button">Fermer</button>'
+		imageContainer.innerHTML = '<button class="lightbox__close lightbox__button">Close dialog</button>'
 		imageContainer.querySelector('.lightbox__close').addEventListener('click', this.close.bind(this))
 		
 		imageContainer.appendChild(loader)
@@ -157,8 +157,9 @@ export default class Lightbox {
 	buildDOM () {
 		const dom = document.createElement('div')
 		dom.classList.add('lightbox')
-		dom.innerHTML = `<button class="lightbox__next lightbox__button">Suivant</button>
-			<button class="lightbox__previous lightbox__button">Précédent</button>
+		dom.setAttribute('aria-label', 'image closeup view')
+		dom.innerHTML = `<button class="lightbox__next lightbox__button">Next image</button>
+			<button class="lightbox__previous lightbox__button">Previous image</button>
 			<div class="lightbox__container" aria-label="image closeup view">
 				<div class="lightbox__image"></div>
 			</div>`

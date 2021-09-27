@@ -32,7 +32,7 @@ class Image extends Media{
 				</a>
 				<div class="media__content">
 					<h2 class="media__title">${this.title}</h2>
-					<div class="media__likes">
+					<div class="media__likes" tabindex="0">
 						<p class="media__number">${this.likes}</p>
 						<svg role="image" class="media__heart" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<title id="title">Likes</title>
@@ -61,7 +61,7 @@ class Video extends Media{
 				</a>
 				<div class="media__content">
 					<h2 class="media__title">${this.title}</h2>
-					<div class="media__likes">
+					<div class="media__likes" tabindex="0">
 						<p class="media__number">${this.likes}</p>
 						<svg role="image" class="media__heart" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<title id="title">Likes</title>

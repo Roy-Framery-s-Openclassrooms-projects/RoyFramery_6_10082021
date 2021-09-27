@@ -41,7 +41,7 @@ var Photographer_Photographer = /*#__PURE__*/function () {
       var spanTags = '';
 
       for (var i = 0; i < _this.tags.length; i++) {
-        spanTags += "<span class=\"photographer__tag\"><a href=\"../../index.html?tag=".concat(_this.tags[i], "\">#").concat(_this.tags[i], "</a></span>");
+        spanTags += "<span class=\"photographer__tag\"><a href=\"../index.html?tag=".concat(_this.tags[i], "\">#").concat(_this.tags[i], "</a></span>");
       }
 
       return spanTags;
@@ -60,17 +60,17 @@ var Photographer_Photographer = /*#__PURE__*/function () {
   _createClass(Photographer, [{
     key: "photographerCard",
     get: function get() {
-      return "\n\t\t<acticle class=\"photographer\">\n\t\t\t<a href=\"./photographers/index.html?id=".concat(this.id, "\" class=\"photographer__header\">\n\t\t\t\t<img class=\"photographer__img\" src=\"public/images/photographers/id_photos/").concat(this.portrait, "\" alt=\"\">\n\t\t\t\t<h2 class=\"photographer__name\">").concat(this.name, "</h2>\n\t\t\t</a>\n\t\t\t<div class=\"photographer__content\">\n\t\t\t\t<p class=\"photographer__location\">").concat(this.city, ", ").concat(this.country, "</p>\n\t\t\t\t<p class=\"photographer__tagline\">").concat(this.tagline, "</p>\n\t\t\t\t<p class=\"photographer__price\">").concat(this.price, "\u20AC/jour</p>\n\t\t\t</div>\n\t\t\t<div class=\"photographer__tags\">") + this.tagsForPhotographersCards() + "</div>\n\t\t</acticle>\n\t\t";
+      return "\n\t\t<acticle class=\"photographer\">\n\t\t\t<a href=\"./photographers/index.html?id=".concat(this.id, "\" class=\"photographer__header\">\n\t\t\t\t<img class=\"photographer__img\" src=\"public/images/photographers/id_photos/").concat(this.portrait, "\" alt=\"").concat(this.name, "\">\n\t\t\t\t<h2 class=\"photographer__name\">").concat(this.name, "</h2>\n\t\t\t</a>\n\t\t\t<div class=\"photographer__content\">\n\t\t\t\t<p class=\"photographer__location\">").concat(this.city, ", ").concat(this.country, "</p>\n\t\t\t\t<p class=\"photographer__tagline\">").concat(this.tagline, "</p>\n\t\t\t\t<p class=\"photographer__price\">").concat(this.price, "\u20AC/jour</p>\n\t\t\t</div>\n\t\t\t<div class=\"photographer__tags\">") + this.tagsForPhotographersCards() + "</div>\n\t\t</acticle>\n\t\t";
     }
   }, {
     key: "photographerHeader",
     get: function get() {
-      return "\n\t\t<acticle class=\"photographer__profil\">\n\t\t\t<div class=\"photographer__body\">\n\t\t\t\t<div class=\"photographer__content\">\n\t\t\t\t\t<h1 class=\"photographer__name\">".concat(this.name, "</h1>\n\t\t\t\t\t<p class=\"photographer__location\">").concat(this.city, ", ").concat(this.country, "</p>\n\t\t\t\t\t<p class=\"photographer__tagline\">").concat(this.tagline, "</p>\n\t\t\t\t\t<div class=\"photographer__tags\">") + this.tagsForPhotographerHeader() + "</div>\n\t\t\t\t</div>\n\t\t\t\t<button class=\"photographer__contactButton\">Contactez-moi</button>\n\t\t\t</div>\n\t\t\t<img class=\"photographer__img\" src=\"../../public/images/photographers/id_photos/".concat(this.portrait, "\" alt=\"\">\n\t\t</acticle>\n\t\t");
+      return "\n\t\t<acticle class=\"photographer__profil\">\n\t\t\t<div class=\"photographer__body\">\n\t\t\t\t<div class=\"photographer__content\">\n\t\t\t\t\t<h1 class=\"photographer__name\">".concat(this.name, "</h1>\n\t\t\t\t\t<p class=\"photographer__location\">").concat(this.city, ", ").concat(this.country, "</p>\n\t\t\t\t\t<p class=\"photographer__tagline\">").concat(this.tagline, "</p>\n\t\t\t\t\t<div class=\"photographer__tags\">") + this.tagsForPhotographerHeader() + "</div>\n\t\t\t\t</div>\n\t\t\t\t<button class=\"photographer__contactButton\">Contactez-moi</button>\n\t\t\t</div>\n\t\t\t<img class=\"photographer__img\" src=\"../public/images/photographers/id_photos/".concat(this.portrait, "\" alt=\"").concat(this.name, "\">\n\t\t</acticle>\n\t\t");
     }
   }, {
     key: "photographerNameInForm",
     get: function get() {
-      return "\n\t\t\t<p class=\"modal__photographer-name\">".concat(this.name, "</p>\n\t\t");
+      return "\n            <h1 class=\"modal__head\" id=\"contact\">Contactez-moi </br> ".concat(this.name, "</h1>\n\t\t");
     }
   }]);
 
@@ -147,7 +147,7 @@ var Media_Image = /*#__PURE__*/function (_Media) {
   Media_createClass(Image, [{
     key: "createImage",
     get: function get() {
-      return "\n\t\t\t<artcle class=\"media__card\">\n\t\t\t\t<a href=\"../public/images/photographers/photos/".concat(this.filename, "\">\n\t\t\t\t\t<img src=\"../public/images/photographers/photos/").concat(this.filename, "\" class=\"media__thumb\">\n\t\t\t\t</a>\n\t\t\t\t<div class=\"media__content\">\n\t\t\t\t\t<h2 class=\"media__title\">").concat(this.title, "</h2>\n\t\t\t\t\t<div class=\"media__likes\">\n\t\t\t\t\t\t<p class=\"media__number\">").concat(this.likes, "</p>\n\t\t\t\t\t\t<svg role=\"image\" class=\"media__heart\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t\t\t\t<title id=\"title\">Likes</title>\n\t\t\t\t\t\t\t<desc id=\"description\">Icone en forme de c\u0153ur</desc>\n\t\t\t\t\t\t\t<path d=\"M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z\" fill=\"#911C1C\"/>\n\t\t\t\t\t\t</svg>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</artcle>");
+      return "\n\t\t\t<artcle class=\"media__card\">\n\t\t\t\t<a href=\"../public/images/photographers/photos/".concat(this.filename, "\">\n\t\t\t\t\t<img src=\"../public/images/photographers/photos/").concat(this.filename, "\" class=\"media__thumb\">\n\t\t\t\t</a>\n\t\t\t\t<div class=\"media__content\">\n\t\t\t\t\t<h2 class=\"media__title\">").concat(this.title, "</h2>\n\t\t\t\t\t<div class=\"media__likes\" tabindex=\"0\">\n\t\t\t\t\t\t<p class=\"media__number\">").concat(this.likes, "</p>\n\t\t\t\t\t\t<svg role=\"image\" class=\"media__heart\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t\t\t\t<title id=\"title\">Likes</title>\n\t\t\t\t\t\t\t<desc id=\"description\">Icone en forme de c\u0153ur</desc>\n\t\t\t\t\t\t\t<path d=\"M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z\" fill=\"#911C1C\"/>\n\t\t\t\t\t\t</svg>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</artcle>");
     }
   }]);
 
@@ -168,7 +168,7 @@ var Video = /*#__PURE__*/function (_Media2) {
   Media_createClass(Video, [{
     key: "createVideo",
     get: function get() {
-      return "\n\t\t\t<artcle class=\"media__card\">\n\t\t\t\t<a href=\"../public/images/photographers/videos/".concat(this.filename, "\" >\n\t\t\t\t<div class=\"media__playIcon\"></div>\n\t\t\t\t\t<video class=\"media__thumb\">\n\t\t\t\t\t\t<source src=\"../public/images/photographers/videos/").concat(this.filename, "\"\n\t\t\t\t\t\ttype=\"video/mp4\">\n\t\t\t\t\t</video>\n\t\t\t\t</a>\n\t\t\t\t<div class=\"media__content\">\n\t\t\t\t\t<h2 class=\"media__title\">").concat(this.title, "</h2>\n\t\t\t\t\t<div class=\"media__likes\">\n\t\t\t\t\t\t<p class=\"media__number\">").concat(this.likes, "</p>\n\t\t\t\t\t\t<svg role=\"image\" class=\"media__heart\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t\t\t\t<title id=\"title\">Likes</title>\n\t\t\t\t\t\t\t<desc id=\"description\">Icone en forme de c\u0153ur</desc>\n\t\t\t\t\t\t\t<path d=\"M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z\" fill=\"#911C1C\"/>\n\t\t\t\t\t\t</svg>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</artcle>");
+      return "\n\t\t\t<artcle class=\"media__card\">\n\t\t\t\t<a href=\"../public/images/photographers/videos/".concat(this.filename, "\" >\n\t\t\t\t<div class=\"media__playIcon\"></div>\n\t\t\t\t\t<video class=\"media__thumb\">\n\t\t\t\t\t\t<source src=\"../public/images/photographers/videos/").concat(this.filename, "\"\n\t\t\t\t\t\ttype=\"video/mp4\">\n\t\t\t\t\t</video>\n\t\t\t\t</a>\n\t\t\t\t<div class=\"media__content\">\n\t\t\t\t\t<h2 class=\"media__title\">").concat(this.title, "</h2>\n\t\t\t\t\t<div class=\"media__likes\" tabindex=\"0\">\n\t\t\t\t\t\t<p class=\"media__number\">").concat(this.likes, "</p>\n\t\t\t\t\t\t<svg role=\"image\" class=\"media__heart\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t\t\t\t<title id=\"title\">Likes</title>\n\t\t\t\t\t\t\t<desc id=\"description\">Icone en forme de c\u0153ur</desc>\n\t\t\t\t\t\t\t<path d=\"M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z\" fill=\"#911C1C\"/>\n\t\t\t\t\t\t</svg>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</artcle>");
     }
   }]);
 
@@ -495,7 +495,7 @@ var Lightbox = /*#__PURE__*/function () {
       loader.classList.add('lightbox__loader'); // const imageContainer = document.createElement('div')
       // to display the close button
 
-      imageContainer.innerHTML = '<button class="lightbox__close lightbox__button">Fermer</button>';
+      imageContainer.innerHTML = '<button class="lightbox__close lightbox__button">Close dialog</button>';
       imageContainer.querySelector('.lightbox__close').addEventListener('click', this.close.bind(this));
       imageContainer.appendChild(loader); // container.appendChild(imageContainer)
 
@@ -634,7 +634,8 @@ var Lightbox = /*#__PURE__*/function () {
     value: function buildDOM() {
       var dom = document.createElement('div');
       dom.classList.add('lightbox');
-      dom.innerHTML = "<button class=\"lightbox__next lightbox__button\">Suivant</button>\n\t\t\t<button class=\"lightbox__previous lightbox__button\">Pr\xE9c\xE9dent</button>\n\t\t\t<div class=\"lightbox__container\" aria-label=\"image closeup view\">\n\t\t\t\t<div class=\"lightbox__image\"></div>\n\t\t\t</div>";
+      dom.setAttribute('aria-label', 'image closeup view');
+      dom.innerHTML = "<button class=\"lightbox__next lightbox__button\">Next image</button>\n\t\t\t<button class=\"lightbox__previous lightbox__button\">Previous image</button>\n\t\t\t<div class=\"lightbox__container\" aria-label=\"image closeup view\">\n\t\t\t\t<div class=\"lightbox__image\"></div>\n\t\t\t</div>";
       dom.querySelector('.lightbox__next').addEventListener('click', this.next.bind(this));
       dom.querySelector('.lightbox__previous').addEventListener('click', this.previous.bind(this));
       return dom;
@@ -710,11 +711,14 @@ Modal_defineProperty(Modal, "modalEvents", function () {
 
 Modal_defineProperty(Modal, "launchModal", function () {
   document.querySelector('.modal').style.display = 'flex';
+  document.querySelectorAll('.form__text')[0].focus();
+  console.log(document.querySelectorAll('.form__text')[0]);
 });
 
 Modal_defineProperty(Modal, "closeModal", function () {
   Modal.element.modal.style.display = 'none';
   document.removeEventListener('keyup', Modal.onKeyUp);
+  document.querySelector('.photographer__contactButton').focus();
 });
 
 
@@ -857,20 +861,38 @@ var displayDailyPriceOfPhotographer = function displayDailyPriceOfPhotographer(p
 var increaseOrDecreaseLikesAndTotalLikes = function increaseOrDecreaseLikesAndTotalLikes() {
   var likesElements = document.querySelectorAll('.media__likes');
   likesElements.forEach(function (like) {
-    return like.onclick = function () {
-      var totalLikes = document.querySelector('.infos__totalLikes');
+    ['click', 'keyup'].forEach(function (event) {
+      return like.addEventListener(event, function (e) {
+        var totalLikes = document.querySelector('.infos__totalLikes');
 
-      if (!like.classList.contains('media__liked')) {
-        ++totalLikes.innerText;
-        ++like.children[0].innerText;
-        like.classList.add('media__liked');
-      } else {
-        --totalLikes.innerText;
-        --like.children[0].innerText;
-        like.classList.remove('media__liked');
-      }
-    };
+        if (e.key == 'Enter') {
+          if (!like.classList.contains('media__liked')) {
+            increaseLikesAndTotalLikes(totalLikes, like);
+          } else {
+            decreaseLikesAndTotalLikes(totalLikes, like);
+          }
+        } else if (e.type == 'click') {
+          if (!like.classList.contains('media__liked')) {
+            increaseLikesAndTotalLikes(totalLikes, like);
+          } else {
+            decreaseLikesAndTotalLikes(totalLikes, like);
+          }
+        }
+      });
+    });
   });
+};
+
+var increaseLikesAndTotalLikes = function increaseLikesAndTotalLikes(totalLikes, like) {
+  ++totalLikes.innerText;
+  ++like.children[0].innerText;
+  like.classList.add('media__liked');
+};
+
+var decreaseLikesAndTotalLikes = function decreaseLikesAndTotalLikes(totalLikes, like) {
+  --totalLikes.innerText;
+  --like.children[0].innerText;
+  like.classList.remove('media__liked');
 };
 
 /* harmony default export */ const likes = (increaseOrDecreaseLikesAndTotalLikes);
@@ -878,25 +900,31 @@ var increaseOrDecreaseLikesAndTotalLikes = function increaseOrDecreaseLikesAndTo
 var displaySelectOptions = function displaySelectOptions() {
   var select = document.querySelector('.filter__custom-select');
   select.addEventListener('click', function () {
-    var select = document.querySelector('.filter__custom-menu');
+    var option = document.querySelector('.filter__custom-menu');
     var arrow = document.querySelector('.filter__custom-arrow', 'before');
 
-    if (!select.classList.contains('filter__show')) {
-      select.classList.add('filter__show');
+    if (!option.classList.contains('filter__show')) {
+      option.classList.add('filter__show');
       arrow.style.transform = 'rotate(180deg)';
     } else {
       arrow.style.transform = 'rotate(0deg)';
-      select.classList.remove('filter__show');
+      option.classList.remove('filter__show');
     }
   });
 };
 
 var hideSelectedOptionInSelect = function hideSelectedOptionInSelect(filter, dom) {
   dom.forEach(function (option) {
-    // console.log(option.classList.add('hello'))
     if (option.getAttribute('value') == filter) {
       option.classList.add('filter__selected');
-      console.log(option.classList);
+    }
+  });
+};
+
+var removeClassToHideDuplicateOptionInSelect = function removeClassToHideDuplicateOptionInSelect(filter, dom) {
+  dom.forEach(function (option) {
+    if (option.getAttribute('value') != filter) {
+      option.classList.remove('filter__selected');
     }
   });
 };
@@ -913,13 +941,14 @@ var hideSelectedOptionInSelect = function hideSelectedOptionInSelect(filter, dom
 
 
 var dom = {
+  inputSelect: document.querySelector('.filter__select'),
   photographerHeader: document.querySelector('.photographer'),
   nameInForm: document.querySelector('.modal__head'),
   media: document.querySelector('.media'),
   form: document.querySelector('.form'),
   modalForm: document.querySelector('.modal'),
-  selectOption: document.querySelectorAll('.filter__custom-option'),
-  filterOption: document.querySelectorAll('.filter__custom-option')
+  selectMenu: document.querySelector('.filter__custom-menu'),
+  selectOption: document.querySelectorAll('.filter__custom-option')
 }; // To get Id in Url's params
 
 var queryString = window.location.search;
@@ -929,7 +958,8 @@ var paramId = urlParams.get('id'); // To display photographer header
 var photographers = getPhotographersById(parseDataToJson(), paramId);
 photographers.then(function (photographers) {
   return photographers.map(function (photographer) {
-    return dom.photographerHeader.innerHTML = photographer.photographerHeader;
+    dom.photographerHeader.innerHTML = photographer.photographerHeader;
+    dom.form.insertAdjacentHTML('beforebegin', photographer.photographerNameInForm);
   });
 }); // To display media by Id and Filter
 
@@ -948,24 +978,32 @@ var displayMediaByPhotographerById = function displayMediaByPhotographerById(id,
       dom.media.innerHTML += media.createMedia();
     });
   });
-  hideSelectedOptionInSelect(filter, dom.filterOption);
+  hideSelectedOptionInSelect(filter, dom.selectOption);
 };
 
-displayMediaByPhotographerById(paramId, filter); // let removeClassToHideDuplicateOptionInSelect = (filter) => {
-// 	dom.filterOption.forEach(option => {
-// 		if (option.value != filter) {
-// 			option.classList.remove('filter__selected')
-// 		}
-// 	})
-// }
-// TODO: faire une boucle dans les option-custom pour créer des eventListener au click pour chaque élément !
-// // dom.select.addEventListener('change', () => {
-// // 	filter = dom.select.value
-// // 	hideSelectedOptionInSelect(filter)
-// // 	displayMediaByPhotographerById(paramId, filter)
-// // })
-// removeClassToHideDuplicateOptionInSelect(filter)
-// To validate the form
+displayMediaByPhotographerById(paramId, filter); // Display Media by creating listener on select's options
+// And by changing value of the select input
+
+dom.selectOption.forEach(function (option) {
+  return option.addEventListener('click', function () {
+    filter = option.getAttribute('value');
+    displayMediaByPhotographerById(paramId, filter);
+    removeClassToHideDuplicateOptionInSelect(filter, dom.selectOption);
+    dom.inputSelect.setAttribute('value', option.innerText);
+  });
+});
+dom.selectOption.forEach(function (option) {
+  return option.addEventListener('keyup', function (e) {
+    if (e.key == 'Enter') {
+      filter = option.getAttribute('value');
+      displayMediaByPhotographerById(paramId, filter);
+      removeClassToHideDuplicateOptionInSelect(filter, dom.selectOption);
+      dom.inputSelect.setAttribute('value', option.innerText);
+      dom.inputSelect.focus();
+      dom.selectMenu.classList.remove('filter__show');
+    }
+  });
+}); // To validate the form
 
 var validator = new Validator(inputs, containerInput);
 dom.form.addEventListener('click', function (e) {

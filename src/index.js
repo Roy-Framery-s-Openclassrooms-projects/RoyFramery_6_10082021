@@ -32,3 +32,11 @@ photographers.then(photographers => {
 		}
 	})
 })
+
+// display "go to content" link
+
+const contentLink = document.querySelector('.anchor')
+
+window.addEventListener('scroll', () => {
+	contentLink.style.display = 'block'
+})
