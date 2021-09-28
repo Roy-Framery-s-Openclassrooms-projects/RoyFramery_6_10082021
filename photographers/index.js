@@ -54,14 +54,21 @@ let displayMediaByPhotographerById = (id, filter) => {
 
 displayMediaByPhotographerById(paramId, filter)
 
-// Display Media by creating listener on select's options
-// And by changing value of the select input
+// Change the order of Media by creating a click listener on select's options
+// And by changing value of the select 
 dom.selectOption.forEach(option => option.addEventListener('click', () => {
 	filter = option.getAttribute('value')
 	displayMediaByPhotographerById(paramId, filter)
 	removeClassToHideDuplicateOptionInSelect(filter, dom.selectOption)
 	dom.inputSelect.setAttribute('value', option.innerText) 
+	// need to initialize the lightbox after the order of the media
+	setTimeout(() => {
+		Lightbox.init()
+	}, 1000)
 }))
+
+// Change the order of Media by creating a keyup listener on select's options
+// And by changing value of the select 
 dom.selectOption.forEach(option => option.addEventListener('keyup', (e) => {
 	if (e.key == 'Enter') {
 		filter = option.getAttribute('value')
@@ -71,6 +78,10 @@ dom.selectOption.forEach(option => option.addEventListener('keyup', (e) => {
 		dom.inputSelect.focus()
 		dom.selectMenu.classList.remove('filter__show')
 	}
+	// need to initialize the lightbox after the order of the media
+	setTimeout(() => {
+		Lightbox.init()
+	}, 1000)
 }))
 
 // To validate the form
@@ -78,6 +89,7 @@ const validator = new Validator(inputs, containerInput)
 
 dom.form.addEventListener('click', (e) => {
 	e.preventDefault()
+	// if the condition return true, then reset the form and close the modal
 	if (validator.launchValidation()) {
 		dom.form.reset()
 		dom.modalForm.style.display ='none'
@@ -89,11 +101,11 @@ displayTotalLikesOfPhotographer(getMediaByPhotographerId(parseDataToJson(), para
 displayDailyPriceOfPhotographer(photographers)
 
 
-// to init modal, lightbox and init event listener on likes elements
+// to init modal, lightbox, select event and init event listener on likes elements
 setTimeout(() => {
 	Modal.modalEvents()
 	Lightbox.init()
 	increaseOrDecreaseLikesAndTotalLikes()
+	displaySelectOptions()
 }, 1000)
 
-displaySelectOptions()

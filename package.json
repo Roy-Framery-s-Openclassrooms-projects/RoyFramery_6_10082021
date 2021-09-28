@@ -8,7 +8,8 @@
     "compressed": "sass ./sass/:./public/css/ --style=compressed --no-source-map",
     "expanded": "sass ./sass/:./public/css/ --style=expanded",
     "dev": "webpack --env dev=dev",
-    "prod": "webpack"
+    "prod": "webpack",
+    "doc" : "jsdoc -c jsdoc.json"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "babel-polyfill": "^6.26.0",
     "eslint": "^7.32.0",
     "eslint-webpack-plugin": "^3.0.1",
+    "jsdoc": "^3.6.7",
     "sass": "^1.37.5",
     "terser-webpack-plugin": "^5.1.4",
     "webpack": "^5.50.0",

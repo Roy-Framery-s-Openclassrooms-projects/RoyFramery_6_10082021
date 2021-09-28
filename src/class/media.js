@@ -1,4 +1,15 @@
+/**
+ * Class to create a media
+ */
 export default class Media {
+	/**
+	 * 
+	 * @param {string} title The title of the media
+	 * @param {string} filename The filnename with the extension of the media
+	 * @param {number} likes The number of like of the media
+	 * @param {string} typeMedia The type the media (image/video)
+	 * @param {Date} date The date of the media 
+	 */
 	constructor( title, filename, likes, typeMedia, date) {
 		this.title = title
 		this.filename = filename
@@ -7,6 +18,10 @@ export default class Media {
 		this.date = date
 	}
 	
+	/**
+	 * Create a media according to its type (image or video)
+	 * @returns an instance of a video or image 
+	 */
 	createMedia() {
 		switch (this.typeMedia) {
 		case 'image':
@@ -20,10 +35,23 @@ export default class Media {
 	}
 }
 
+/**
+ * Create a class image
+ */
 class Image extends Media{
+	/**
+	 * 
+	 * @param {String} title The title of the image given by the instantiation of the media class
+	 * @param {string} filename The filname of the image given by the instantiation of the media class
+	 * @param {number} likes The number of like of the image given by the instantiation of the media class
+	 */
 	constructor( title, filename, likes) {
 		super(title, filename, likes)
 	}
+	/**
+	 * Construct the Dom Element of an image
+	 * @returns A string that contain the Dom Elements of the image
+	 */
 	get createImage() {
 		return `
 			<artcle class="media__card">
@@ -46,9 +74,21 @@ class Image extends Media{
 }
 
 class Video extends Media{
+	/**
+	 * 
+	 * @param {String} title The title of the video given by the instantiation of the media class
+	 * @param {string} filename The filname of the video given by the instantiation of the media class
+	 * @param {number} likes The number of like of the video given by the instantiation of the media class
+	 */
+
 	constructor( title, filename, likes) {
 		super(title, filename, likes)
 	}
+
+	/**
+	 * Construct the Dom Element of a video
+	 * @returns A string that contain the Dom Elements of the video
+	 */
 	get createVideo() {
 		return `
 			<artcle class="media__card">

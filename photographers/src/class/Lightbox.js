@@ -125,11 +125,9 @@ export default class Lightbox {
 	next (e) {
 		e.preventDefault()
 		let position = this.media.findIndex(media => media === this.url)
-		if (position === this.media.length - 1) position = -1
+		if (position === this.media.length - 1) { position = -1 }
 		this.index = this.index + 1
-		if(this.index == 10) {
-			this.index = 0
-		}
+		if(this.index == 10) { this.index = 0 }
 		this.loadMedia(this.media[position + 1], this.titles, this.index )
 	}
 
@@ -140,11 +138,9 @@ export default class Lightbox {
 	previous (e) {
 		e.preventDefault()
 		let position = this.media.findIndex(media => media === this.url)
-		if (position === 0) position = this.media.length
+		if (position === 0) { position = this.media.length }
 		this.index = this.index - 1
-		if(this.index == -1) {
-			this.index = this.media.length - 1
-		}
+		if(this.index == -1) { this.index = this.media.length - 1 }
 		this.loadMedia(this.media[position - 1], this.titles, this.index)
 	}
 

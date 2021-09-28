@@ -1,6 +1,5 @@
 import {parseDataToJson, getPhotographers, getTagsFromPhotographers} from './service/api.js'
 
-
 const dom = {
 	photographersContainer : document.querySelector('.photographers'),
 	filtersList : document.querySelector('.header__filter-list')
@@ -9,7 +8,10 @@ const dom = {
 // to display tags in the header
 const tags = getTagsFromPhotographers(parseDataToJson())
 tags.then( tags =>
-	tags.map( tag => dom.filtersList.insertAdjacentHTML('beforeend', tag.displayFilter))
+	tags.map( tag => {
+		// displatFilter is a getter of Filter Class
+		dom.filtersList.insertAdjacentHTML('beforeend', tag.displayFilter)
+	})
 )
 
 // get tag param to filter
@@ -21,11 +23,17 @@ const paramTag = urlParams.get('tag')
 const photographers = getPhotographers(parseDataToJson())
 photographers.then(photographers => {
 	photographers.map(photographer => {
+		// if there are not a tag in URL's parameter, then it insert the photographers' cards
 		if (paramTag == null) {
 			dom.photographersContainer.insertAdjacentHTML('beforeend', photographer.photographerCard)
-		} else {
+		} 
+		// else if there are a tag in URL's parameter, then create a loop to browse the tags of each photographer
+		else {
 			for (const tag of photographer.tags) {
+				// if the paramter tag in the URL matches with on of the photographer's tag, 
+				// then insert the photographers' cards
 				if (paramTag == tag) {
+					// phototographerCard is a getter of the Photographer Class
 					dom.photographersContainer.insertAdjacentHTML('beforeend', photographer.photographerCard)
 				}
 			}
@@ -33,10 +41,11 @@ photographers.then(photographers => {
 	})
 })
 
-// display "go to content" link
-
+// display "go to content" link on scroll
 const contentLink = document.querySelector('.anchor')
-
 window.addEventListener('scroll', () => {
-	contentLink.style.display = 'block'
+	// Displays the link only if the user's screen width is greater than 1023
+	if (document.documentElement.clientWidth > 1023) {
+		contentLink.style.display = 'block'
+	}
 })

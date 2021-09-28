@@ -11,7 +11,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+/**
+ * Class to create a photographer
+ */
 var Photographer_Photographer = /*#__PURE__*/function () {
+  /**
+   * 
+   * @param {string} name name of the photographer
+   * @param {string} city City where the photographer live
+   * @param {string} country Country where the photographer live
+   * @param {string[]} tags An array an array of tags 
+   * @param {string} tagline The tagline of the photographer
+   * @param {number} price The price dayliprice of the photographer
+   * @param {string} portrait The file name with the extension of his portrait
+   * @param {number} id The id of the photographer
+   */
   function Photographer(name, city, country, tags, tagline, price, portrait, id) {
     var _this = this;
 
@@ -59,18 +73,38 @@ var Photographer_Photographer = /*#__PURE__*/function () {
 
   _createClass(Photographer, [{
     key: "photographerCard",
-    get: function get() {
+    get:
+    /**
+     * To construct a photographer's card on home page
+     * @returns A string that correspond to the DOM elements for a photographer's card on home page
+     */
+    function get() {
       return "\n\t\t<acticle class=\"photographer\">\n\t\t\t<a href=\"./photographers/index.html?id=".concat(this.id, "\" class=\"photographer__header\">\n\t\t\t\t<img class=\"photographer__img\" src=\"public/images/photographers/id_photos/").concat(this.portrait, "\" alt=\"").concat(this.name, "\">\n\t\t\t\t<h2 class=\"photographer__name\">").concat(this.name, "</h2>\n\t\t\t</a>\n\t\t\t<div class=\"photographer__content\">\n\t\t\t\t<p class=\"photographer__location\">").concat(this.city, ", ").concat(this.country, "</p>\n\t\t\t\t<p class=\"photographer__tagline\">").concat(this.tagline, "</p>\n\t\t\t\t<p class=\"photographer__price\">").concat(this.price, "\u20AC/jour</p>\n\t\t\t</div>\n\t\t\t<div class=\"photographer__tags\">") + this.tagsForPhotographersCards() + "</div>\n\t\t</acticle>\n\t\t";
     }
+    /**
+     * Construct all tags in the photographer's card on photographer's profil page
+     * @returns A string that contain all Dom Elements for each tag
+     */
+
   }, {
     key: "photographerHeader",
-    get: function get() {
+    get:
+    /**
+     * To construct a photographer's card on photographer's profil page
+     * @returns A string that correspond to the DOM elements for a photographer's card on photographer's profil page
+     */
+    function get() {
       return "\n\t\t<acticle class=\"photographer__profil\">\n\t\t\t<div class=\"photographer__body\">\n\t\t\t\t<div class=\"photographer__content\">\n\t\t\t\t\t<h1 class=\"photographer__name\">".concat(this.name, "</h1>\n\t\t\t\t\t<p class=\"photographer__location\">").concat(this.city, ", ").concat(this.country, "</p>\n\t\t\t\t\t<p class=\"photographer__tagline\">").concat(this.tagline, "</p>\n\t\t\t\t\t<div class=\"photographer__tags\">") + this.tagsForPhotographerHeader() + "</div>\n\t\t\t\t</div>\n\t\t\t\t<button class=\"photographer__contactButton\">Contactez-moi</button>\n\t\t\t</div>\n\t\t\t<img class=\"photographer__img\" src=\"../public/images/photographers/id_photos/".concat(this.portrait, "\" alt=\"").concat(this.name, "\">\n\t\t</acticle>\n\t\t");
     }
+    /**
+     *  Construct the Dom Element withe the photographer's name for the contact form on photographer's profil page
+     * @returns A string that contain the DOM element with the photographer's name
+     */
+
   }, {
     key: "photographerNameInForm",
     get: function get() {
-      return "\n            <h1 class=\"modal__head\" id=\"contact\">Contactez-moi </br> ".concat(this.name, "</h1>\n\t\t");
+      return "\n\t\t\t<h1 class=\"modal__head\" id=\"contact\">Contactez-moi </br> ".concat(this.name, "</h1>\n\t\t");
     }
   }]);
 
@@ -85,12 +119,24 @@ function Filter_defineProperties(target, props) { for (var i = 0; i < props.leng
 
 function Filter_createClass(Constructor, protoProps, staticProps) { if (protoProps) Filter_defineProperties(Constructor.prototype, protoProps); if (staticProps) Filter_defineProperties(Constructor, staticProps); return Constructor; }
 
+/**
+ * Class to create a filter
+ */
 var Filter = /*#__PURE__*/function () {
+  /**
+   * 
+   * @param {string} filter 
+   */
   function Filter(filter) {
     Filter_classCallCheck(this, Filter);
 
     this.filter = filter;
   }
+  /**
+   * To construct the Dom Element of a tag in the header of the Home page
+   * @return A string that correspond to a Dom Element that contain the filter
+   */
+
 
   Filter_createClass(Filter, [{
     key: "displayFilter",
@@ -117,6 +163,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+/**
+ * Function that get Data of an URL and parsed as Json format
+ * @returns parsed data as json format
+ */
 
 var parseDataToJson = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
@@ -154,25 +204,34 @@ var parseDataToJson = /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }();
+/**
+ * Function that waiting parsed Data as Json format 
+ * and uses a loop to instantiate a new Photographer class for each photographer
+ * @param {object} jsonData parsed data as json format
+ * @returns an array of instantiations of the Photographer class
+ */
 
-var getMedias = /*#__PURE__*/(/* unused pure expression or super */ null && (function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(data) {
-    var datas, medias;
+
+var getPhotographers = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(jsonData) {
+    var data, photographers, photographersArray;
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return data;
+            return jsonData;
 
           case 2:
-            datas = _context2.sent;
-            medias = datas.media;
-            medias.map(function (data) {
-              return data;
+            data = _context2.sent;
+            photographers = data.photographers;
+            photographersArray = [];
+            photographers.map(function (data) {
+              photographersArray.push(new Photographer_Photographer(data.name, data.city, data.country, data.tags, data.tagline, data.price, data.portrait, data.id));
             });
+            return _context2.abrupt("return", photographersArray);
 
-          case 5:
+          case 7:
           case "end":
             return _context2.stop();
         }
@@ -180,14 +239,22 @@ var getMedias = /*#__PURE__*/(/* unused pure expression or super */ null && (fun
     }, _callee2);
   }));
 
-  return function getMedias(_x) {
+  return function getPhotographers(_x) {
     return _ref2.apply(this, arguments);
   };
-}()));
+}();
+/**
+ * Function that waiting parsed Data as Json format 
+ * and uses a loop to instantiate a new Photographer class according to the photographer's id
+ * @param {object} jsonData parsed data as json format
+ * @param {number} id The id of the photographer get in URL's parameter
+ * @returns An instantiations of the Photographer class
+ */
 
-var getPhotographers = /*#__PURE__*/function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(jsonData) {
-    var data, photographers, photographersArray;
+
+var getPhotographersById = /*#__PURE__*/(/* unused pure expression or super */ null && (function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(jsonData, id) {
+    var data, photographers, photographerArray;
     return regeneratorRuntime.wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
@@ -198,11 +265,14 @@ var getPhotographers = /*#__PURE__*/function () {
           case 2:
             data = _context3.sent;
             photographers = data.photographers;
-            photographersArray = [];
+            photographerArray = [];
             photographers.map(function (data) {
-              photographersArray.push(new Photographer_Photographer(data.name, data.city, data.country, data.tags, data.tagline, data.price, data.portrait, data.id));
+              // if the Id in URL's parameter is the same as the photographer's id, then create an instance of Photographer
+              if (id == data.id) {
+                photographerArray.push(new Photographer(data.name, data.city, data.country, data.tags, data.tagline, data.price, data.portrait, data.id));
+              }
             });
-            return _context3.abrupt("return", photographersArray);
+            return _context3.abrupt("return", photographerArray);
 
           case 7:
           case "end":
@@ -212,14 +282,22 @@ var getPhotographers = /*#__PURE__*/function () {
     }, _callee3);
   }));
 
-  return function getPhotographers(_x2) {
+  return function getPhotographersById(_x2, _x3) {
     return _ref3.apply(this, arguments);
   };
-}();
+}()));
+/**
+ * Function that waiting parsed Data as Json format
+ * and instantiates new filter class for each tags
+ * @param {object} jsonData parsed data as json format
+ * @returns An array of instantiations of the filter class
+ */
 
-var getPhotographersById = /*#__PURE__*/(/* unused pure expression or super */ null && (function () {
-  var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(jsonData, id) {
-    var data, photographers, photographerArray;
+
+var getTagsFromPhotographers = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(jsonData) {
+    var data, photographers, filters, _iterator, _step, photographer, _iterator2, _step2, tag, tags;
+
     return regeneratorRuntime.wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
@@ -230,42 +308,8 @@ var getPhotographersById = /*#__PURE__*/(/* unused pure expression or super */ n
           case 2:
             data = _context4.sent;
             photographers = data.photographers;
-            photographerArray = [];
-            photographers.map(function (data) {
-              if (id == data.id) {
-                photographerArray.push(new Photographer(data.name, data.city, data.country, data.tags, data.tagline, data.price, data.portrait, data.id));
-              }
-            });
-            return _context4.abrupt("return", photographerArray);
+            filters = []; // Loop to remove duplicate tags
 
-          case 7:
-          case "end":
-            return _context4.stop();
-        }
-      }
-    }, _callee4);
-  }));
-
-  return function getPhotographersById(_x3, _x4) {
-    return _ref4.apply(this, arguments);
-  };
-}()));
-
-var getTagsFromPhotographers = /*#__PURE__*/function () {
-  var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(photographersData) {
-    var data, photographers, filters, _iterator, _step, photographer, _iterator2, _step2, tag, tags;
-
-    return regeneratorRuntime.wrap(function _callee5$(_context5) {
-      while (1) {
-        switch (_context5.prev = _context5.next) {
-          case 0:
-            _context5.next = 2;
-            return photographersData;
-
-          case 2:
-            data = _context5.sent;
-            photographers = data.photographers;
-            filters = [];
             _iterator = _createForOfIteratorHelper(photographers);
 
             try {
@@ -293,13 +337,59 @@ var getTagsFromPhotographers = /*#__PURE__*/function () {
               _iterator.f();
             }
 
-            tags = [];
+            tags = []; // Loop to create instanciation of filter for each tags
+
             filters.map(function (filter) {
               return tags.push(new Filter(filter));
             });
-            return _context5.abrupt("return", tags);
+            return _context4.abrupt("return", tags);
 
           case 10:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+
+  return function getTagsFromPhotographers(_x4) {
+    return _ref4.apply(this, arguments);
+  };
+}();
+/**
+ * Function that waiting parsed Data as Json format 
+ * and uses a loop to instantiate a new media class according to the media's id
+ * @param {object} jsonData parsed data as json format
+ * @param {number} id The id of the photographer get in URL's parameter
+ * @param {string} filter option in the select element on photographer's profil page
+ * @returns An array of instantiations of Media for each media
+ */
+
+
+var getMediaByPhotographerId = /*#__PURE__*/(/* unused pure expression or super */ null && (function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(jsonData, id, filter) {
+    var data, media, mediaArray;
+    return regeneratorRuntime.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return jsonData;
+
+          case 2:
+            data = _context5.sent;
+            media = data.media;
+            mediaArray = [];
+            media.map(function (media) {
+              // if the Id in URL's parameter is the same as the media's id, then create an instance of Photographer
+              if (id == media.photographerId) {
+                mediaArray.push(new Media(media.title, media['image'] ? media.image : media.video, media.likes, media['image'] ? 'image' : 'video', media.date));
+              }
+            });
+            sortMediaByFilter(mediaArray, filter);
+            return _context5.abrupt("return", mediaArray);
+
+          case 8:
           case "end":
             return _context5.stop();
         }
@@ -307,45 +397,17 @@ var getTagsFromPhotographers = /*#__PURE__*/function () {
     }, _callee5);
   }));
 
-  return function getTagsFromPhotographers(_x5) {
+  return function getMediaByPhotographerId(_x5, _x6, _x7) {
     return _ref5.apply(this, arguments);
   };
-}();
-
-var getMediaByPhotographerId = /*#__PURE__*/(/* unused pure expression or super */ null && (function () {
-  var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(jsonData, id, filter) {
-    var data, media, mediaArray;
-    return regeneratorRuntime.wrap(function _callee6$(_context6) {
-      while (1) {
-        switch (_context6.prev = _context6.next) {
-          case 0:
-            _context6.next = 2;
-            return jsonData;
-
-          case 2:
-            data = _context6.sent;
-            media = data.media;
-            mediaArray = [];
-            media.map(function (media) {
-              if (id == media.photographerId) {
-                mediaArray.push(new Media(media.title, media['image'] ? media.image : media.video, media.likes, media['image'] ? 'image' : 'video', media.date));
-              }
-            });
-            sortMediaByFilter(mediaArray, filter);
-            return _context6.abrupt("return", mediaArray);
-
-          case 8:
-          case "end":
-            return _context6.stop();
-        }
-      }
-    }, _callee6);
-  }));
-
-  return function getMediaByPhotographerId(_x6, _x7, _x8) {
-    return _ref6.apply(this, arguments);
-  };
 }()));
+/**
+ * Sorts an array according to the filter passed in parameter
+ * @param {object[]} media Array of instantiations of the media class
+ * @param {string} filter option in the select element on photographer's profil page
+ * @returns An array of objects sorted by a filter 
+ */
+
 
 var sortMediaByFilter = function sortMediaByFilter(media, filter) {
   switch (filter) {
@@ -394,7 +456,8 @@ var dom = {
 var tags = getTagsFromPhotographers(parseDataToJson());
 tags.then(function (tags) {
   return tags.map(function (tag) {
-    return dom.filtersList.insertAdjacentHTML('beforeend', tag.displayFilter);
+    // displatFilter is a getter of Filter Class
+    dom.filtersList.insertAdjacentHTML('beforeend', tag.displayFilter);
   });
 }); // get tag param to filter
 
@@ -405,9 +468,11 @@ var paramTag = urlParams.get('tag'); // to display photographers cards
 var photographers = getPhotographers(parseDataToJson());
 photographers.then(function (photographers) {
   photographers.map(function (photographer) {
+    // if there are not a tag in URL's parameter, then it insert the photographers' cards
     if (paramTag == null) {
       dom.photographersContainer.insertAdjacentHTML('beforeend', photographer.photographerCard);
-    } else {
+    } // else if there are a tag in URL's parameter, then create a loop to browse the tags of each photographer
+    else {
       var _iterator = src_createForOfIteratorHelper(photographer.tags),
           _step;
 
@@ -415,7 +480,10 @@ photographers.then(function (photographers) {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var tag = _step.value;
 
+          // if the paramter tag in the URL matches with on of the photographer's tag, 
+          // then insert the photographers' cards
           if (paramTag == tag) {
+            // phototographerCard is a getter of the Photographer Class
             dom.photographersContainer.insertAdjacentHTML('beforeend', photographer.photographerCard);
           }
         }
@@ -426,11 +494,14 @@ photographers.then(function (photographers) {
       }
     }
   });
-}); // display "go to content" link
+}); // display "go to content" link on scroll
 
 var contentLink = document.querySelector('.anchor');
 window.addEventListener('scroll', function () {
-  contentLink.style.display = 'block';
+  // Displays the link only if the user's screen width is greater than 1023
+  if (document.documentElement.clientWidth > 1023) {
+    contentLink.style.display = 'block';
+  }
 });
 /******/ })()
 ;

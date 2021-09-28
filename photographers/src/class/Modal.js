@@ -21,11 +21,13 @@ export default class Modal {
 	static onKeyUp (e) {
 		if (e.key === 'Escape') this.closeModal()
 	}
-	// launch modal form
+	
+	/**
+	 * launch modal form and add focus on first
+	 */
 	static launchModal = () => {
 		document.querySelector('.modal').style.display = 'flex'
 		document.querySelectorAll('.form__text')[0].focus()
-		console.log(document.querySelectorAll('.form__text')[0])
 	}
 
 	// close modal form
