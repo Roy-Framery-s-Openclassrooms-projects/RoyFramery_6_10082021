@@ -79,7 +79,7 @@ var Photographer_Photographer = /*#__PURE__*/function () {
      * @returns A string that correspond to the DOM elements for a photographer's card on home page
      */
     function get() {
-      return "\n\t\t<acticle class=\"photographer\">\n\t\t\t<a href=\"./photographers/index.html?id=".concat(this.id, "\" class=\"photographer__header\">\n\t\t\t\t<img class=\"photographer__img\" src=\"public/images/photographers/id_photos/").concat(this.portrait, "\" alt=\"").concat(this.name, "\">\n\t\t\t\t<h2 class=\"photographer__name\">").concat(this.name, "</h2>\n\t\t\t</a>\n\t\t\t<div class=\"photographer__content\">\n\t\t\t\t<p class=\"photographer__location\">").concat(this.city, ", ").concat(this.country, "</p>\n\t\t\t\t<p class=\"photographer__tagline\">").concat(this.tagline, "</p>\n\t\t\t\t<p class=\"photographer__price\">").concat(this.price, "\u20AC/jour</p>\n\t\t\t</div>\n\t\t\t<div class=\"photographer__tags\">") + this.tagsForPhotographersCards() + "</div>\n\t\t</acticle>\n\t\t";
+      return "\n\t\t<article class=\"photographer\">\n\t\t\t<a href=\"./photographers/index.html?id=".concat(this.id, "\" class=\"photographer__header\">\n\t\t\t\t<img class=\"photographer__img\" src=\"public/images/photographers/id_photos/").concat(this.portrait, "\" alt=\"").concat(this.name, "\">\n\t\t\t\t<h2 class=\"photographer__name\">").concat(this.name, "</h2>\n\t\t\t</a>\n\t\t\t<div class=\"photographer__content\">\n\t\t\t\t<p class=\"photographer__location\">").concat(this.city, ", ").concat(this.country, "</p>\n\t\t\t\t<p class=\"photographer__tagline\">").concat(this.tagline, "</p>\n\t\t\t\t<p class=\"photographer__price\">").concat(this.price, "\u20AC/jour</p>\n\t\t\t</div>\n\t\t\t<div class=\"photographer__tags\">") + this.tagsForPhotographersCards() + "</div>\n\t\t</article>\n\t\t";
     }
     /**
      * Construct all tags in the photographer's card on photographer's profil page
@@ -94,7 +94,7 @@ var Photographer_Photographer = /*#__PURE__*/function () {
      * @returns A string that correspond to the DOM elements for a photographer's card on photographer's profil page
      */
     function get() {
-      return "\n\t\t<acticle class=\"photographer__profil\">\n\t\t\t<div class=\"photographer__body\">\n\t\t\t\t<div class=\"photographer__content\">\n\t\t\t\t\t<h1 class=\"photographer__name\">".concat(this.name, "</h1>\n\t\t\t\t\t<p class=\"photographer__location\">").concat(this.city, ", ").concat(this.country, "</p>\n\t\t\t\t\t<p class=\"photographer__tagline\">").concat(this.tagline, "</p>\n\t\t\t\t\t<div class=\"photographer__tags\">") + this.tagsForPhotographerHeader() + "</div>\n\t\t\t\t</div>\n\t\t\t\t<button class=\"photographer__contactButton\">Contactez-moi</button>\n\t\t\t</div>\n\t\t\t<img class=\"photographer__img\" src=\"../public/images/photographers/id_photos/".concat(this.portrait, "\" alt=\"").concat(this.name, "\">\n\t\t</acticle>\n\t\t");
+      return "\n\t\t<article class=\"photographer__profil\">\n\t\t\t<div class=\"photographer__body\">\n\t\t\t\t<div class=\"photographer__content\">\n\t\t\t\t\t<h1 class=\"photographer__name\">".concat(this.name, "</h1>\n\t\t\t\t\t<p class=\"photographer__location\">").concat(this.city, ", ").concat(this.country, "</p>\n\t\t\t\t\t<p class=\"photographer__tagline\">").concat(this.tagline, "</p>\n\t\t\t\t\t<div class=\"photographer__tags\">") + this.tagsForPhotographerHeader() + "</div>\n\t\t\t\t</div>\n\t\t\t\t<button class=\"photographer__contactButton\">Contactez-moi</button>\n\t\t\t</div>\n\t\t\t<img class=\"photographer__img\" src=\"../public/images/photographers/id_photos/".concat(this.portrait, "\" alt=\"").concat(this.name, "\">\n\t\t</article>\n\t\t");
     }
     /**
      *  Construct the Dom Element withe the photographer's name for the contact form on photographer's profil page
@@ -112,7 +112,7 @@ var Photographer_Photographer = /*#__PURE__*/function () {
 }();
 
 
-;// CONCATENATED MODULE: ./src/class/Media.js
+;// CONCATENATED MODULE: ./photographers/src/class/Media.js
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
@@ -146,8 +146,9 @@ var Media = /*#__PURE__*/function () {
    * @param {number} likes The number of like of the media
    * @param {string} typeMedia The type the media (image/video)
    * @param {Date} date The date of the media 
+   * @param {string} altTxt Alternatif Text for media
    */
-  function Media(title, filename, likes, typeMedia, date) {
+  function Media(title, filename, likes, altTxt, typeMedia, date) {
     Media_classCallCheck(this, Media);
 
     this.title = title;
@@ -155,6 +156,7 @@ var Media = /*#__PURE__*/function () {
     this.likes = likes;
     this.typeMedia = typeMedia;
     this.date = date;
+    this.altTxt = altTxt;
   }
   /**
    * Create a media according to its type (image or video)
@@ -167,10 +169,10 @@ var Media = /*#__PURE__*/function () {
     value: function createMedia() {
       switch (this.typeMedia) {
         case 'image':
-          return new Media_Image(this.title, this.filename, this.likes).createImage;
+          return new Media_Image(this.title, this.filename, this.likes, this.altTxt).createImage;
 
         case 'video':
-          return new Video(this.title, this.filename, this.likes).createVideo;
+          return new Video(this.title, this.filename, this.likes, this.altTxt).createVideo;
 
         default:
           break;
@@ -198,10 +200,10 @@ var Media_Image = /*#__PURE__*/function (_Media) {
    * @param {string} filename The filname of the image given by the instantiation of the media class
    * @param {number} likes The number of like of the image given by the instantiation of the media class
    */
-  function Image(title, filename, likes) {
+  function Image(title, filename, likes, altTxt) {
     Media_classCallCheck(this, Image);
 
-    return _super.call(this, title, filename, likes);
+    return _super.call(this, title, filename, likes, altTxt);
   }
   /**
    * Construct the Dom Element of an image
@@ -212,7 +214,8 @@ var Media_Image = /*#__PURE__*/function (_Media) {
   Media_createClass(Image, [{
     key: "createImage",
     get: function get() {
-      return "\n\t\t\t<artcle class=\"media__card\">\n\t\t\t\t<a href=\"../public/images/photographers/photos/".concat(this.filename, "\">\n\t\t\t\t\t<img src=\"../public/images/photographers/photos/").concat(this.filename, "\" class=\"media__thumb\">\n\t\t\t\t</a>\n\t\t\t\t<div class=\"media__content\">\n\t\t\t\t\t<h2 class=\"media__title\">").concat(this.title, "</h2>\n\t\t\t\t\t<div class=\"media__likes\" tabindex=\"0\">\n\t\t\t\t\t\t<p class=\"media__number\">").concat(this.likes, "</p>\n\t\t\t\t\t\t<svg role=\"image\" class=\"media__heart\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t\t\t\t<title id=\"title\">Likes</title>\n\t\t\t\t\t\t\t<desc id=\"description\">Icone en forme de c\u0153ur</desc>\n\t\t\t\t\t\t\t<path d=\"M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z\" fill=\"#911C1C\"/>\n\t\t\t\t\t\t</svg>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</artcle>");
+      console.log(this.altTxt);
+      return "\n\t\t\t<article class=\"media__card\">\n\t\t\t\t<a href=\"../public/images/photographers/photos/".concat(this.filename, "\">\n\t\t\t\t\t<img src=\"../public/images/photographers/photos/").concat(this.filename, "\" alt=\"").concat(this.altTxt, "\" class=\"media__thumb\">\n\t\t\t\t</a>\n\t\t\t\t<div class=\"media__content\">\n\t\t\t\t\t<h2 class=\"media__title\">").concat(this.title, "</h2>\n\t\t\t\t\t<div class=\"media__likes\" tabindex=\"0\">\n\t\t\t\t\t\t<p class=\"media__number\">").concat(this.likes, "</p>\n\t\t\t\t\t\t<svg role=\"img\" class=\"media__heart\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" aria-label=\"likes\" aria-describedby=\"title-").concat(this.title.substring(0, 3), " description-").concat(this.title.substring(0, 3), "\">\n\t\t\t\t\t\t\t<title id=\"title-").concat(this.title.substring(0, 3), "\">Likes</title>\n\t\t\t\t\t\t\t<desc id=\"description-").concat(this.title.substring(0, 3), "\">Icone en forme de c\u0153ur</desc>\n\t\t\t\t\t\t\t<path d=\"M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z\" fill=\"#911C1C\"/>\n\t\t\t\t\t\t</svg>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</article>");
     }
   }]);
 
@@ -230,10 +233,10 @@ var Video = /*#__PURE__*/function (_Media2) {
    * @param {string} filename The filname of the video given by the instantiation of the media class
    * @param {number} likes The number of like of the video given by the instantiation of the media class
    */
-  function Video(title, filename, likes) {
+  function Video(title, filename, likes, altTxt) {
     Media_classCallCheck(this, Video);
 
-    return _super2.call(this, title, filename, likes);
+    return _super2.call(this, title, filename, likes, altTxt);
   }
   /**
    * Construct the Dom Element of a video
@@ -244,7 +247,7 @@ var Video = /*#__PURE__*/function (_Media2) {
   Media_createClass(Video, [{
     key: "createVideo",
     get: function get() {
-      return "\n\t\t\t<artcle class=\"media__card\">\n\t\t\t\t<a href=\"../public/images/photographers/videos/".concat(this.filename, "\" >\n\t\t\t\t<div class=\"media__playIcon\"></div>\n\t\t\t\t\t<video class=\"media__thumb\">\n\t\t\t\t\t\t<source src=\"../public/images/photographers/videos/").concat(this.filename, "\"\n\t\t\t\t\t\ttype=\"video/mp4\">\n\t\t\t\t\t</video>\n\t\t\t\t</a>\n\t\t\t\t<div class=\"media__content\">\n\t\t\t\t\t<h2 class=\"media__title\">").concat(this.title, "</h2>\n\t\t\t\t\t<div class=\"media__likes\" tabindex=\"0\">\n\t\t\t\t\t\t<p class=\"media__number\">").concat(this.likes, "</p>\n\t\t\t\t\t\t<svg role=\"image\" class=\"media__heart\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t\t\t\t<title id=\"title\">Likes</title>\n\t\t\t\t\t\t\t<desc id=\"description\">Icone en forme de c\u0153ur</desc>\n\t\t\t\t\t\t\t<path d=\"M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z\" fill=\"#911C1C\"/>\n\t\t\t\t\t\t</svg>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</artcle>");
+      return "\n\t\t\t<article class=\"media__card\">\n\t\t\t\t<a href=\"../public/images/photographers/videos/".concat(this.filename, "\" >\n\t\t\t\t\t<div class=\"media__playIcon\"></div>\n\t\t\t\t\t<video class=\"media__thumb\" aria-labelledby=\"summary\">\n\t\t\t\t\t\t<source src=\"../public/images/photographers/videos/").concat(this.filename, "\"\n\t\t\t\t\t\ttype=\"video/mp4\">\n\t\t\t\t\t\t<div id=\"summary\">").concat(this.altTxt, "</div>\n\t\t\t\t\t</video>\n\t\t\t\t</a>\n\t\t\t\t<div class=\"media__content\">\n\t\t\t\t\t<h2 class=\"media__title\">").concat(this.title, "</h2>\n\t\t\t\t\t<div class=\"media__likes\" tabindex=\"0\">\n\t\t\t\t\t\t<p class=\"media__number\">").concat(this.likes, "</p>\n\t\t\t\t\t\t<svg role=\"img\" class=\"media__heart\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" aria-label=\"likes\" aria-describedby=\"title-").concat(this.title.substring(0, 3), " description-").concat(this.title.substring(0, 3), "\">\n\t\t\t\t\t\t\t<title id=\"title-").concat(this.title.substring(0, 3), "\">Likes</title>\n\t\t\t\t\t\t\t<desc id=\"description-").concat(this.title.substring(0, 3), "\">Icone en forme de c\u0153ur</desc>\n\t\t\t\t\t\t\t<path d=\"M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z\" fill=\"#911C1C\"/>\n\t\t\t\t\t\t</svg>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</article>");
     }
   }]);
 
@@ -484,7 +487,7 @@ var getMediaByPhotographerId = /*#__PURE__*/function () {
             media.map(function (media) {
               // if the Id in URL's parameter is the same as the media's id, then create an instance of Photographer
               if (id == media.photographerId) {
-                mediaArray.push(new Media(media.title, media['image'] ? media.image : media.video, media.likes, media['image'] ? 'image' : 'video', media.date));
+                mediaArray.push(new Media(media.title, media['image'] ? media.image : media.video, media.likes, media.altTxt, media['image'] ? 'image' : 'video', media.date));
               }
             });
             sortMediaByFilter(mediaArray, filter);
@@ -541,6 +544,286 @@ var sortMediaByFilter = function sortMediaByFilter(media, filter) {
 };
 
 
+;// CONCATENATED MODULE: ./node_modules/body-scroll-lock/lib/bodyScrollLock.esm.js
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+// Older browsers don't support event options, feature detect it.
+
+// Adopted and modified solution from Bohdan Didukh (2017)
+// https://stackoverflow.com/questions/41594997/ios-10-safari-prevent-scrolling-behind-a-fixed-overlay-and-maintain-scroll-posi
+
+var hasPassiveEvents = false;
+if (typeof window !== 'undefined') {
+  var passiveTestOptions = {
+    get passive() {
+      hasPassiveEvents = true;
+      return undefined;
+    }
+  };
+  window.addEventListener('testPassive', null, passiveTestOptions);
+  window.removeEventListener('testPassive', null, passiveTestOptions);
+}
+
+var isIosDevice = typeof window !== 'undefined' && window.navigator && window.navigator.platform && (/iP(ad|hone|od)/.test(window.navigator.platform) || window.navigator.platform === 'MacIntel' && window.navigator.maxTouchPoints > 1);
+
+
+var locks = [];
+var documentListenerAdded = false;
+var initialClientY = -1;
+var previousBodyOverflowSetting = void 0;
+var previousBodyPosition = void 0;
+var previousBodyPaddingRight = void 0;
+
+// returns true if `el` should be allowed to receive touchmove events.
+var allowTouchMove = function allowTouchMove(el) {
+  return locks.some(function (lock) {
+    if (lock.options.allowTouchMove && lock.options.allowTouchMove(el)) {
+      return true;
+    }
+
+    return false;
+  });
+};
+
+var preventDefault = function preventDefault(rawEvent) {
+  var e = rawEvent || window.event;
+
+  // For the case whereby consumers adds a touchmove event listener to document.
+  // Recall that we do document.addEventListener('touchmove', preventDefault, { passive: false })
+  // in disableBodyScroll - so if we provide this opportunity to allowTouchMove, then
+  // the touchmove event on document will break.
+  if (allowTouchMove(e.target)) {
+    return true;
+  }
+
+  // Do not prevent if the event has more than one touch (usually meaning this is a multi touch gesture like pinch to zoom).
+  if (e.touches.length > 1) return true;
+
+  if (e.preventDefault) e.preventDefault();
+
+  return false;
+};
+
+var setOverflowHidden = function setOverflowHidden(options) {
+  // If previousBodyPaddingRight is already set, don't set it again.
+  if (previousBodyPaddingRight === undefined) {
+    var _reserveScrollBarGap = !!options && options.reserveScrollBarGap === true;
+    var scrollBarGap = window.innerWidth - document.documentElement.clientWidth;
+
+    if (_reserveScrollBarGap && scrollBarGap > 0) {
+      var computedBodyPaddingRight = parseInt(window.getComputedStyle(document.body).getPropertyValue('padding-right'), 10);
+      previousBodyPaddingRight = document.body.style.paddingRight;
+      document.body.style.paddingRight = computedBodyPaddingRight + scrollBarGap + 'px';
+    }
+  }
+
+  // If previousBodyOverflowSetting is already set, don't set it again.
+  if (previousBodyOverflowSetting === undefined) {
+    previousBodyOverflowSetting = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+  }
+};
+
+var restoreOverflowSetting = function restoreOverflowSetting() {
+  if (previousBodyPaddingRight !== undefined) {
+    document.body.style.paddingRight = previousBodyPaddingRight;
+
+    // Restore previousBodyPaddingRight to undefined so setOverflowHidden knows it
+    // can be set again.
+    previousBodyPaddingRight = undefined;
+  }
+
+  if (previousBodyOverflowSetting !== undefined) {
+    document.body.style.overflow = previousBodyOverflowSetting;
+
+    // Restore previousBodyOverflowSetting to undefined
+    // so setOverflowHidden knows it can be set again.
+    previousBodyOverflowSetting = undefined;
+  }
+};
+
+var setPositionFixed = function setPositionFixed() {
+  return window.requestAnimationFrame(function () {
+    // If previousBodyPosition is already set, don't set it again.
+    if (previousBodyPosition === undefined) {
+      previousBodyPosition = {
+        position: document.body.style.position,
+        top: document.body.style.top,
+        left: document.body.style.left
+      };
+
+      // Update the dom inside an animation frame 
+      var _window = window,
+          scrollY = _window.scrollY,
+          scrollX = _window.scrollX,
+          innerHeight = _window.innerHeight;
+
+      document.body.style.position = 'fixed';
+      document.body.style.top = -scrollY;
+      document.body.style.left = -scrollX;
+
+      setTimeout(function () {
+        return window.requestAnimationFrame(function () {
+          // Attempt to check if the bottom bar appeared due to the position change
+          var bottomBarHeight = innerHeight - window.innerHeight;
+          if (bottomBarHeight && scrollY >= innerHeight) {
+            // Move the content further up so that the bottom bar doesn't hide it
+            document.body.style.top = -(scrollY + bottomBarHeight);
+          }
+        });
+      }, 300);
+    }
+  });
+};
+
+var restorePositionSetting = function restorePositionSetting() {
+  if (previousBodyPosition !== undefined) {
+    // Convert the position from "px" to Int
+    var y = -parseInt(document.body.style.top, 10);
+    var x = -parseInt(document.body.style.left, 10);
+
+    // Restore styles
+    document.body.style.position = previousBodyPosition.position;
+    document.body.style.top = previousBodyPosition.top;
+    document.body.style.left = previousBodyPosition.left;
+
+    // Restore scroll
+    window.scrollTo(x, y);
+
+    previousBodyPosition = undefined;
+  }
+};
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight#Problems_and_solutions
+var isTargetElementTotallyScrolled = function isTargetElementTotallyScrolled(targetElement) {
+  return targetElement ? targetElement.scrollHeight - targetElement.scrollTop <= targetElement.clientHeight : false;
+};
+
+var handleScroll = function handleScroll(event, targetElement) {
+  var clientY = event.targetTouches[0].clientY - initialClientY;
+
+  if (allowTouchMove(event.target)) {
+    return false;
+  }
+
+  if (targetElement && targetElement.scrollTop === 0 && clientY > 0) {
+    // element is at the top of its scroll.
+    return preventDefault(event);
+  }
+
+  if (isTargetElementTotallyScrolled(targetElement) && clientY < 0) {
+    // element is at the bottom of its scroll.
+    return preventDefault(event);
+  }
+
+  event.stopPropagation();
+  return true;
+};
+
+var disableBodyScroll = function disableBodyScroll(targetElement, options) {
+  // targetElement must be provided
+  if (!targetElement) {
+    // eslint-disable-next-line no-console
+    console.error('disableBodyScroll unsuccessful - targetElement must be provided when calling disableBodyScroll on IOS devices.');
+    return;
+  }
+
+  // disableBodyScroll must not have been called on this targetElement before
+  if (locks.some(function (lock) {
+    return lock.targetElement === targetElement;
+  })) {
+    return;
+  }
+
+  var lock = {
+    targetElement: targetElement,
+    options: options || {}
+  };
+
+  locks = [].concat(_toConsumableArray(locks), [lock]);
+
+  if (isIosDevice) {
+    setPositionFixed();
+  } else {
+    setOverflowHidden(options);
+  }
+
+  if (isIosDevice) {
+    targetElement.ontouchstart = function (event) {
+      if (event.targetTouches.length === 1) {
+        // detect single touch.
+        initialClientY = event.targetTouches[0].clientY;
+      }
+    };
+    targetElement.ontouchmove = function (event) {
+      if (event.targetTouches.length === 1) {
+        // detect single touch.
+        handleScroll(event, targetElement);
+      }
+    };
+
+    if (!documentListenerAdded) {
+      document.addEventListener('touchmove', preventDefault, hasPassiveEvents ? { passive: false } : undefined);
+      documentListenerAdded = true;
+    }
+  }
+};
+
+var clearAllBodyScrollLocks = function clearAllBodyScrollLocks() {
+  if (isIosDevice) {
+    // Clear all locks ontouchstart/ontouchmove handlers, and the references.
+    locks.forEach(function (lock) {
+      lock.targetElement.ontouchstart = null;
+      lock.targetElement.ontouchmove = null;
+    });
+
+    if (documentListenerAdded) {
+      document.removeEventListener('touchmove', preventDefault, hasPassiveEvents ? { passive: false } : undefined);
+      documentListenerAdded = false;
+    }
+
+    // Reset initial clientY.
+    initialClientY = -1;
+  }
+
+  if (isIosDevice) {
+    restorePositionSetting();
+  } else {
+    restoreOverflowSetting();
+  }
+
+  locks = [];
+};
+
+var enableBodyScroll = function enableBodyScroll(targetElement) {
+  if (!targetElement) {
+    // eslint-disable-next-line no-console
+    console.error('enableBodyScroll unsuccessful - targetElement must be provided when calling enableBodyScroll on IOS devices.');
+    return;
+  }
+
+  locks = locks.filter(function (lock) {
+    return lock.targetElement !== targetElement;
+  });
+
+  if (isIosDevice) {
+    targetElement.ontouchstart = null;
+    targetElement.ontouchmove = null;
+
+    if (documentListenerAdded && locks.length === 0) {
+      document.removeEventListener('touchmove', preventDefault, hasPassiveEvents ? { passive: false } : undefined);
+      documentListenerAdded = false;
+    }
+  }
+
+  if (isIosDevice) {
+    restorePositionSetting();
+  } else {
+    restoreOverflowSetting();
+  }
+};
+
+
 ;// CONCATENATED MODULE: ./photographers/src/class/Lightbox.js
 function Lightbox_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -548,11 +831,13 @@ function Lightbox_defineProperties(target, props) { for (var i = 0; i < props.le
 
 function Lightbox_createClass(Constructor, protoProps, staticProps) { if (protoProps) Lightbox_defineProperties(Constructor.prototype, protoProps); if (staticProps) Lightbox_defineProperties(Constructor, staticProps); return Constructor; }
 
+
 /**
  * @property {HTMLElement} element
  * @property {string[]} images lightbox image paths
  * @property {string} url image currently displayed
  */
+
 var Lightbox = /*#__PURE__*/function () {
   /**
    * 
@@ -569,6 +854,7 @@ var Lightbox = /*#__PURE__*/function () {
     this.loadMedia(url, this.titles, this.index);
     this.onKeyUp = this.onKeyUp.bind(this);
     document.body.appendChild(this.element);
+    disableBodyScroll(this.element);
     document.addEventListener('keyup', this.onKeyUp);
   }
   /**
@@ -664,6 +950,7 @@ var Lightbox = /*#__PURE__*/function () {
 
       e.preventDefault();
       this.element.classList.add('fadeout');
+      enableBodyScroll(this.element);
       window.setTimeout(function () {
         _this.element.parentElement.removeChild(_this.element);
       }, 500);
@@ -771,6 +1058,8 @@ function Modal_createClass(Constructor, protoProps, staticProps) { if (protoProp
 
 function Modal_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+
+
 var Modal = /*#__PURE__*/function () {
   function Modal() {
     Modal_classCallCheck(this, Modal);
@@ -817,11 +1106,13 @@ Modal_defineProperty(Modal, "modalEvents", function () {
 });
 
 Modal_defineProperty(Modal, "launchModal", function () {
+  disableBodyScroll(document.body);
   document.querySelector('.modal').style.display = 'flex';
   document.querySelectorAll('.form__text')[0].focus();
 });
 
 Modal_defineProperty(Modal, "closeModal", function () {
+  enableBodyScroll(document.body);
   Modal.element.modal.style.display = 'none';
   document.removeEventListener('keyup', Modal.onKeyUp);
   document.querySelector('.photographer__contactButton').focus();
@@ -972,7 +1263,7 @@ var displayTotalLikesOfPhotographer = function displayTotalLikesOfPhotographer(m
     medias.map(function (media) {
       totalLikes += media.likes;
     });
-    return DomInfos.insertAdjacentHTML('beforeend', "\n\t\t<div class=\"infos__likes\">\n\t\t\t<p class=\"infos__totalLikes\">".concat(totalLikes, "</p>\n\t\t\t<svg role=\"image\" class=\"infos__heart\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<title id=\"title\">Likes</title>\n\t\t\t\t<desc id=\"description\">Icone en forme de c\u0153ur</desc>\n\t\t\t\t<path d=\"M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z\" fill=\"#000\"/>\n\t\t\t\t</svg>\n\t\t</div>\n\t\t"));
+    return DomInfos.insertAdjacentHTML('beforeend', "\n\t\t<div class=\"infos__likes\">\n\t\t\t<p class=\"infos__totalLikes\">".concat(totalLikes, "</p>\n\t\t\t<svg role=\"img\" class=\"infos__heart\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" aria-describedby=\"title-").concat(totalLikes, " description-").concat(totalLikes, "\">\n\t\t\t\t<title id=\"title-").concat(totalLikes, "\">Likes</title>\n\t\t\t\t<desc id=\"description-").concat(totalLikes, "\">Icone en forme de c\u0153ur</desc>\n\t\t\t\t<path d=\"M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z\" fill=\"#000\"/>\n\t\t\t\t</svg>\n\t\t</div>\n\t\t"));
   });
 };
 
@@ -1029,8 +1320,6 @@ var increaseOrDecreaseLikesAndTotalLikes = function increaseOrDecreaseLikesAndTo
 
 
 var increaseLikesAndTotalLikes = function increaseLikesAndTotalLikes(totalLikes, like) {
-  console.log(totalLikes);
-  console.log(like);
   ++totalLikes.innerText;
   ++like.children[0].innerText;
   like.classList.add('media__liked');
@@ -1077,10 +1366,8 @@ var displaySelectOptions = function displaySelectOptions() {
 
 
 var hideSelectedOptionInSelect = function hideSelectedOptionInSelect(filter, dom) {
-  console.log(filter);
-  console.log(dom);
   dom.forEach(function (option) {
-    if (option.getAttribute('value') == filter) {
+    if (option.getAttribute('data-value') == filter) {
       option.classList.add('filter__selected');
     }
   });
@@ -1094,7 +1381,7 @@ var hideSelectedOptionInSelect = function hideSelectedOptionInSelect(filter, dom
 
 var removeClassToHideDuplicateOptionInSelect = function removeClassToHideDuplicateOptionInSelect(filter, dom) {
   dom.forEach(function (option) {
-    if (option.getAttribute('value') != filter) {
+    if (option.getAttribute('data-value') != filter) {
       option.classList.remove('filter__selected');
     }
   });
@@ -1134,7 +1421,7 @@ photographers.then(function (photographers) {
   });
 }); // To display media by Id and Filter
 
-var filter = dom.selectOption[0].getAttribute('value');
+var filter = dom.selectOption[0].getAttribute('data-value');
 /**
  * 
  * @param {number} id Id in the Url's params
@@ -1157,13 +1444,14 @@ displayMediaByPhotographerById(paramId, filter); // Change the order of Media by
 
 dom.selectOption.forEach(function (option) {
   return option.addEventListener('click', function () {
-    filter = option.getAttribute('value');
+    filter = option.getAttribute('data-value');
     displayMediaByPhotographerById(paramId, filter);
     removeClassToHideDuplicateOptionInSelect(filter, dom.selectOption);
-    dom.inputSelect.setAttribute('value', option.innerText); // need to initialize the lightbox after the order of the media
+    dom.inputSelect.setAttribute('data-value', option.innerText); // need to initialize the lightboxand likes after the order of the media
 
     setTimeout(function () {
       Lightbox.init();
+      likes();
     }, 1000);
   });
 }); // Change the order of Media by creating a keyup listener on select's options
@@ -1172,18 +1460,19 @@ dom.selectOption.forEach(function (option) {
 dom.selectOption.forEach(function (option) {
   return option.addEventListener('keyup', function (e) {
     if (e.key == 'Enter') {
-      filter = option.getAttribute('value');
+      filter = option.getAttribute('data-value');
       displayMediaByPhotographerById(paramId, filter);
       removeClassToHideDuplicateOptionInSelect(filter, dom.selectOption);
-      dom.inputSelect.setAttribute('value', option.innerText);
+      dom.inputSelect.setAttribute('data-value', option.innerText);
       dom.inputSelect.focus();
       dom.selectMenu.classList.remove('filter__show');
-    } // need to initialize the lightbox after the order of the media
+    } // need to initialize the lightbox and likes after the order of the media
 
 
     setTimeout(function () {
       Lightbox.init();
-    }, 1000);
+      likes();
+    }, 1500);
   });
 }); // To validate the form
 

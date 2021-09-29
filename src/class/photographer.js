@@ -56,7 +56,7 @@ export default class Photographer {
 	 */
 	get photographerCard() {
 		return `
-		<acticle class="photographer">
+		<article class="photographer">
 			<a href="./photographers/index.html?id=${this.id}" class="photographer__header">
 				<img class="photographer__img" src="public/images/photographers/id_photos/${this.portrait}" alt="${this.name}">
 				<h2 class="photographer__name">${this.name}</h2>
@@ -67,7 +67,7 @@ export default class Photographer {
 				<p class="photographer__price">${this.price}€/jour</p>
 			</div>
 			<div class="photographer__tags">` + this.tagsForPhotographersCards() + `</div>
-		</acticle>
+		</article>
 		`
 	}
 
@@ -89,7 +89,7 @@ export default class Photographer {
 	 */
 	get photographerHeader() {
 		return `
-		<acticle class="photographer__profil">
+		<article class="photographer__profil">
 			<div class="photographer__body">
 				<div class="photographer__content">
 					<h1 class="photographer__name">${this.name}</h1>
@@ -100,7 +100,7 @@ export default class Photographer {
 				<button class="photographer__contactButton">Contactez-moi</button>
 			</div>
 			<img class="photographer__img" src="../public/images/photographers/id_photos/${this.portrait}" alt="${this.name}">
-		</acticle>
+		</article>
 		`
 	}
 

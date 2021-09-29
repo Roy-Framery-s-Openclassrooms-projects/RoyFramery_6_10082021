@@ -1,5 +1,5 @@
 import Photographer from '../class/Photographer.js'
-import Media from '../class/Media.js'
+import Media from '../../photographers/src/class/Media.js'
 import Filter from '../class/Filter.js'
 
 /**
@@ -93,7 +93,7 @@ let getMediaByPhotographerId = async(jsonData, id, filter) => {
 	media.map(media => {
 		// if the Id in URL's parameter is the same as the media's id, then create an instance of Photographer
 		if (id == media.photographerId) {
-			mediaArray.push(new Media( media.title, media['image'] ? media.image : media.video, media.likes, media['image'] ? 'image' : 'video', media.date))
+			mediaArray.push(new Media( media.title, media['image'] ? media.image : media.video, media.likes, media.altTxt, media['image'] ? 'image' : 'video', media.date))
 		}
 	})
 	sortMediaByFilter(mediaArray, filter)

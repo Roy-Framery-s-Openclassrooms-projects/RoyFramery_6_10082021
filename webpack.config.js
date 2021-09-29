@@ -4,7 +4,6 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 let EslintConfig = (env) => {
     const dev = env.dev === "dev";
-    // console.log(dev)
     let config = {
         mode: "production",
         entry: {

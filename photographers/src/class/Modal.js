@@ -1,3 +1,5 @@
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+
 export default class Modal {
 
 	// DOM    
@@ -29,6 +31,7 @@ export default class Modal {
 	 * launch modal form and add focus on first
 	 */
 	static launchModal = () => {
+		disableBodyScroll(document.body)
 		document.querySelector('.modal').style.display = 'flex'
 		document.querySelectorAll('.form__text')[0].focus()
 	}
@@ -37,6 +40,7 @@ export default class Modal {
 	 * Close modal form
 	 */
 	static closeModal = () => {
+		enableBodyScroll(document.body)
 		this.element.modal.style.display = 'none'
 		document.removeEventListener('keyup', this.onKeyUp)
 		document.querySelector('.photographer__contactButton').focus()

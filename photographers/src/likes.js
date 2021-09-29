@@ -28,8 +28,6 @@ let increaseOrDecreaseLikesAndTotalLikes = () => {
  * @param {HTMLElement} like Reach the number of likes on a Media
  */
 let increaseLikesAndTotalLikes = (totalLikes, like) => {
-	console.log(totalLikes)
-	console.log(like)
 	++totalLikes.innerText
 	++like.children[0].innerText
 	like.classList.add('media__liked')

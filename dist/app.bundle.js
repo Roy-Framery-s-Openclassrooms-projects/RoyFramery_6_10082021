@@ -79,7 +79,7 @@ var Photographer_Photographer = /*#__PURE__*/function () {
      * @returns A string that correspond to the DOM elements for a photographer's card on home page
      */
     function get() {
-      return "\n\t\t<acticle class=\"photographer\">\n\t\t\t<a href=\"./photographers/index.html?id=".concat(this.id, "\" class=\"photographer__header\">\n\t\t\t\t<img class=\"photographer__img\" src=\"public/images/photographers/id_photos/").concat(this.portrait, "\" alt=\"").concat(this.name, "\">\n\t\t\t\t<h2 class=\"photographer__name\">").concat(this.name, "</h2>\n\t\t\t</a>\n\t\t\t<div class=\"photographer__content\">\n\t\t\t\t<p class=\"photographer__location\">").concat(this.city, ", ").concat(this.country, "</p>\n\t\t\t\t<p class=\"photographer__tagline\">").concat(this.tagline, "</p>\n\t\t\t\t<p class=\"photographer__price\">").concat(this.price, "\u20AC/jour</p>\n\t\t\t</div>\n\t\t\t<div class=\"photographer__tags\">") + this.tagsForPhotographersCards() + "</div>\n\t\t</acticle>\n\t\t";
+      return "\n\t\t<article class=\"photographer\">\n\t\t\t<a href=\"./photographers/index.html?id=".concat(this.id, "\" class=\"photographer__header\">\n\t\t\t\t<img class=\"photographer__img\" src=\"public/images/photographers/id_photos/").concat(this.portrait, "\" alt=\"").concat(this.name, "\">\n\t\t\t\t<h2 class=\"photographer__name\">").concat(this.name, "</h2>\n\t\t\t</a>\n\t\t\t<div class=\"photographer__content\">\n\t\t\t\t<p class=\"photographer__location\">").concat(this.city, ", ").concat(this.country, "</p>\n\t\t\t\t<p class=\"photographer__tagline\">").concat(this.tagline, "</p>\n\t\t\t\t<p class=\"photographer__price\">").concat(this.price, "\u20AC/jour</p>\n\t\t\t</div>\n\t\t\t<div class=\"photographer__tags\">") + this.tagsForPhotographersCards() + "</div>\n\t\t</article>\n\t\t";
     }
     /**
      * Construct all tags in the photographer's card on photographer's profil page
@@ -94,7 +94,7 @@ var Photographer_Photographer = /*#__PURE__*/function () {
      * @returns A string that correspond to the DOM elements for a photographer's card on photographer's profil page
      */
     function get() {
-      return "\n\t\t<acticle class=\"photographer__profil\">\n\t\t\t<div class=\"photographer__body\">\n\t\t\t\t<div class=\"photographer__content\">\n\t\t\t\t\t<h1 class=\"photographer__name\">".concat(this.name, "</h1>\n\t\t\t\t\t<p class=\"photographer__location\">").concat(this.city, ", ").concat(this.country, "</p>\n\t\t\t\t\t<p class=\"photographer__tagline\">").concat(this.tagline, "</p>\n\t\t\t\t\t<div class=\"photographer__tags\">") + this.tagsForPhotographerHeader() + "</div>\n\t\t\t\t</div>\n\t\t\t\t<button class=\"photographer__contactButton\">Contactez-moi</button>\n\t\t\t</div>\n\t\t\t<img class=\"photographer__img\" src=\"../public/images/photographers/id_photos/".concat(this.portrait, "\" alt=\"").concat(this.name, "\">\n\t\t</acticle>\n\t\t");
+      return "\n\t\t<article class=\"photographer__profil\">\n\t\t\t<div class=\"photographer__body\">\n\t\t\t\t<div class=\"photographer__content\">\n\t\t\t\t\t<h1 class=\"photographer__name\">".concat(this.name, "</h1>\n\t\t\t\t\t<p class=\"photographer__location\">").concat(this.city, ", ").concat(this.country, "</p>\n\t\t\t\t\t<p class=\"photographer__tagline\">").concat(this.tagline, "</p>\n\t\t\t\t\t<div class=\"photographer__tags\">") + this.tagsForPhotographerHeader() + "</div>\n\t\t\t\t</div>\n\t\t\t\t<button class=\"photographer__contactButton\">Contactez-moi</button>\n\t\t\t</div>\n\t\t\t<img class=\"photographer__img\" src=\"../public/images/photographers/id_photos/".concat(this.portrait, "\" alt=\"").concat(this.name, "\">\n\t\t</article>\n\t\t");
     }
     /**
      *  Construct the Dom Element withe the photographer's name for the contact form on photographer's profil page
@@ -383,7 +383,7 @@ var getMediaByPhotographerId = /*#__PURE__*/(/* unused pure expression or super 
             media.map(function (media) {
               // if the Id in URL's parameter is the same as the media's id, then create an instance of Photographer
               if (id == media.photographerId) {
-                mediaArray.push(new Media(media.title, media['image'] ? media.image : media.video, media.likes, media['image'] ? 'image' : 'video', media.date));
+                mediaArray.push(new Media(media.title, media['image'] ? media.image : media.video, media.likes, media.altTxt, media['image'] ? 'image' : 'video', media.date));
               }
             });
             sortMediaByFilter(mediaArray, filter);

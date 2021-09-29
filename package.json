@@ -9,7 +9,7 @@
     "expanded": "sass ./sass/:./public/css/ --style=expanded",
     "dev": "webpack --env dev=dev",
     "prod": "webpack",
-    "doc" : "jsdoc -c jsdoc.json"
+    "doc": "jsdoc -c jsdoc.json"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "babel-polyfill": "^6.26.0",
+    "body-scroll-lock": "^4.0.0-beta.0",
     "eslint": "^7.32.0",
     "eslint-webpack-plugin": "^3.0.1",
     "jsdoc": "^3.6.7",

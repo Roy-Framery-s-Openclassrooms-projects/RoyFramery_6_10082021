@@ -34,7 +34,7 @@ photographers.then(photographers =>
 )
 
 // To display media by Id and Filter
-let filter = dom.selectOption[0].getAttribute('value')
+let filter = dom.selectOption[0].getAttribute('data-value')
 
 /**
  * 
@@ -57,13 +57,14 @@ displayMediaByPhotographerById(paramId, filter)
 // Change the order of Media by creating a click listener on select's options
 // And by changing value of the select 
 dom.selectOption.forEach(option => option.addEventListener('click', () => {
-	filter = option.getAttribute('value')
+	filter = option.getAttribute('data-value')
 	displayMediaByPhotographerById(paramId, filter)
 	removeClassToHideDuplicateOptionInSelect(filter, dom.selectOption)
-	dom.inputSelect.setAttribute('value', option.innerText) 
-	// need to initialize the lightbox after the order of the media
+	dom.inputSelect.setAttribute('data-value', option.innerText) 
+	// need to initialize the lightboxand likes after the order of the media
 	setTimeout(() => {
 		Lightbox.init()
+		increaseOrDecreaseLikesAndTotalLikes()
 	}, 1000)
 }))
 
@@ -71,17 +72,18 @@ dom.selectOption.forEach(option => option.addEventListener('click', () => {
 // And by changing value of the select 
 dom.selectOption.forEach(option => option.addEventListener('keyup', (e) => {
 	if (e.key == 'Enter') {
-		filter = option.getAttribute('value')
+		filter = option.getAttribute('data-value')
 		displayMediaByPhotographerById(paramId, filter)
 		removeClassToHideDuplicateOptionInSelect(filter, dom.selectOption)
-		dom.inputSelect.setAttribute('value', option.innerText) 
+		dom.inputSelect.setAttribute('data-value', option.innerText) 
 		dom.inputSelect.focus()
 		dom.selectMenu.classList.remove('filter__show')
 	}
-	// need to initialize the lightbox after the order of the media
+	// need to initialize the lightbox and likes after the order of the media
 	setTimeout(() => {
 		Lightbox.init()
-	}, 1000)
+		increaseOrDecreaseLikesAndTotalLikes()
+	}, 1500)
 }))
 
 // To validate the form

@@ -1,3 +1,5 @@
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+
 /**
  * @property {HTMLElement} element
  * @property {string[]} images lightbox image paths
@@ -28,6 +30,7 @@ export default class Lightbox {
 		this.loadMedia(url, this.titles, this.index)
 		this.onKeyUp = this.onKeyUp.bind(this)
 		document.body.appendChild(this.element)
+		disableBodyScroll(this.element)
 		document.addEventListener('keyup', this.onKeyUp)
 	}
 
@@ -112,6 +115,7 @@ export default class Lightbox {
 	close (e) {
 		e.preventDefault()
 		this.element.classList.add('fadeout')
+		enableBodyScroll(this.element)
 		window.setTimeout(() => {
 			this.element.parentElement.removeChild(this.element)
 		}, 500)

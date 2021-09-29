@@ -25,10 +25,8 @@ let displaySelectOptions = () => {
  * @param {NodeListOf<Element>} dom reach options of select
  */
 let hideSelectedOptionInSelect = (filter, dom) => {
-	console.log(filter)
-	console.log(dom)
 	dom.forEach(option => {
-		if (option.getAttribute('value') == filter) {
+		if (option.getAttribute('data-value') == filter) {
 			option.classList.add('filter__selected')
 		}
 	})
@@ -41,7 +39,7 @@ let hideSelectedOptionInSelect = (filter, dom) => {
  */
 let removeClassToHideDuplicateOptionInSelect = (filter, dom) => {
 	dom.forEach(option => {
-		if (option.getAttribute('value') != filter) {
+		if (option.getAttribute('data-value') != filter) {
 			option.classList.remove('filter__selected')
 		}
 	})

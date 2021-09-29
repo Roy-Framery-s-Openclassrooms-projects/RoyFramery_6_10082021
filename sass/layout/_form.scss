@@ -3,6 +3,7 @@
 
 @mixin form {
     .form {
+
         &__data[data-error-visible="true"]::after {
             content: attr(data-error);
             font-size: $fs-14;
@@ -33,7 +34,9 @@
         &__text-area, &__text {
             width: 100%;
             border-radius: $br-5;
-            border: none
+            border: none;
+            font-size: $fs-24;
+            padding-left: 10px;
         }
         &__text {
             height: 52px;
