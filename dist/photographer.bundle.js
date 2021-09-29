@@ -781,6 +781,10 @@ var Modal = /*#__PURE__*/function () {
     value: // DOM    
 
     /**
+     * Method to init modal's event
+     */
+
+    /**
      * 
      * @param {KeyboardEvent} e 
      */
@@ -829,7 +833,16 @@ function Validator_classCallCheck(instance, Constructor) { if (!(instance instan
 
 function Validator_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var Validator = function Validator(inputs, containerInput) {
+/**
+ * Create a Validator
+ */
+var Validator =
+/**
+ * 
+ * @param {object} inputs Inputs in the form
+ * @param {HTMLElement[]} containerInput Container for each labels/inputs
+ */
+function Validator(inputs, containerInput) {
   var _this = this;
 
   Validator_classCallCheck(this, Validator);
@@ -856,7 +869,8 @@ var Validator = function Validator(inputs, containerInput) {
   });
 
   Validator_defineProperty(this, "launchValidation", function () {
-    _this.removeErrorMessage();
+    _this.removeErrorMessage(); // a loop that will go through all the inputs 
+
 
     for (var input in _this.inputs) {
       switch (input) {
@@ -910,7 +924,14 @@ var Validator = function Validator(inputs, containerInput) {
 
 
 ;// CONCATENATED MODULE: ./photographers/src/configValidator.js
-// to reach all the inputs and configure the validation
+// @ts-check
+
+/**
+ * to reach all the inputs and configure the validation
+ * @type {object} inputs
+ * @property {HTMLElement} element
+ * @property {object} regex
+ */
 var inputs = {
   firstname: {
     element: document.querySelector('#firstname'),
@@ -928,13 +949,22 @@ var inputs = {
     element: document.querySelector('#textArea'),
     regex: /^[a-zA-Z\-,.?!;*'")(_<>\séëàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇÆæœ]{1,}$/
   }
-}; // to reach all elements that display error messages for the form validation
+};
+/**
+ * to reach all containers of labels/inputs that display error messages for the form validation
+ * @type {NodeListOf<Element>}
+ */
 
 var containerInput = document.querySelectorAll('.form__data');
 
 ;// CONCATENATED MODULE: ./photographers/src/displayTotalLikes.js
 // to display the total number of media likes
 var DomInfos = document.querySelector('.infos');
+/**
+ * 
+ * @param {object} medias
+ * @returns Insert HTML Element on photographer's Profil Page 
+ */
 
 var displayTotalLikesOfPhotographer = function displayTotalLikesOfPhotographer(medias) {
   medias.then(function (medias) {
@@ -950,16 +980,23 @@ var displayTotalLikesOfPhotographer = function displayTotalLikesOfPhotographer(m
 ;// CONCATENATED MODULE: ./photographers/src/displayDailyPrice.js
 // to display the price per day
 var displayDailyPrice_DomInfos = document.querySelector('.infos');
+/**
+ * 
+ * @param {array} photographer 
+ */
 
 var displayDailyPriceOfPhotographer = function displayDailyPriceOfPhotographer(photographer) {
   photographer.then(function (photographer) {
-    return displayDailyPrice_DomInfos.insertAdjacentHTML('beforeend', photographer[0].getPrice());
+    // getPrice() is a method in Photographer Class
+    displayDailyPrice_DomInfos.insertAdjacentHTML('beforeend', photographer[0].getPrice());
   });
 };
 
 /* harmony default export */ const displayDailyPrice = (displayDailyPriceOfPhotographer);
 ;// CONCATENATED MODULE: ./photographers/src/likes.js
-// to increase or decrease the likes of a media and the total of likes
+/**
+ * to increase or decrease the likes of a media and the total of likes
+ */
 var increaseOrDecreaseLikesAndTotalLikes = function increaseOrDecreaseLikesAndTotalLikes() {
   var likesElements = document.querySelectorAll('.media__likes');
   likesElements.forEach(function (like) {
@@ -984,12 +1021,26 @@ var increaseOrDecreaseLikesAndTotalLikes = function increaseOrDecreaseLikesAndTo
     });
   });
 };
+/**
+ * To increase the likes on a Media and the total of likes
+ * @param {HTMLElement} totalLikes Reach the total of likes
+ * @param {HTMLElement} like Reach the number of likes on a Media
+ */
+
 
 var increaseLikesAndTotalLikes = function increaseLikesAndTotalLikes(totalLikes, like) {
+  console.log(totalLikes);
+  console.log(like);
   ++totalLikes.innerText;
   ++like.children[0].innerText;
   like.classList.add('media__liked');
 };
+/**
+ * To decrease the likes on a Media and the total of likes
+ * @param {HTMLElement} totalLikes Reach the total of likes
+ * @param {HTMLElement} like Reach the number of likes on a Media
+ */
+
 
 var decreaseLikesAndTotalLikes = function decreaseLikesAndTotalLikes(totalLikes, like) {
   --totalLikes.innerText;
@@ -999,29 +1050,47 @@ var decreaseLikesAndTotalLikes = function decreaseLikesAndTotalLikes(totalLikes,
 
 /* harmony default export */ const likes = (increaseOrDecreaseLikesAndTotalLikes);
 ;// CONCATENATED MODULE: ./photographers/src/select.js
+/**
+ * 
+ */
 var displaySelectOptions = function displaySelectOptions() {
   var select = document.querySelector('.filter__custom-select');
   select.addEventListener('click', function () {
     var option = document.querySelector('.filter__custom-menu');
-    var arrow = document.querySelector('.filter__custom-arrow', 'before');
+    var arrow = document.querySelector('.filter__custom-arrow', 'before'); // if the class is not present in the HTML Element then we add it
 
     if (!option.classList.contains('filter__show')) {
       option.classList.add('filter__show');
       arrow.style.transform = 'rotate(180deg)';
-    } else {
+    } // else we remove it 
+    else {
       arrow.style.transform = 'rotate(0deg)';
       option.classList.remove('filter__show');
     }
   });
 };
+/**
+ * Hide the duplicated option that is selected in the select
+ * @param {string} filter 
+ * @param {NodeListOf<Element>} dom reach options of select
+ */
+
 
 var hideSelectedOptionInSelect = function hideSelectedOptionInSelect(filter, dom) {
+  console.log(filter);
+  console.log(dom);
   dom.forEach(function (option) {
     if (option.getAttribute('value') == filter) {
       option.classList.add('filter__selected');
     }
   });
 };
+/**
+ * Remove the class from a duplicate option hidden in a select
+ * @param {string} filter 
+ * @param {NodeListOf<Element>} dom reach options of select
+ */
+
 
 var removeClassToHideDuplicateOptionInSelect = function removeClassToHideDuplicateOptionInSelect(filter, dom) {
   dom.forEach(function (option) {

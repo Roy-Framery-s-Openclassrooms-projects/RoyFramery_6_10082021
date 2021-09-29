@@ -1,4 +1,10 @@
-// to reach all the inputs and configure the validation
+// @ts-check
+/**
+ * to reach all the inputs and configure the validation
+ * @type {object} inputs
+ * @property {HTMLElement} element
+ * @property {object} regex
+ */
 const inputs = {
 	firstname: {
 		element: document.querySelector('#firstname'),
@@ -18,7 +24,10 @@ const inputs = {
 	}
 }
 
-// to reach all elements that display error messages for the form validation
+/**
+ * to reach all containers of labels/inputs that display error messages for the form validation
+ * @type {NodeListOf<Element>}
+ */
 const containerInput = document.querySelectorAll('.form__data')
 
 export {inputs, containerInput}

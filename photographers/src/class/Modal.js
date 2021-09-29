@@ -7,6 +7,9 @@ export default class Modal {
 		close : document.querySelector('.modal__close')
 	}
 
+	/**
+	 * Method to init modal's event
+	 */
 	static modalEvents = () => {
 		document.querySelector('.photographer__contactButton').addEventListener('click', () => { this.launchModal() })
 
@@ -30,7 +33,9 @@ export default class Modal {
 		document.querySelectorAll('.form__text')[0].focus()
 	}
 
-	// close modal form
+	/**
+	 * Close modal form
+	 */
 	static closeModal = () => {
 		this.element.modal.style.display = 'none'
 		document.removeEventListener('keyup', this.onKeyUp)

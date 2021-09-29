@@ -1,6 +1,11 @@
 // to display the total number of media likes
 const DomInfos = document.querySelector('.infos')
 
+/**
+ * 
+ * @param {object} medias
+ * @returns Insert HTML Element on photographer's Profil Page 
+ */
 let displayTotalLikesOfPhotographer = (medias) => {
 	medias.then(medias => {
 		let totalLikes = 0
