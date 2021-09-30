@@ -41,21 +41,15 @@
 
     & .photographers {
         margin-top: 30px;
-    }
-    @include media-query('small') {
-        & .photographers {
+        @include media-query('small') {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
             margin-top: 50px;
+            gap: 4%;
         }
-    }
-    @include media-query('large') {
-        & .photographers {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+        @include media-query('large') {
             margin-top: 60px;
+            gap: 5%
         }
     }
 }
