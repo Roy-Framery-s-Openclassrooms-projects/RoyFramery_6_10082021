@@ -93,9 +93,14 @@ dom.form.addEventListener('click', (e) => {
 	e.preventDefault()
 	// if the condition return true, then reset the form and close the modal
 	if (validator.launchValidation()) {
+		const formTextInputs = document.querySelectorAll('.form__text')
+		const formTextArea = document.querySelector('.form__text-area')
+		formTextInputs.forEach(input => console.log(input.getAttribute('name'),' : ', input.value))
+		console.log('text-Area : ', formTextArea.value)
 		dom.form.reset()
 		dom.modalForm.style.display ='none'
 	}
+
 })
 
 // To fill the card about total of likes and daily price

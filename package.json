@@ -8,8 +8,7 @@
     "compressed": "sass ./sass/:./public/css/ --style=compressed --no-source-map",
     "expanded": "sass ./sass/:./public/css/ --style=expanded",
     "dev": "webpack --env dev=dev",
-    "prod": "webpack",
-    "doc": "jsdoc -c jsdoc.json"
+    "prod": "webpack"
   },
   "repository": {
     "type": "git",

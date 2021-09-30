@@ -56,7 +56,6 @@ class Image extends Media{
 	 * @returns A string that contain the Dom Elements of the image
 	 */
 	get createImage() {
-		console.log(this.altTxt)
 		return `
 			<article class="media__card">
 				<a href="../public/images/photographers/photos/${this.filename}">
