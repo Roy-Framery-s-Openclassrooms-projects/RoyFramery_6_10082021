@@ -17,7 +17,7 @@
 ---
 ## Description
 
-![Logo FishEye](https://github.com/Roy-Framery-s-Openclassrooms-projects/RoyFramery_6_10082021/tree/main/public/images/README/logo.png)
+![Legend](https://github.com/Roy-Framery-s-Openclassrooms-projects/RoyFramery_6_10082021/blob/main/public/images/README/logo.png)
 
 __*FishEye*__ is the sixth project I made during this training. 
 Since few weeks I'm a junior developer at Techasite, 
