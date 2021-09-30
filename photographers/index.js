@@ -7,6 +7,7 @@ import displayTotalLikesOfPhotographer from './src/displayTotalLikes.js'
 import displayDailyPriceOfPhotographer from './src/displayDailyPrice.js'
 import increaseOrDecreaseLikesAndTotalLikes from './src/likes.js'
 import {displaySelectOptions, hideSelectedOptionInSelect, removeClassToHideDuplicateOptionInSelect} from './src/select.js'
+import { enableBodyScroll } from 'body-scroll-lock'
 
 const dom = {
 	inputSelect : document.querySelector('.filter__select'),
@@ -99,6 +100,8 @@ dom.form.addEventListener('click', (e) => {
 		console.log('text-Area : ', formTextArea.value)
 		dom.form.reset()
 		dom.modalForm.style.display ='none'
+		enableBodyScroll(document.body)
+		document.querySelector('.photographer__contactButton').focus()
 	}
 
 })

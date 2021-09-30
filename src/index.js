@@ -37,6 +37,12 @@ photographers.then(photographers => {
 					dom.photographersContainer.insertAdjacentHTML('beforeend', photographer.photographerCard)
 				}
 			}
+			const filterTags = document.querySelectorAll('.header__filter-tag')
+			filterTags.forEach(filter => {
+				if (filter.innerText.toLowerCase().includes(paramTag)){
+					filter.focus()
+				}
+			})
 		}
 	})
 })

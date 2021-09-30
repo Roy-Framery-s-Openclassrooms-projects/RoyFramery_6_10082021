@@ -101,6 +101,7 @@ export default class Lightbox {
 	onKeyUp (e) {
 		if (e.key === 'Escape') {
 			this.close(e)
+			e.path[0].focus()
 		} else if (e.key === 'ArrowLeft') {
 			this.previous(e)
 		}else if (e.key === 'ArrowRight') {

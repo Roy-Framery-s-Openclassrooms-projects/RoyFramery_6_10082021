@@ -90,6 +90,8 @@
         border-radius: 0 0 $br-5 $br-5;
         display: none;
         letter-spacing: 1px;
+        box-shadow: 0px 4px 4px 0px #00000040;
+
     }
     &__custom-option {
         padding: 14px 0 14px 10px;

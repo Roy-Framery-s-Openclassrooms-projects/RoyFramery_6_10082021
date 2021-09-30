@@ -12,10 +12,10 @@
         animation: fadeIn 500ms;
         transition: opacity 300ms;
         z-index: 13;
-    
+        overflow: scroll;
         &__button {
             cursor: pointer;
-            text-indent: -6000px;
+            color: transparent;
             transition: opacity 300ms;
             right: 0;
         }
