@@ -25,11 +25,11 @@
         </a>
     </header>
     <main>
-        <section class="photographer" role="region">
+        <section class="photographer" role="region" aria-label="Photographer profil">
         </section>
         <div class="infos"></div>
 
-        <section class="filter">
+        <section class="filter" aria-label="media's filter">
             <div class="filter__dropdown">
                 <label for="OrderBy" class="filter__label">Trier par</label>
                 <div class="filter__custom-select">
@@ -45,10 +45,10 @@
 
         </section>
 
-        <section class="media" role="region"></section>
+        <section class="media" role="region" aria-label="Photographer's media"></section>
 
-        <section class="modal" role="region">
-            <div class="modal__content" aria-labelledby="contact">
+        <section class="modal" role="region" aria-label="Contact form">
+            <div class="modal__content" aria-labelledby="contact" role="dialog">
                 <span class="modal__close">Close Contact form</span>
                 <div class="modal__body">
                     <form name="contact" action="./photographer.html" method="get" class="form">

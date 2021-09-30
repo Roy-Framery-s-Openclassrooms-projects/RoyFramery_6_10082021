@@ -60,7 +60,7 @@ dom.selectOption.forEach(option => option.addEventListener('click', () => {
 	filter = option.getAttribute('data-value')
 	displayMediaByPhotographerById(paramId, filter)
 	removeClassToHideDuplicateOptionInSelect(filter, dom.selectOption)
-	dom.inputSelect.setAttribute('data-value', option.innerText) 
+	dom.inputSelect.setAttribute('value', option.innerText) 
 	// need to initialize the lightboxand likes after the order of the media
 	setTimeout(() => {
 		Lightbox.init()
@@ -75,7 +75,7 @@ dom.selectOption.forEach(option => option.addEventListener('keyup', (e) => {
 		filter = option.getAttribute('data-value')
 		displayMediaByPhotographerById(paramId, filter)
 		removeClassToHideDuplicateOptionInSelect(filter, dom.selectOption)
-		dom.inputSelect.setAttribute('data-value', option.innerText) 
+		dom.inputSelect.setAttribute('value', option.innerText) 
 		dom.inputSelect.focus()
 		dom.selectMenu.classList.remove('filter__show')
 	}

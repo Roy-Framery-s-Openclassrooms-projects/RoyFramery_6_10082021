@@ -46,6 +46,7 @@ class Image extends Media{
 	 * @param {String} title The title of the image given by the instantiation of the media class
 	 * @param {string} filename The filname of the image given by the instantiation of the media class
 	 * @param {number} likes The number of like of the image given by the instantiation of the media class
+	 * @param {string} altTxt Alternatif Text of the image given by the instantiation of the media class
 	 */
 	constructor( title, filename, likes, altTxt) {
 		super(title, filename, likes, altTxt)
@@ -82,6 +83,7 @@ class Video extends Media{
 	 * @param {String} title The title of the video given by the instantiation of the media class
 	 * @param {string} filename The filname of the video given by the instantiation of the media class
 	 * @param {number} likes The number of like of the video given by the instantiation of the media class
+	 * @param {string} altTxt Alternatif Text of the video given by the instantiation of the media class
 	 */
 
 	constructor( title, filename, likes, altTxt) {

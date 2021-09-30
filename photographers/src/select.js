@@ -3,6 +3,7 @@
  */
 let displaySelectOptions = () => {
 	let select = document.querySelector('.filter__custom-select')
+	let inputSelect = document.querySelector('.filter__select')
 	select.addEventListener('click', () => {
 		const option = document.querySelector('.filter__custom-menu')
 		const arrow = document.querySelector('.filter__custom-arrow', 'before')
@@ -10,11 +11,13 @@ let displaySelectOptions = () => {
 		if (!option.classList.contains('filter__show')) {
 			option.classList.add('filter__show')
 			arrow.style.transform = 'rotate(180deg)'
+			inputSelect.setAttribute('aria-expanded', true)
 		}
 		// else we remove it 
 		else {
 			arrow.style.transform = 'rotate(0deg)'
 			option.classList.remove('filter__show')
+			inputSelect.setAttribute('aria-expanded', false)
 		}
 	})
 }
@@ -28,6 +31,7 @@ let hideSelectedOptionInSelect = (filter, dom) => {
 	dom.forEach(option => {
 		if (option.getAttribute('data-value') == filter) {
 			option.classList.add('filter__selected')
+			option.setAttribute('aria-selected', true)
 		}
 	})
 }
@@ -41,6 +45,7 @@ let removeClassToHideDuplicateOptionInSelect = (filter, dom) => {
 	dom.forEach(option => {
 		if (option.getAttribute('data-value') != filter) {
 			option.classList.remove('filter__selected')
+			option.setAttribute('aria-selected', false)
 		}
 	})
 }

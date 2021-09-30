@@ -58,7 +58,7 @@ export default class Photographer {
 		return `
 		<article class="photographer">
 			<a href="./photographers/index.html?id=${this.id}" class="photographer__header">
-				<img class="photographer__img" src="public/images/photographers/id_photos/${this.portrait}" alt="${this.name}">
+				<img class="photographer__img" src="public/images/photographers/id_photos/${this.portrait}" alt="">
 				<h2 class="photographer__name">${this.name}</h2>
 			</a>
 			<div class="photographer__content">
