@@ -54,19 +54,19 @@
                     <form name="contact" action="./photographer.html" method="get" class="form">
                         <div class="form__data" data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom.">
                             <label for="firstname" class="form__label">Prénom</label>
-                            <input class="form__text" type="text" id="firstname" name="firstname" minlength="2" required aria-required="true"/>
+                            <input class="form__text" type="text" id="firstname" name="firstname" minlength="2" required aria-required="true" placeholder="John"/>
                         </div>
                         <div class="form__data" data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom.">
                             <label for="lastname" class="form__label">Nom</label>
-                            <input class="form__text" type="text" id="lastname" name="lastname" minlength="2" required aria-required="true"/>
+                            <input class="form__text" type="text" id="lastname" name="lastname" minlength="2" required aria-required="true" placeholder="Doe"/>
                         </div>
-                        <div class="form__data" data-error="Veuillez saisir un email valide.">
+                        <div class="form__data" data-error="Veuillez saisir un email valide (Ex: john.doe@gmail.com, johndoe@gmail.com)">
                             <label for="email" class="form__label">E-mail</label>
-                            <input class="form__text" type="email" id="email" name="email" required aria-required="true"/>
+                            <input class="form__text" type="email" id="email" name="email" required aria-required="true" placeholder="johndoe@gmail.com, john.doe@gmail.com, ..."/>
                         </div>
-                        <div class="form__data" data-error="Veuillez saisir un email valide.">
+                        <div class="form__data" data-error="Veuillez saisir votre message.">
                             <label for="textArea" class="form__label">Votre message</label>
-                            <textarea class="form__text-area" name="textArea" id="textArea" cols="30" rows="10"  required aria-required="true"></textarea>
+                            <textarea class="form__text-area" name="textArea" id="textArea" cols="30" rows="10"  required aria-required="true" placeholder="Bonjour..."></textarea>
                         </div>
                         <input class="form__submitButton" type="submit" value="Send" />
                     </form>

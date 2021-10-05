@@ -98,10 +98,9 @@ class Video extends Media{
 			<article class="media__card">
 				<a href="../public/images/photographers/videos/${this.filename}" >
 					<div class="media__playIcon"></div>
-					<video class="media__thumb" aria-labelledby="summary">
+					<video class="media__thumb" title="${this.altTxt}">
 						<source src="../public/images/photographers/videos/${this.filename}"
 						type="video/mp4">
-						<div id="summary">${this.altTxt}</div>
 					</video>
 				</a>
 				<div class="media__content">
